@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - 'feature/*'
+      - 'origin/feature/*'
 jobs:
   Commit-configuration:
     name: Commit Rules
