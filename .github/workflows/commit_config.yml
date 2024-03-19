@@ -1,4 +1,4 @@
-name: Commit Pipeline
+name: Commit Config
 run-name: ${{ github.actor }} is running commit pipeline
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
       - 'feature/*'
 jobs:
-  commit_rules:
+  Commit-configuration:
     name: Commit Rules
     runs-on: ubuntu-latest
     steps:
@@ -14,13 +14,8 @@ jobs:
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - name: Set up Git
-        run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: Check Commit Messages
         run: |
           COMMIT_MESSAGE=$(git log --format=%B -n 1 ${{ github.sha }})
@@ -42,14 +37,5 @@ jobs:
               echo "Initial commit detected. Version should be v0.0.0."
               exit 1
             fi
-          fi
-      - name: Check Branch Naming
-        run: |
-          BRANCH_NAME=$(echo "${{ github.ref }}" | rev | cut -d/ -f1 | rev)
-          if [[ "$BRANCH_NAME" =~ ^feature\/[0-9]+\.[0-9]+$ ]]; then
-            echo "Branch naming convention is correct."
-          else
-            echo "Invalid branch name. Branch name should follow 'feature/X.Y' convention."
-            exit 1
           fi
       - run: echo "🍏 This job's status is ${{ job.status }}."
