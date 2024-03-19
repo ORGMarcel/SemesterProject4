@@ -1,0 +1,54 @@
+name: Commit Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - 'feature/*'
+
+jobs:
+  commit_rules:
+    name: Commit Rules
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Git
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+
+      - name: Check Commit Messages
+        run: |
+          COMMIT_MESSAGE=$(git log --format=%B -n 1 ${{ github.sha }})
+          echo "$COMMIT_MESSAGE" | grep -qE '^v[0-9]+\.[0-9]+\.[0-9]+ - .+$' || (echo "Invalid commit message format. Example: 'v0.0.3 - Implemented x on feature y.'"; exit 1)
+
+      - name: Check Versioning
+        run: |
+          COMMIT_MESSAGE=$(git log --format=%B -n 1 ${{ github.sha }})
+          VERSION=$(echo "$COMMIT_MESSAGE" | grep -oE '^v[0-9]+\.[0-9]+\.[0-9]+' || true)
+          if [ -z "$VERSION" ]; then
+            echo "Version not found in commit message."; 
+            exit 1
+          fi
+          if [[ "$GITHUB_REF" == "refs/heads/main" ]]; then
+            MAJOR=$(echo "$VERSION" | cut -d '.' -f 1)
+            MINOR=$(echo "$VERSION" | cut -d '.' -f 2)
+            PATCH=$(echo "$VERSION" | cut -d '.' -f 3)
+            if [[ "$MAJOR" == "0" && "$MINOR" == "0" && "$PATCH" == "0" ]]; then
+              echo "Initial commit detected. Version should be v0.0.0."
+              exit 1
+            fi
+          fi
+
+      - name: Check Branch Naming
+        run: |
+          BRANCH_NAME=$(echo "${{ github.ref }}" | rev | cut -d/ -f1 | rev)
+          if [[ "$BRANCH_NAME" =~ ^feature\/[0-9]+\.[0-9]+$ ]]; then
+            echo "Branch naming convention is correct."
+          else
+            echo "Invalid branch name. Branch name should follow 'feature/X.Y' convention."
+            exit 1
+          fi
