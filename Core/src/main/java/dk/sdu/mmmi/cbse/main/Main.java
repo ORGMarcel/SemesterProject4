@@ -41,7 +41,7 @@ public class Main extends Application {
 //        Text text = new Text(10, 20, "Destroyed asteroids: 0");
         gameWindow.setPrefSize(gameData.getDisplayWidth(), gameData.getDisplayHeight());
 //        gameWindow.getChildren().add(text);
-        // BOmbaaaclaat
+        // Bomba
 
         Scene scene = new Scene(gameWindow);
         scene.setOnKeyPressed(event -> {
