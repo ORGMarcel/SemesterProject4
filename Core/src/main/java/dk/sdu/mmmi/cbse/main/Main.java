@@ -23,6 +23,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.paint.Color;
+
+import java.util.*;
 
 public class Main extends Application {
 
@@ -31,19 +35,34 @@ public class Main extends Application {
     private final Map<Entity, Polygon> polygons = new ConcurrentHashMap<>();
     private final Pane gameWindow = new Pane();
 
+    private final Random random = new Random();
+    private int tileSize;
 
-    public static void main(String[] args) {
-        launch(Main.class);
-    }
+    private final int TILE_SIZE = 20;
+    private final int MAP_WIDTH = 40;
+    private final int MAP_HEIGHT = 40;
+    private int[][] map = new int[MAP_HEIGHT][MAP_WIDTH];
+
+
+
 
     @Override
     public void start(Stage window) throws Exception {
-//        Text text = new Text(10, 20, "Destroyed asteroids: 0");
         gameWindow.setPrefSize(gameData.getDisplayWidth(), gameData.getDisplayHeight());
-//        gameWindow.getChildren().add(text);
-        // Bomba
 
-        Scene scene = new Scene(gameWindow);
+        Pane root = new Pane();
+        int gameWindowWidth = 800; // Adjust as needed
+        int gameWindowHeight = 800; // Adjust as needed
+
+        generateMap(); // Generate the map
+
+        // Calculate the tile size based on the map dimensions and the window size
+        tileSize = calculateTileSize(gameWindowWidth, gameWindowHeight, MAP_WIDTH, MAP_HEIGHT);
+
+        root.setPrefSize(gameWindowWidth, gameWindowHeight);
+        drawMap(root);
+
+        Scene scene = new Scene(root, gameWindowWidth, gameWindowHeight);
         scene.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.LEFT)) {
                 gameData.getKeys().setKey(GameKeys.LEFT, true);
@@ -91,11 +110,93 @@ public class Main extends Application {
 
         render();
 
+
         window.setScene(scene);
         window.setTitle("Shadow Shuriken");
         window.show();
 
+
+
     }
+
+    private int calculateTileSize(int windowWidth, int windowHeight, int mapColumns, int mapRows) {
+        int tileSizeWidth = windowWidth / mapColumns;
+        int tileSizeHeight = windowHeight / mapRows;
+        // Use the smaller of the two to ensure the entire map fits in the window
+        return Math.min(tileSizeWidth, tileSizeHeight);
+    }
+
+    private void generateMap() {
+        Random rand = new Random();
+        int[][] tempMap = new int[MAP_HEIGHT][MAP_WIDTH];
+
+        // Initial random placement
+        for (int i = 1; i < MAP_HEIGHT - 1; i++) {
+            for (int j = 1; j < MAP_WIDTH - 1; j++) {
+                tempMap[i][j] = rand.nextInt(4) == 0 ? 1 : 0; // 25% chance of being a wall
+            }
+        }
+
+        // Modify the map based on neighbors to cluster walls
+        for (int iteration = 0; iteration < 2; iteration++) { // Repeat to enhance clustering
+            for (int i = 1; i < MAP_HEIGHT - 1; i++) {
+                for (int j = 1; j < MAP_WIDTH - 1; j++) {
+                    int wallsNearby = countWallsNearby(tempMap, i, j);
+
+                    if (wallsNearby > 4) {
+                        map[i][j] = 1; // Become a wall if surrounded by walls
+                    } else if (wallsNearby < 2) {
+                        map[i][j] = 0; // Become empty space if too isolated
+                    } else {
+                        map[i][j] = tempMap[i][j]; // Otherwise, keep the current state
+                    }
+                }
+            }
+        }
+
+        // Ensure the border is always walls
+        for (int i = 0; i < MAP_HEIGHT; i++) {
+            for (int j = 0; j < MAP_WIDTH; j++) {
+                if (i == 0 || j == 0 || i == MAP_HEIGHT - 1 || j == MAP_WIDTH - 1) {
+                    map[i][j] = 1;
+                }
+            }
+        }
+    }
+
+    private int countWallsNearby(int[][] tempMap, int y, int x) {
+        int count = 0;
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                if (tempMap[y + i][x + j] == 1) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+
+
+
+    private void drawMap(Pane pane) {
+        for (int i = 0; i < MAP_HEIGHT; i++) {
+            for (int j = 0; j < MAP_WIDTH; j++) {
+                Rectangle rect = new Rectangle(j * tileSize, i * tileSize, tileSize, tileSize);
+                if (map[i][j] == 1) {
+                    rect.setFill(Color.BLACK); // Wall
+                } else {
+                    rect.setFill(Color.WHITE); // Empty space
+                }
+                pane.getChildren().add(rect);
+            }
+        }
+    }
+
+
+
+
+
 
     private void render() {
         new AnimationTimer() {
@@ -111,26 +212,30 @@ public class Main extends Application {
         }.start();
     }
 
+
+
     private void update() {
 
         // Update
         for (IEntityProcessingService entityProcessorService : getEntityProcessingServices()) {
             entityProcessorService.process(gameData, world);
         }
-        for (Entity entity : world.getEntities()) {
-            if (polygons.get(entity) == null){
+        for (Entity entity : world.getEntities())
+        {
+            if (polygons.get(entity) == null)
+            {
                 Polygon polygon = new Polygon(entity.getPolygonCoordinates());
                 polygons.put(entity, polygon);
                 gameWindow.getChildren().add(polygon);
             }
         }
 
-
 //        for (IPostEntityProcessingService postEntityProcessorService : getPostEntityProcessingServices()) {
 //            postEntityProcessorService.process(gameData, world);
 //        }
-
     }
+
+
 
     private void draw() {
 
@@ -167,5 +272,9 @@ public class Main extends Application {
 
     private Collection<? extends IPostEntityProcessingService> getPostEntityProcessingServices() {
         return ServiceLoader.load(IPostEntityProcessingService.class).stream().map(ServiceLoader.Provider::get).collect(toList());
+    }
+
+    public static void main(String[] args) {
+        launch(Main.class);
     }
 }
