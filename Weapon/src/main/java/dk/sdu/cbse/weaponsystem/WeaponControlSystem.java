@@ -8,6 +8,7 @@ import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.GameKeys;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
+import dk.sdu.mmmi.playersystem.Player;
 
 import java.util.Collection;
 import java.util.ServiceLoader;
@@ -20,42 +21,52 @@ public class WeaponControlSystem implements IEntityProcessingService {
     @Override
     public void process(GameData gameData, World world) {
             
-        for (Entity player : world.getEntities(Weapon.class)) {
+        for (Entity weapon : world.getEntities(Weapon.class)) {
+            for(Entity player : world.getEntities(Player.class)){
+                weapon.setY(player.getY());
+                weapon.setX(player.getX());
+                weapon.setRotation(player.getRotation());
+                double changeX = Math.cos(Math.toRadians(weapon.getRotation()));
+                double changeY = Math.sin(Math.toRadians(weapon.getRotation()));
+                weapon.setX(weapon.getX() + changeX * 15);
+                weapon.setY(weapon.getY() + changeY * 15);
+
+            }
 
 
             // Gravity
-            player.setY(player.getY()+1);
+//            weapon.setY(weapon.getY()+1);
 
 
 
             // Controlling
             if (gameData.getKeys().isDown(GameKeys.LEFT)) {
-                player.setX(player.getX()-5);
+//                weapon.setX(weapon.getX()-5);
 //                player.setRotation(player.getRotation() - 5);
             }
             if (gameData.getKeys().isDown(GameKeys.RIGHT)) {
-                player.setX(player.getX()+5);
+//                weapon.setX(weapon.getX()+5);
 //                player.setRotation(player.getRotation() + 5);
             }
             if (gameData.getKeys().isPressed(GameKeys.UP)) {
 //                player.setY(player.getY()-50);
-                Thread jumpThread = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        for (int i = 0; i < 100; i++) {
-                            player.setY(player.getY()-1);
-
-                            try {
-                                Thread.sleep(5);
-                                System.out.println("Sleep");
-                            } catch (InterruptedException e) {
-                                throw new RuntimeException(e);
-                            }
-                        }
-                    }
-                });
-
-                jumpThread.start(); // Start the thread
+//                Thread jumpThread = new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        for (int i = 0; i < 100; i++) {
+//                            weapon.setY(weapon.getY()-1);
+//
+//                            try {
+//                                Thread.sleep(5);
+//                                System.out.println("Sleep");
+//                            } catch (InterruptedException e) {
+//                                throw new RuntimeException(e);
+//                            }
+//                        }
+//                    }
+//                });
+//
+//                jumpThread.start(); // Start the thread
 
 
 //                double changeX = Math.cos(Math.toRadians(player.getRotation()));
@@ -65,24 +76,24 @@ public class WeaponControlSystem implements IEntityProcessingService {
             }
             if(gameData.getKeys().isPressed(GameKeys.SPACE)) {
                 getBulletSPIs().stream().findFirst().ifPresent(
-                        spi -> {world.addEntity(spi.createBullet(player, gameData));}
+                        spi -> {world.addEntity(spi.createBullet(weapon, gameData));}
                 );
             }
             
-        if (player.getX() < 0) {
-            player.setX(1);
+        if (weapon.getX() < 0) {
+            weapon.setX(1);
         }
 
-        if (player.getX() > gameData.getDisplayWidth()) {
-            player.setX(gameData.getDisplayWidth()-1);
+        if (weapon.getX() > gameData.getDisplayWidth()) {
+            weapon.setX(gameData.getDisplayWidth()-1);
         }
 
-        if (player.getY() < 0) {
-            player.setY(1);
+        if (weapon.getY() < 0) {
+            weapon.setY(1);
         }
 
-        if (player.getY() > gameData.getDisplayHeight()) {
-            player.setY(gameData.getDisplayHeight()-1);
+        if (weapon.getY() > gameData.getDisplayHeight()) {
+            weapon.setY(gameData.getDisplayHeight()-1);
         }
 
                                         
