@@ -1,6 +1,7 @@
-package dk.sdu.mmmi.playersystem;
+package dk.sdu.cbse.weaponsystem;
 
 //import dk.sdu.mmmi.cbse.common.bullet.BulletSPI;
+
 import dk.sdu.cbse.commonbullet.BulletSPI;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
@@ -14,12 +15,12 @@ import java.util.ServiceLoader;
 import static java.util.stream.Collectors.toList;
 
 
-public class PlayerControlSystem implements IEntityProcessingService {
+public class WeaponControlSystem implements IEntityProcessingService {
 
     @Override
     public void process(GameData gameData, World world) {
             
-        for (Entity player : world.getEntities(Player.class)) {
+        for (Entity player : world.getEntities(Weapon.class)) {
 
 
             // Gravity
@@ -62,11 +63,11 @@ public class PlayerControlSystem implements IEntityProcessingService {
 //                player.setX(player.getX() + changeX);
 //                player.setY(player.getY() + changeY);
             }
-//            if(gameData.getKeys().isPressed(GameKeys.SPACE)) {
-//                getBulletSPIs().stream().findFirst().ifPresent(
-//                        spi -> {world.addEntity(spi.createBullet(player, gameData));}
-//                );
-//            }
+            if(gameData.getKeys().isPressed(GameKeys.SPACE)) {
+                getBulletSPIs().stream().findFirst().ifPresent(
+                        spi -> {world.addEntity(spi.createBullet(player, gameData));}
+                );
+            }
             
         if (player.getX() < 0) {
             player.setX(1);
