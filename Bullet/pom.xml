@@ -9,7 +9,8 @@
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>Player</artifactId>
+    <groupId>dk.sdu.cbse.bulletsystem</groupId>
+    <artifactId>Bullet</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

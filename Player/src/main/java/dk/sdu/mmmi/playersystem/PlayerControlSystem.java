@@ -1,6 +1,7 @@
 package dk.sdu.mmmi.playersystem;
 
 //import dk.sdu.mmmi.cbse.common.bullet.BulletSPI;
+import dk.sdu.cbse.commonbullet.BulletSPI;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.GameKeys;
@@ -61,11 +62,11 @@ public class PlayerControlSystem implements IEntityProcessingService {
 //                player.setX(player.getX() + changeX);
 //                player.setY(player.getY() + changeY);
             }
-//            if(gameData.getKeys().isPressed(GameKeys.SPACE)) {
-//                getBulletSPIs().stream().findFirst().ifPresent(
-//                        spi -> {world.addEntity(spi.createBullet(player, gameData));}
-//                );
-//            }
+            if(gameData.getKeys().isPressed(GameKeys.SPACE)) {
+                getBulletSPIs().stream().findFirst().ifPresent(
+                        spi -> {world.addEntity(spi.createBullet(player, gameData));}
+                );
+            }
             
         if (player.getX() < 0) {
             player.setX(1);
@@ -87,7 +88,7 @@ public class PlayerControlSystem implements IEntityProcessingService {
         }
     }
 
-//    private Collection<? extends BulletSPI> getBulletSPIs() {
-//        return ServiceLoader.load(BulletSPI.class).stream().map(ServiceLoader.Provider::get).collect(toList());
-//    }
+    private Collection<? extends BulletSPI> getBulletSPIs() {
+        return ServiceLoader.load(BulletSPI.class).stream().map(ServiceLoader.Provider::get).collect(toList());
+    }
 }
