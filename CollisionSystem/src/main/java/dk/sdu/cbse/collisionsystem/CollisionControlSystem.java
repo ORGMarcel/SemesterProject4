@@ -22,11 +22,10 @@ public class CollisionControlSystem implements IEntityProcessingService {
         for (Entity entityEnemy : world.getEntities(Enemy.class)) {
             for (Entity entityBullet : world.getEntities(Bullet.class)) {
                 if (isCollided(entityEnemy, entityBullet)) {
-                    entityEnemy.setHitPoints(entityEnemy.getHitPoints() - 1);
-                    if (entityEnemy.getHitPoints() < 1) {
+                    entityEnemy.setHealthPoints(entityEnemy.getHealthPoints() - 1);
+                    if (entityEnemy.getHealthPoints() < 1) {
                         world.removeEntity(entityEnemy);
                         kills++;
-                        System.out.println(kills);
                     }
                     world.removeEntity(entityBullet);
                 }
@@ -40,8 +39,8 @@ public class CollisionControlSystem implements IEntityProcessingService {
         for (Entity entityPlayer : world.getEntities(Player.class)) {
             for (Entity entityBullet : world.getEntities(Bullet.class)) {
                 if (isCollided(entityPlayer, entityBullet)) {
-                    entityPlayer.setHitPoints(entityPlayer.getHitPoints()-1);
-                    if (entityPlayer.getHitPoints()<1) {
+                    entityPlayer.setHealthPoints(entityPlayer.getHealthPoints()-1);
+                    if (entityPlayer.getHealthPoints()<1) {
                         world.removeEntity(entityPlayer);
                     }
                     world.removeEntity(entityBullet);
