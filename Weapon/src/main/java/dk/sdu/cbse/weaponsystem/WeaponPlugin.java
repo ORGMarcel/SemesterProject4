@@ -16,11 +16,11 @@ public class WeaponPlugin implements IGamePluginService {
     public void start(GameData gameData, World world) {
 
         // Add entities to the world
-        weapon = createPlayerShip(gameData);
+        weapon = createBaseWeapon(gameData);
         world.addEntity(weapon);
     }
 
-    private Entity createPlayerShip(GameData gameData) {
+    private Entity createBaseWeapon(GameData gameData) {
 
         Entity baseWeapon = new Weapon();
 //        playerShip.setPolygonCoordinates(-5,-5,10,0,-5,5);

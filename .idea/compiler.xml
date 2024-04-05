@@ -12,6 +12,7 @@
         <module name="Enemy" />
         <module name="Collision" />
         <module name="CommonBullet" />
+        <module name="Weapon" />
         <module name="Common" />
         <module name="Core" />
       </profile>
