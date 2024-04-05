@@ -17,6 +17,7 @@
         <module>Bullet</module>
         <module>CommonBullet</module>
         <module>Weapon</module>
+        <module>Enemies</module>
 
     </modules>
     <properties>

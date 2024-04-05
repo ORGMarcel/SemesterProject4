@@ -48,7 +48,7 @@ public class PlayerControlSystem implements IEntityProcessingService {
 
                             try {
                                 Thread.sleep(5);
-                                System.out.println("Sleep");
+//                                System.out.println("Sleep");
                             } catch (InterruptedException e) {
                                 throw new RuntimeException(e);
                             }

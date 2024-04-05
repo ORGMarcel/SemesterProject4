@@ -1,11 +1,7 @@
-package dk.sdu.mmmi.enemy;
+package dk.sdu.cbse.enemiessystem;
+
 import dk.sdu.mmmi.cbse.common.data.Entity;
 
-/**
- *
- * @author Emil
- */
 public class Enemy extends Entity {
-
 
 }

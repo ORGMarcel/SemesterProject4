@@ -1,6 +1,7 @@
-package dk.sdu.mmmi.enemy;
+package dk.sdu.cbse.enemiessystem;
 
 //import dk.sdu.mmmi.cbse.common.bullet.BulletSPI;
+import dk.sdu.cbse.commonbullet.BulletSPI;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
@@ -19,58 +20,57 @@ public class EnemyControlSystem implements IEntityProcessingService {
     public void process(GameData gameData, World world) {
 
         Random random = new Random();
-        int randomInt;
-        int randomInt2;
+        int randomNumber;
+        int randomNumber2;
 
         for (Entity enemy : world.getEntities(Enemy.class)) {
 
-            randomInt = random.nextInt(2);
-            randomInt2 = random.nextInt(10);
+            randomNumber = random.nextInt(50);
+            randomNumber2 = random.nextInt(30);
 
-            if (randomInt == 0) {
-                enemy.setRotation(enemy.getRotation() - 5);
+            if (randomNumber ==0) {
+                enemy.setRotation(enemy.getRotation() - 45);
             }
-            if (randomInt == 1) {
-                enemy.setRotation(enemy.getRotation() + 5);
+            if (randomNumber ==1) {
+                enemy.setRotation(enemy.getRotation() + 45);
             }
             if (true) {
                 double changeX = Math.cos(Math.toRadians(enemy.getRotation()));
                 double changeY = Math.sin(Math.toRadians(enemy.getRotation()));
                 enemy.setX(enemy.getX() + changeX);
                 enemy.setY(enemy.getY() + changeY);
-            } /*
-            if(randomInt2 == 1) {
+            }
+            if (randomNumber2 ==5) {
                 getBulletSPIs().stream().findFirst().ifPresent(
                         spi -> {world.addEntity(spi.createBullet(enemy, gameData));}
                 );
             }
-            */
-
 
             if (enemy.getX() < 0) {
+                enemy.setX(1);
                 enemy.setRotation(enemy.getRotation() + 180);
             }
 
             if (enemy.getX() > gameData.getDisplayWidth()) {
+                enemy.setX(gameData.getDisplayWidth()-1);
                 enemy.setRotation(enemy.getRotation() + 180);
             }
 
             if (enemy.getY() < 0) {
+                enemy.setY(1);
                 enemy.setRotation(enemy.getRotation() + 180);
             }
 
             if (enemy.getY() > gameData.getDisplayHeight()) {
+                enemy.setY(gameData.getDisplayHeight()-1);
                 enemy.setRotation(enemy.getRotation() + 180);
             }
 
 
         }
     }
-}
-/*
+
     private Collection<? extends BulletSPI> getBulletSPIs() {
         return ServiceLoader.load(BulletSPI.class).stream().map(ServiceLoader.Provider::get).collect(toList());
     }
 }
-
- */
