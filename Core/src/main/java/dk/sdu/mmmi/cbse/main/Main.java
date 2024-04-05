@@ -7,10 +7,8 @@ import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
-import java.util.ArrayList;
+
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.ServiceLoader;
 import java.util.concurrent.ConcurrentHashMap;
@@ -38,7 +36,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage window) throws Exception {
-        Text text = new Text(10, 20, "Enemies killed: " + world.getKills());
+        Text text = new Text(10, 20, "Enemies killed: " + world.getKillCounter());
         gameWindow.setPrefSize(gameData.getDisplayWidth(), gameData.getDisplayHeight());
         gameWindow.getChildren().add(text);
 
@@ -114,7 +112,7 @@ public class Main extends Application {
 
     private void updateKillsText() {
         Text text = (Text) gameWindow.getChildren().get(0); // Assuming the text is the first child
-        text.setText("Enemies killed: " + world.getKills());
+        text.setText("Enemies killed: " + world.getKillCounter());
     }
 
     private void update() {
