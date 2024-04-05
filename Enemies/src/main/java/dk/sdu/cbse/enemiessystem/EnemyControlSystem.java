@@ -22,11 +22,12 @@ public class EnemyControlSystem implements IEntityProcessingService {
         Random random = new Random();
         int randomNumber;
         int randomNumber2;
+        int randomInt = random.nextInt(250);
 
         for (Entity enemy : world.getEntities(Enemy.class)) {
 
             randomNumber = random.nextInt(50);
-            randomNumber2 = random.nextInt(30);
+            randomNumber2 = random.nextInt(100);
 
             if (randomNumber ==0) {
                 enemy.setRotation(enemy.getRotation() - 45);
@@ -65,9 +66,29 @@ public class EnemyControlSystem implements IEntityProcessingService {
                 enemy.setY(gameData.getDisplayHeight()-1);
                 enemy.setRotation(enemy.getRotation() + 180);
             }
-
-
         }
+
+        if (randomInt ==1) {
+
+            Entity enemies;
+            enemies = createEnemyShip(gameData);
+            world.addEntity(enemies);
+        }
+
+    }
+
+    private Entity createEnemyShip(GameData gameData) {
+
+        Random random = new Random();
+        int randomWidthX = random.nextInt(gameData.getDisplayWidth());
+        int randomHeightY = random.nextInt(gameData.getDisplayHeight());
+
+        Entity enemyShip = new Enemy();
+        enemyShip.setPolygonCoordinates(18.0, -1.5, 12.0, -1.5, 12.0, -4.5, 9.0, -4.5, 9.0, -7.5, -3.0, -7.5, -3.0, -10.5, 0.0, -10.5, 0.0, -13.5, -15.0, -13.5, -15.0, -7.5, -12.0, -7.5, -12.0, -4.5, -9.0, -4.5, -9.0, -1.5, -15.0, -1.5, -15.0, 1.5, -9.0, 1.5, -9.0, 4.5, -12.0, 4.5, -12.0, 7.5, -15.0, 7.5, -15.0, 13.5, 0.0, 13.5, 0.0, 10.5, -6.0, 10.5, -6.0, 7.5, 6.0, 7.5, 6.0, 1.5, 12.0, 1.5, 12.0, -1.5, 6.0, -1.5, 6.0, -4.5, 12.0, -4.5, 12.0, -1.5, 18.0, -1.5);
+        enemyShip.setX(randomWidthX);
+        enemyShip.setY(randomHeightY);
+        enemyShip.setHitPoints(10);
+        return enemyShip;
     }
 
     private Collection<? extends BulletSPI> getBulletSPIs() {
