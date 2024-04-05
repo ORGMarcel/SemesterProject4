@@ -27,7 +27,7 @@ public class EnemyControlSystem implements IEntityProcessingService {
         for (Entity enemy : world.getEntities(Enemy.class)) {
 
             randomNumber = random.nextInt(50);
-            randomNumber2 = random.nextInt(100);
+            randomNumber2 = random.nextInt(20);
 
             if (randomNumber ==0) {
                 enemy.setRotation(enemy.getRotation() - 45);
@@ -87,7 +87,7 @@ public class EnemyControlSystem implements IEntityProcessingService {
         enemyShip.setPolygonCoordinates(18.0, -1.5, 12.0, -1.5, 12.0, -4.5, 9.0, -4.5, 9.0, -7.5, -3.0, -7.5, -3.0, -10.5, 0.0, -10.5, 0.0, -13.5, -15.0, -13.5, -15.0, -7.5, -12.0, -7.5, -12.0, -4.5, -9.0, -4.5, -9.0, -1.5, -15.0, -1.5, -15.0, 1.5, -9.0, 1.5, -9.0, 4.5, -12.0, 4.5, -12.0, 7.5, -15.0, 7.5, -15.0, 13.5, 0.0, 13.5, 0.0, 10.5, -6.0, 10.5, -6.0, 7.5, 6.0, 7.5, 6.0, 1.5, 12.0, 1.5, 12.0, -1.5, 6.0, -1.5, 6.0, -4.5, 12.0, -4.5, 12.0, -1.5, 18.0, -1.5);
         enemyShip.setX(randomWidthX);
         enemyShip.setY(randomHeightY);
-        enemyShip.setHitPoints(10);
+        enemyShip.setHitPoints(6);
         return enemyShip;
     }
 

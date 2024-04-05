@@ -13,6 +13,15 @@ import java.util.concurrent.ConcurrentHashMap;
 public class World {
 
     public int kills = 0;
+    // Setter & Getter method for kills
+
+    public void setKills(int kills) {
+        this.kills = kills;
+    }
+    public int getKills() {
+        return kills;
+    }
+
 
     private final Map<String, Entity> entityMap = new ConcurrentHashMap<>();
 
@@ -27,7 +36,6 @@ public class World {
 
     public void removeEntity(Entity entity) {
         entityMap.remove(entity.getID());
-        kills++;
     }
 
     public Collection<Entity> getEntities() {
@@ -50,9 +58,5 @@ public class World {
         return entityMap.get(ID);
     }
 
-    // Getter method for kills
-    public int getKills() {
-        return kills;
-    }
 }
 

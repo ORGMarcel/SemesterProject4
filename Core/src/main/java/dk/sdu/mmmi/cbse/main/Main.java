@@ -105,9 +105,16 @@ public class Main extends Application {
                 update();
                 draw();
                 gameData.getKeys().update();
+                // Update the text displaying the number of kills
+                updateKillsText();
             }
 
         }.start();
+    }
+
+    private void updateKillsText() {
+        Text text = (Text) gameWindow.getChildren().get(0); // Assuming the text is the first child
+        text.setText("Enemies killed: " + world.getKills());
     }
 
     private void update() {

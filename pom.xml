@@ -18,6 +18,7 @@
         <module>CommonBullet</module>
         <module>Weapon</module>
         <module>Enemies</module>
+        <module>CollisionSystem</module>
 
     </modules>
     <properties>
