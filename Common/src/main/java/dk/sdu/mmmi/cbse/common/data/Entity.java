@@ -12,7 +12,7 @@ public class Entity implements Serializable {
     private double x;
     private double y;
     private double rotation;
-    private int hitPoints;
+    private int healthPoints;
 
     private int dmg;
 
@@ -63,13 +63,13 @@ public class Entity implements Serializable {
     }
 
 
-    public void setHitPoints(int hitPoints) {
-        this.hitPoints = hitPoints;
+    public void setHealthPoints(int healthPoints) {
+        this.healthPoints = healthPoints;
     }
 
 
-    public int getHitPoints() {
-        return hitPoints;
+    public int getHealthPoints() {
+        return healthPoints;
     }
 
 
