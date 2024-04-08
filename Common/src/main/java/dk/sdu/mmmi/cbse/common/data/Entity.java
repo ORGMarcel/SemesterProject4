@@ -83,7 +83,7 @@ public class Entity implements Serializable {
     }
 
 
-
-        
-
+    public double getHeight() {
+        return y;
+    }
 }
