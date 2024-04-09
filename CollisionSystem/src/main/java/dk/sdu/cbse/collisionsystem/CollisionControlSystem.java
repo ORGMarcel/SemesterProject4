@@ -106,35 +106,35 @@ public class CollisionControlSystem implements IEntityProcessingService {
 
     // Method to check collision with another square
     // Method to check collision with another square
-//    boolean checkCollision(Entity square1, Entity square2) {
-//        // Get the positions and dimensions of the squares
-//        double x1 = square1.getX();
-//        double y1 = square1.getY();
-//        double width1 = square1.getWidth();
-//        double height1 = square1.getHeight();
-//
-//        double x2 = square2.getX();
-//        double y2 = square2.getY();
-//        double width2 = square2.getWidth();
-//        double height2 = square2.getHeight();
-//
-//        // Calculate the minimum and maximum x and y coordinates for both squares
-//        double minX1 = x1;
-//        double maxX1 = x1 + width1;
-//        double minY1 = y1;
-//        double maxY1 = y1 + height1;
-//
-//        double minX2 = x2;
-//        double maxX2 = x2 + width2;
-//        double minY2 = y2;
-//        double maxY2 = y2 + height2;
-//
-//        // Check for collision
-//        boolean collisionX = maxX1 > minX2 && minX1 < maxX2;
-//        boolean collisionY = maxY1 > minY2 && minY1 < maxY2;
-//
-//        return collisionX && collisionY; // Collision occurs if both X and Y axes overlap
-//    }
+    boolean checkCollision(Entity square1, Entity square2) {
+        // Get the positions and dimensions of the squares
+        double x1 = square1.getX();
+        double y1 = square1.getY();
+        double width1 = square1.getWidth();
+        double height1 = square1.getHeight();
+
+        double x2 = square2.getX();
+        double y2 = square2.getY();
+        double width2 = square2.getWidth();
+        double height2 = square2.getHeight();
+
+        // Calculate the minimum and maximum x and y coordinates for both squares
+        double minX1 = x1;
+        double maxX1 = x1 + width1;
+        double minY1 = y1;
+        double maxY1 = y1 + height1;
+
+        double minX2 = x2;
+        double maxX2 = x2 + width2;
+        double minY2 = y2;
+        double maxY2 = y2 + height2;
+
+        // Check for collision
+        boolean collisionX = maxX1 > minX2 && minX1 < maxX2;
+        boolean collisionY = maxY1 > minY2 && minY1 < maxY2;
+
+        return collisionX && collisionY; // Collision occurs if both X and Y axes overlap
+    }
 
 
 

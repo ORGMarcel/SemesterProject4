@@ -111,7 +111,7 @@ public class Main extends Application {
         Entity wall = new Entity();
         wall.setType("Wall"); // Set the type of the entity to "Wall"
         wall.setX(0);
-        wall.setY(gameData.getDisplayHeight() - 10); // Adjust as needed
+        wall.setY(gameData.getDisplayHeight() - 20); // Adjust as needed
         wall.setPolygonCoordinates(0, 0, gameData.getDisplayWidth(), 0, gameData.getDisplayWidth(), 10, 0, 10); // Adjust as needed
         return wall;
     }
