@@ -1,5 +1,5 @@
 package dk.sdu.mmmi.cbse.main;
-
+import dk.sdu.cbse.collisionsystem.CollisionControlSystem;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.GameKeys;
@@ -29,6 +29,7 @@ public class Main extends Application {
     private final Map<Entity, Polygon> polygons = new ConcurrentHashMap<>();
     private final Pane gameWindow = new Pane();
 
+    private final CollisionControlSystem collisionSystem = new CollisionControlSystem(); // Instantiate the Collision Control System
 
     public static void main(String[] args) {
         launch(Main.class);
@@ -41,9 +42,8 @@ public class Main extends Application {
         Text roundCounter = new Text(10, 60, "Round Counter: " + world.getRound());
 
         gameWindow.setPrefSize(gameData.getDisplayWidth(), gameData.getDisplayHeight());
-        gameWindow.getChildren().add(text);
-        gameWindow.getChildren().add(text2);
-        gameWindow.getChildren().add(roundCounter);
+        gameWindow.getChildren().addAll(text, text2, roundCounter);
+
 
         Scene scene = new Scene(gameWindow);
         scene.setOnKeyPressed(event -> {
@@ -91,13 +91,37 @@ public class Main extends Application {
             gameWindow.getChildren().add(polygon);
         }
 
+
+        // Create a wall entity
+        Entity wall = createWallEntity();
+        wall.setType("Wall");
+        world.addEntity(wall);
+
+        // Process collision control system
+        collisionSystem.process(gameData, world);
+
         render();
 
         window.setScene(scene);
         window.setTitle("Shadow Shuriken");
         window.show();
-
     }
+
+    private Entity createWallEntity() {
+        Entity wall = new Entity();
+        wall.setType("Wall"); // Set the type of the entity to "Wall"
+        wall.setX(0);
+        wall.setY(gameData.getDisplayHeight() - 10); // Adjust as needed
+        wall.setPolygonCoordinates(0, 0, gameData.getDisplayWidth(), 0, gameData.getDisplayWidth(), 10, 0, 10); // Adjust as needed
+        return wall;
+    }
+
+
+
+
+
+
+
 
     private void render() {
         new AnimationTimer() {

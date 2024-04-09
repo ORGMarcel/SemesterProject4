@@ -87,6 +87,8 @@ public class EnemyControlSystem implements IEntityProcessingService {
 
     }
 
+
+
     private Entity createEnemyShip(GameData gameData) {
 
         Random random = new Random();

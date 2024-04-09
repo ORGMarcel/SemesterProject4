@@ -7,7 +7,7 @@ import java.util.UUID;
 public class Entity implements Serializable {
 
     private final UUID ID = UUID.randomUUID();
-    
+
     private double[] polygonCoordinates;
     private double x;
     private double y;
@@ -16,17 +16,42 @@ public class Entity implements Serializable {
 
     private int dmg;
 
-            
+    private String type;
+
+    private double WallWidth;
+
+    private double width;
+
+
 
     public String getID() {
         return ID.toString();
     }
 
-    public double getWidth(){
+    public double getWidth() {
         double[] coordinates = getPolygonCoordinates();
-        Double max = Arrays.stream(coordinates).max().orElse(-1);
-        return max*2;
+        if (coordinates != null && coordinates.length > 0) {
+            Double max = Arrays.stream(coordinates).max().orElse(-1);
+            return max * 2;
+        } else {
+            return 0; // Return 0 or handle the case when polygonCoordinates is null
+        }
     }
+
+
+    public double getHeight() {
+        double[] coordinatesY = getPolygonCoordinates();
+        if (coordinatesY != null && coordinatesY.length > 0) {
+            double minY = Arrays.stream(coordinatesY).min().orElse(0);
+            double maxY = Arrays.stream(coordinatesY).max().orElse(0);
+            return maxY - minY;
+        } else {
+            return 0; // Return 0 or handle the case when polygonCoordinates is null
+        }
+    }
+
+
+
 
     public void setPolygonCoordinates(double... coordinates ) {
         this.polygonCoordinates = coordinates;
@@ -35,7 +60,7 @@ public class Entity implements Serializable {
     public double[] getPolygonCoordinates() {
         return polygonCoordinates;
     }
-       
+
 
     public void setX(double x) {
         this.x =x;
@@ -45,7 +70,7 @@ public class Entity implements Serializable {
         return x;
     }
 
-    
+
     public void setY(double y) {
         this.y = y;
     }
@@ -83,7 +108,15 @@ public class Entity implements Serializable {
     }
 
 
+    public String getType() {
+        return type;
+    }
 
-        
+    public void setType(String type) {
+        this.type = type;
+    }
 
+    public void setWidth(double width) {this.width = width;}
+
+    public void setHeight(double platformHeight) {}
 }
