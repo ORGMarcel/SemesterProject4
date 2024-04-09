@@ -12,14 +12,14 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class World {
 
-    public int kills = 0;
+    public int killCounter = 0;
     // Setter & Getter method for kills
 
-    public void setKills(int kills) {
-        this.kills = kills;
+    public void setKillCounter(int killCounter) {
+        this.killCounter = killCounter;
     }
-    public int getKills() {
-        return kills;
+    public int getKillCounter() {
+        return killCounter;
     }
 
 

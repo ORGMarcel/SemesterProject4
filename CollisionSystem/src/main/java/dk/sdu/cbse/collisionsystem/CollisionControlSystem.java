@@ -16,7 +16,7 @@ public class CollisionControlSystem implements IEntityProcessingService {
     public void process(GameData gameData, World world) {
 
         // Get current kills from the world
-        int kills = world.getKills();
+        int kills = world.getKillCounter();
 
         // for loop for collision between bullet and Enemy
         for (Entity entityEnemy : world.getEntities(Enemy.class)) {
@@ -33,7 +33,7 @@ public class CollisionControlSystem implements IEntityProcessingService {
         }
 
         // Update the kills in the world
-        world.setKills(kills);
+        world.setKillCounter(kills);
 
         // for loop for collision between bullet and Player
         for (Entity entityPlayer : world.getEntities(Player.class)) {
