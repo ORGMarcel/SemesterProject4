@@ -15,8 +15,8 @@ public class EnemyPlugin implements IGamePluginService {
     public void start(GameData gameData, World world) {
 
         // Add entities to the world
-        Enemy = createEnemyShip(gameData);
-        world.addEntity(Enemy);
+//        Enemy = createEnemyShip(gameData);
+//        world.addEntity(Enemy);
     }
 
     private Entity createEnemyShip(GameData gameData) {

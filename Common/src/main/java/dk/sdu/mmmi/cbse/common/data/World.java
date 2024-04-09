@@ -12,6 +12,41 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class World {
 
+
+    private boolean roundRunning = false;
+
+    public boolean isRoundRunning() {
+        return roundRunning;
+    }
+
+    public void setRoundRunning(boolean roundRunning) {
+        this.roundRunning = roundRunning;
+    }
+
+
+
+
+    private int round = 1;
+
+    public int getRound() {
+        return round;
+    }
+
+    public void setRound(int round) {
+        this.round = round;
+    }
+
+
+    public int killsOverall = 0;
+    // Setter & Getter method for kills
+
+    public void setKillsOverall(int killsOverall) {
+        this.killsOverall = killsOverall;
+    }
+    public int getKillsOverall() {
+        return killsOverall;
+    }
+
     public int kills = 0;
     // Setter & Getter method for kills
 
@@ -21,6 +56,8 @@ public class World {
     public int getKills() {
         return kills;
     }
+
+
 
 
     private final Map<String, Entity> entityMap = new ConcurrentHashMap<>();
@@ -57,6 +94,7 @@ public class World {
     public Entity getEntity(String ID) {
         return entityMap.get(ID);
     }
+
 
 }
 

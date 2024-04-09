@@ -16,6 +16,7 @@ public class CollisionControlSystem implements IEntityProcessingService {
     public void process(GameData gameData, World world) {
 
         // Get current kills from the world
+        int killsOverall = world.getKillsOverall();
         int kills = world.getKills();
 
         // for loop for collision between bullet and Enemy
@@ -25,6 +26,7 @@ public class CollisionControlSystem implements IEntityProcessingService {
                     entityEnemy.setHealthPoints(entityEnemy.getHealthPoints() - 1);
                     if (entityEnemy.getHealthPoints() < 1) {
                         world.removeEntity(entityEnemy);
+                        killsOverall++;
                         kills++;
                     }
                     world.removeEntity(entityBullet);
@@ -33,7 +35,17 @@ public class CollisionControlSystem implements IEntityProcessingService {
         }
 
         // Update the kills in the world
+        world.setKillsOverall(killsOverall);
         world.setKills(kills);
+
+
+        // Check for rounds and update
+        if(world.getKills() == world.getRound() * 2){
+            world.setRound(world.getRound()+1);
+            world.setKills(0);
+            world.setRoundRunning(false);
+        }
+
 
         // for loop for collision between bullet and Player
         for (Entity entityPlayer : world.getEntities(Player.class)) {
