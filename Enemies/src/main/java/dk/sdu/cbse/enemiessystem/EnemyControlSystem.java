@@ -22,7 +22,7 @@ public class EnemyControlSystem implements IEntityProcessingService {
         Random random = new Random();
         int randomNumber;
         int randomNumber2;
-        int randomInt = random.nextInt(250);
+        int randomInt = random.nextInt(500);
 
         for (Entity enemy : world.getEntities(Enemy.class)) {
 

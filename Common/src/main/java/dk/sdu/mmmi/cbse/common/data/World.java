@@ -47,15 +47,18 @@ public class World {
         return killsOverall;
     }
 
+    public int getKills() {
+        return kills;
+    }
+
+    public void setKills(int kills) {
+        this.kills = kills;
+    }
+
     public int kills = 0;
     // Setter & Getter method for kills
 
-    public void setKillCounter(int killCounter) {
-        this.killCounter = killCounter;
-    }
-    public int getKillCounter() {
-        return killCounter;
-    }
+
 
 
 
