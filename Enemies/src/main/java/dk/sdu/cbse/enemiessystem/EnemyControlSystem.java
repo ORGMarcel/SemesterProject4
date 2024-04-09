@@ -68,12 +68,22 @@ public class EnemyControlSystem implements IEntityProcessingService {
             }
         }
 
-        if (randomInt ==1) {
-
-            Entity enemies;
-            enemies = createEnemyShip(gameData);
-            world.addEntity(enemies);
+        // Spawning enemies that is round * 2
+        if (!world.isRoundRunning()){
+            for (int i = 0; i < world.getRound()*2; i++) {
+                Entity enemies;
+                enemies = createEnemyShip(gameData);
+                world.addEntity(enemies);
+            }
+            world.setRoundRunning(true);
         }
+
+//        if (randomInt ==1) {
+//
+//            Entity enemies;
+//            enemies = createEnemyShip(gameData);
+//            world.addEntity(enemies);
+//        }
 
     }
 

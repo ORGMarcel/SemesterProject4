@@ -36,9 +36,14 @@ public class Main extends Application {
 
     @Override
     public void start(Stage window) throws Exception {
-        Text text = new Text(10, 20, "Enemies killed: " + world.getKillCounter());
+        Text text = new Text(10, 20, "Enemies killed overall: " + world.getKillsOverall());
+        Text text2 = new Text(10, 40, "Enemies killed this round: " + world.getKills());
+        Text roundCounter = new Text(10, 60, "Round Counter: " + world.getRound());
+
         gameWindow.setPrefSize(gameData.getDisplayWidth(), gameData.getDisplayHeight());
         gameWindow.getChildren().add(text);
+        gameWindow.getChildren().add(text2);
+        gameWindow.getChildren().add(roundCounter);
 
         Scene scene = new Scene(gameWindow);
         scene.setOnKeyPressed(event -> {
@@ -104,15 +109,30 @@ public class Main extends Application {
                 draw();
                 gameData.getKeys().update();
                 // Update the text displaying the number of kills
+                updateKillsOverallText();
                 updateKillsText();
+                updateRoundsText();
             }
 
         }.start();
     }
 
-    private void updateKillsText() {
+    private void updateKillsOverallText() {
         Text text = (Text) gameWindow.getChildren().get(0); // Assuming the text is the first child
-        text.setText("Enemies killed: " + world.getKillCounter());
+        text.setText("Enemies killed overall: " + world.getKillsOverall());
+//        Text text2 = (Text) gameWindow.getChildren().get(0); // Assuming the text is the first child
+//        text2.setText("Enemies killed this round: " + world.getKills());
+    }
+
+    private void updateKillsText() {
+        Text text = (Text) gameWindow.getChildren().get(1); // Assuming the text is the first child
+        text.setText("Enemies killed this round: " + world.getKills());
+    }
+
+
+    private void updateRoundsText() {
+        Text text = (Text) gameWindow.getChildren().get(2); // Assuming the text is the first child
+        text.setText("Round counter: " + world.getRound());
     }
 
     private void update() {
