@@ -16,6 +16,28 @@ public class Entity implements Serializable {
 
     private int dmg;
 
+    private double gravity;
+
+    // TODO: This is fuckt code implementation
+    private boolean jumping;
+
+
+    public boolean isJumping() {
+        return jumping;
+    }
+
+    public void setJumping(boolean jumping) {
+        this.jumping = jumping;
+    }
+
+
+    public double getGravity() {
+        return gravity;
+    }
+
+    public void setGravity(double gravity) {
+        this.gravity = gravity;
+    }
             
 
     public String getID() {
