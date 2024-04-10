@@ -8,9 +8,10 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Bullet" />
         <module name="Player" />
+        <module name="Enemies" />
         <module name="Asteroid" />
-        <module name="Enemy" />
         <module name="Collision" />
+        <module name="CollisionSystem" />
         <module name="CommonBullet" />
         <module name="Weapon" />
         <module name="Common" />
@@ -20,6 +21,7 @@
     <bytecodeTargetLevel>
       <module name="asteroids.jpms" target="9" />
       <module name="CommonAsteroid" target="21" />
+      <module name="Enemy" target="9" />
       <module name="shadowshurken.jpms" target="9" />
     </bytecodeTargetLevel>
   </component>
