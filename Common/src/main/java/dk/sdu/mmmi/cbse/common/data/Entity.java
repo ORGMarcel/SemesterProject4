@@ -18,16 +18,18 @@ public class Entity implements Serializable {
 
     private double gravity;
 
-    // TODO: This is fuckt code implementation
-    private boolean jumping;
 
 
-    public boolean isJumping() {
-        return jumping;
+
+    private boolean immortal;
+
+
+    public boolean isImmortal() {
+        return immortal;
     }
 
-    public void setJumping(boolean jumping) {
-        this.jumping = jumping;
+    public void setImmortal(boolean immortal) {
+        this.immortal = immortal;
     }
 
 

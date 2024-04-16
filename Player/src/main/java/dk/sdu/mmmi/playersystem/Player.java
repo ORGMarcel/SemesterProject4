@@ -8,31 +8,17 @@ import dk.sdu.mmmi.cbse.common.data.Entity;
  */
 public class Player extends Entity {
 
-//
-//
-//    Thread jumpThread = new Thread(new Runnable() {
-//        @Override
-//        public void run() {
-//            for (int i = 0; i < 100; i++) {
-//                player.setY(player.getY()-2);
-//
-//                try {
-//                    Thread.sleep(5);
-////                                System.out.println("Sleep");
-//                } catch (InterruptedException e) {
-//                    throw new RuntimeException(e);
-//                }
-//            }
-//        }
-//    });
-//
-//    public Thread getJumpThread() {
-//        return jumpThread;
-//    }
-//
-//    public void setJumpThread(Thread jumpThread) {
-//        this.jumpThread = jumpThread;
-//    }
+
+    private boolean jumping;
+
+
+    public boolean isJumping() {
+        return jumping;
+    }
+
+    public void setJumping(boolean jumping) {
+        this.jumping = jumping;
+    }
 
 
 
