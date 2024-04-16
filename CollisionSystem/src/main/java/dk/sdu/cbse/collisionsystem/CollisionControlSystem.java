@@ -20,6 +20,7 @@ public class CollisionControlSystem implements IEntityProcessingService {
         int kills = world.getKills();
 
         // for loop for collision between bullet and Enemy
+        // TODO: Old collision
         for (Entity entityEnemy : world.getEntities(Enemy.class)) {
             for (Entity entityBullet : world.getEntities(Bullet.class)) {
                 if (isCollided(entityEnemy, entityBullet)) {
@@ -33,6 +34,42 @@ public class CollisionControlSystem implements IEntityProcessingService {
                 }
             }
         }
+
+
+//        // TODO: New collision
+//        for (Entity entity:world.getEntities()) {
+//            for (Entity entity1:world.getEntities()){
+//                if(isCollided(entity, entity1) && entity.getClass() != entity1.getClass()){
+//                    System.out.println(entity.getClass());
+//                    System.out.println(entity1.getClass());
+//                    System.out.println("Entity1 : " + entity.getWidth() + " Entity2 : " + entity1.getWidth());
+//
+//                    System.out.println(entity.getDmg());
+//                    System.out.println(entity1.getDmg());
+//                    entity.setHealthPoints(entity.getHealthPoints()-entity1.getDmg());
+//                    entity1.setHealthPoints(entity1.getHealthPoints()-entity.getDmg());
+//
+//                    // Change hitpoints
+//                    if(entity1.getHealthPoints()<1){
+//                        world.removeEntity(entity);
+//                        killsOverall++;
+//                        kills++;
+//                    }
+//                    if(entity.getHealthPoints()<1){
+//                        world.removeEntity(entity1);
+//                        killsOverall++;
+//                        kills++;
+//                    }
+//
+//
+//
+////                    world.removeEntity(entity);
+////                    world.removeEntity(entity1);
+//                }
+//            }
+//
+//        }
+
 
         // Update the kills in the world
         world.setKillsOverall(killsOverall);

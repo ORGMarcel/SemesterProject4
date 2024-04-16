@@ -54,6 +54,8 @@ public class BulletControlSystem implements IEntityProcessingService, BulletSPI 
         // enemies will kill the self
         bullet.setX(shooter.getX() + changeX * 25);
         bullet.setY(shooter.getY() + changeY * 25);
+        bullet.setHealthPoints(1);
+        bullet.setDmg(1);
         return bullet;
     }
 }
