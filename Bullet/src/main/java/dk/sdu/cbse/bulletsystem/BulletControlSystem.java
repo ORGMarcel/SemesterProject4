@@ -17,7 +17,28 @@ public class BulletControlSystem implements IEntityProcessingService, BulletSPI 
             double changeY = Math.sin(Math.toRadians(bullet.getRotation()));
             bullet.setX(bullet.getX() + changeX * 3);
             bullet.setY(bullet.getY() + changeY * 3);
+
+
+            if (bullet.getX() < 0) {
+                world.removeEntity(bullet);
+            }
+
+            if (bullet.getX() > gameData.getDisplayWidth()) {
+                world.removeEntity(bullet);
+            }
+
+            if (bullet.getY() < 0) {
+                world.removeEntity(bullet);
+            }
+
+            if (bullet.getY() > gameData.getDisplayHeight()) {
+                world.removeEntity(bullet);
+            }
+
+
         }
+
+
     }
 
     @Override
@@ -33,6 +54,8 @@ public class BulletControlSystem implements IEntityProcessingService, BulletSPI 
         // enemies will kill the self
         bullet.setX(shooter.getX() + changeX * 25);
         bullet.setY(shooter.getY() + changeY * 25);
+        bullet.setHealthPoints(1);
+        bullet.setDmg(1);
         return bullet;
     }
 }

@@ -29,8 +29,8 @@ public class WeaponPlugin implements IGamePluginService {
 
         baseWeapon.setX(gameData.getDisplayHeight()/2+20);
         baseWeapon.setY(gameData.getDisplayWidth()/2);
-        baseWeapon.setHealthPoints(5);
-        baseWeapon.setDmg(10);
+//        baseWeapon.setHealthPoints(5);
+//        baseWeapon.setDmg(10);
         return baseWeapon;
     }
 

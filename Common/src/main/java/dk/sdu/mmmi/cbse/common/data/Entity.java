@@ -16,6 +16,30 @@ public class Entity implements Serializable {
 
     private int dmg;
 
+    private double gravity;
+
+
+
+
+    private boolean immortal;
+
+
+    public boolean isImmortal() {
+        return immortal;
+    }
+
+    public void setImmortal(boolean immortal) {
+        this.immortal = immortal;
+    }
+
+
+    public double getGravity() {
+        return gravity;
+    }
+
+    public void setGravity(double gravity) {
+        this.gravity = gravity;
+    }
             
 
     public String getID() {
