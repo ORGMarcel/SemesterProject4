@@ -19,6 +19,9 @@
         <module>Weapon</module>
         <module>Enemies</module>
         <module>CollisionSystem</module>
+        <module>CommonMap</module>
+        <module>Map</module>
+        <module>CommonWall</module>
 
     </modules>
     <properties>

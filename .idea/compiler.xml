@@ -9,12 +9,15 @@
         <module name="Bullet" />
         <module name="Player" />
         <module name="Enemies" />
-        <module name="Asteroid" />
         <module name="Collision" />
-        <module name="CollisionSystem" />
         <module name="CommonBullet" />
         <module name="Weapon" />
         <module name="Common" />
+        <module name="CommonMap" />
+        <module name="Asteroid" />
+        <module name="CommonWall" />
+        <module name="CollisionSystem" />
+        <module name="Map" />
         <module name="Core" />
       </profile>
     </annotationProcessing>
@@ -23,6 +26,7 @@
       <module name="CommonAsteroid" target="21" />
       <module name="Enemy" target="9" />
       <module name="shadowshurken.jpms" target="9" />
+      <module name="Wall" target="21" />
     </bytecodeTargetLevel>
   </component>
 </project>

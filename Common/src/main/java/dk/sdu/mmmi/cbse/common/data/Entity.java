@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.UUID;
 
+
 public class Entity implements Serializable {
 
     private final UUID ID = UUID.randomUUID();
@@ -12,17 +13,52 @@ public class Entity implements Serializable {
     private double x;
     private double y;
     private double rotation;
+
+    // 1 = Black
+    // 2 = Invisible
+    // 3 = Red
+    protected int colorInt = 1;
+
+
+    protected EntityType entityType;
+
     private int healthPoints;
 
     private int dmg;
 
     private double gravity;
 
-
-
-
     private boolean immortal;
 
+    private boolean invisible;
+
+
+    public EntityType getEntityType() {
+        return entityType;
+    }
+
+    public void setEntityType(EntityType entityType) {
+        this.entityType = entityType;
+    }
+
+
+    public int getColorInt() {
+        return colorInt;
+    }
+
+    public void setColorInt(int colorInt) {
+        this.colorInt = colorInt;
+    }
+
+
+
+    public boolean isInvisible() {
+        return invisible;
+    }
+
+    public void setInvisible(boolean invisible) {
+        this.invisible = invisible;
+    }
 
     public boolean isImmortal() {
         return immortal;

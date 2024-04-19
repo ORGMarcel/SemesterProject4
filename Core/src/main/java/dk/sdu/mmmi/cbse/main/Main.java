@@ -18,6 +18,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -177,6 +178,19 @@ public class Main extends Application {
             polygon.setTranslateX(entity.getX());
             polygon.setTranslateY(entity.getY());
             polygon.setRotate(entity.getRotation());
+
+            // Check condition to make specific entities invisible
+            // TODO: Check this
+            if(entity.getColorInt() == 0){
+                polygon.setFill(Color.TRANSPARENT);
+            }else if(entity.getColorInt() == 1){
+                polygon.setFill(Color.BLACK);
+            }else if(entity.getColorInt() == 2){
+                polygon.setFill(Color.RED);
+            }else {
+                polygon.setFill(Color.BLACK); // Default visible color
+            }
+
         }
 
     }

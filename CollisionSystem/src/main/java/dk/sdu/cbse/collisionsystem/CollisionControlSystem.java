@@ -8,6 +8,8 @@ import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.cbse.enemiessystem.Enemy;
 import dk.sdu.mmmi.playersystem.Player;
 
+import java.util.ArrayList;
+
 import static java.lang.Math.sqrt;
 
 
@@ -118,5 +120,21 @@ public class CollisionControlSystem implements IEntityProcessingService {
 
         return false;
     }
+
+
+
+    // TODO: FIX THIS MAN.
+//    public Entity[] getWallObjects(World world){
+//        ArrayList<Entity> wallObjects = new ArrayList<>();
+//
+//        for (Entity entity : world.getEntities()) {
+//            if(entity.getEntityType() == WALL){
+//
+//            }
+//        }
+//
+//        return Entity[];
+//    }
+
 
 }
