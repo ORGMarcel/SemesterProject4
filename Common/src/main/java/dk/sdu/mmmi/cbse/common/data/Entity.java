@@ -1,8 +1,12 @@
 package dk.sdu.mmmi.cbse.common.data;
 
+import dk.sdu.mmmi.cbse.common.data.entityparts.EntityPart;
+
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Entity implements Serializable {
 
@@ -12,6 +16,10 @@ public class Entity implements Serializable {
     private double x;
     private double y;
     private double rotation;
+
+    private Map<Class, EntityPart> parts;
+
+
     private int healthPoints;
 
     private int dmg;
@@ -21,16 +29,29 @@ public class Entity implements Serializable {
 
 
 
-    private boolean immortal;
 
 
-    public boolean isImmortal() {
-        return immortal;
+
+    public Entity() {
+        parts = new ConcurrentHashMap<>();
     }
 
-    public void setImmortal(boolean immortal) {
-        this.immortal = immortal;
+
+    public void add(EntityPart part) {
+        parts.put(part.getClass(), part);
     }
+
+
+    public void remove(Class partClass) {
+        parts.remove(partClass);
+    }
+
+
+    public <E extends EntityPart> E getPart(Class partClass) {
+        return (E) parts.get(partClass);
+    }
+
+
 
 
     public double getGravity() {
