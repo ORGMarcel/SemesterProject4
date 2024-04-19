@@ -4,6 +4,7 @@ import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.GameKeys;
 import dk.sdu.mmmi.cbse.common.data.World;
+import dk.sdu.mmmi.cbse.common.data.entityparts.EntityPart;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
@@ -141,6 +142,7 @@ public class Main extends Application {
         for (IEntityProcessingService entityProcessorService : getEntityProcessingServices()) {
             entityProcessorService.process(gameData, world);
         }
+
         for (Entity entity : world.getEntities()) {
             if (polygons.get(entity) == null){
                 Polygon polygon = new Polygon(entity.getPolygonCoordinates());
@@ -192,4 +194,8 @@ public class Main extends Application {
     private Collection<? extends IPostEntityProcessingService> getPostEntityProcessingServices() {
         return ServiceLoader.load(IPostEntityProcessingService.class).stream().map(ServiceLoader.Provider::get).collect(toList());
     }
+
+//    private Collection<? extends EntityPart> getEntityPart() {
+//        return ServiceLoader.load(EntityPart.class).stream().map(ServiceLoader.Provider::get).collect(toList());
+//    }
 }

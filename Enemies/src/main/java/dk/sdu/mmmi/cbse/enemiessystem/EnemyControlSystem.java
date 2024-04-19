@@ -29,6 +29,7 @@ public class EnemyControlSystem implements IEntityProcessingService {
         for (Entity enemy : world.getEntities(Enemy.class)) {
 
             LifePart lifePart = enemy.getPart(LifePart.class);
+
             if(lifePart.getLife()<=0){
                 world.removeEntity(enemy);
             }
@@ -74,6 +75,9 @@ public class EnemyControlSystem implements IEntityProcessingService {
                 enemy.setY(gameData.getDisplayHeight()-1);
                 enemy.setRotation(enemy.getRotation() + 180);
             }
+
+            lifePart.process(gameData, enemy);
+
         }
 
         // Spawning enemies that is round * 2
