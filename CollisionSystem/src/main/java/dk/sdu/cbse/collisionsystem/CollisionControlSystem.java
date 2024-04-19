@@ -1,12 +1,12 @@
 package dk.sdu.cbse.collisionsystem;
 
+import dk.sdu.cbse.common.enemy.Enemy;
+import dk.sdu.cbse.common.player.Player;
 import dk.sdu.cbse.commonbullet.Bullet;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
-import dk.sdu.cbse.enemiessystem.Enemy;
-import dk.sdu.mmmi.playersystem.Player;
 
 import static java.lang.Math.sqrt;
 
@@ -19,7 +19,7 @@ public class CollisionControlSystem implements IEntityProcessingService {
         int killsOverall = world.getKillsOverall();
         int kills = world.getKills();
 
-        // for loop for collision between bullet and Enemy
+        // for loop for collision between bullet and Enemies
         // TODO: Old collision
         for (Entity entityEnemy : world.getEntities(Enemy.class)) {
             for (Entity entityBullet : world.getEntities(Bullet.class)) {

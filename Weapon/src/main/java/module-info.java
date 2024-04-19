@@ -9,6 +9,7 @@ module Weapon {
     requires Common;
     requires CommonBullet;
     requires Player;
+    requires CommonPlayer;
 //    requires CommonBullet;
 //    uses dk.sdu.mmmi.cbse.common.bullet.BulletSPI;
     provides IGamePluginService with WeaponPlugin;

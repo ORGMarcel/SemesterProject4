@@ -1,5 +1,6 @@
 package dk.sdu.cbse.enemiessystem;
 
+import dk.sdu.cbse.common.enemy.Enemy;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
@@ -15,8 +16,8 @@ public class EnemyPlugin implements IGamePluginService {
     public void start(GameData gameData, World world) {
 
         // Add entities to the world
-//        Enemy = createEnemyShip(gameData);
-//        world.addEntity(Enemy);
+//        Enemies = createEnemyShip(gameData);
+//        world.addEntity(Enemies);
     }
 
     private Entity createEnemyShip(GameData gameData) {

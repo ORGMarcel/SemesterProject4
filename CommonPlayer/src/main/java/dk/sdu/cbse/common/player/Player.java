@@ -1,4 +1,4 @@
-package dk.sdu.mmmi.playersystem;
+package dk.sdu.cbse.common.player;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
 
