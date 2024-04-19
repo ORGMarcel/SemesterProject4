@@ -19,21 +19,41 @@ public class CollisionControlSystem implements IEntityProcessingService {
         int killsOverall = world.getKillsOverall();
         int kills = world.getKills();
 
-        // for loop for collision between bullet and Enemies
-        // TODO: Old collision
-        for (Entity entityEnemy : world.getEntities(Enemy.class)) {
-            for (Entity entityBullet : world.getEntities(Bullet.class)) {
+//        // for loop for collision between bullet and Enemies
+//        // TODO: Old collision
+//        for (Entity entityEnemy : world.getEntities(Enemy.class)) {
+//            for (Entity entityBullet : world.getEntities(Bullet.class)) {
+//                if (isCollided(entityEnemy, entityBullet)) {
+//                    entityEnemy.setHealthPoints(entityEnemy.getHealthPoints() - 1);
+//                    if (entityEnemy.getHealthPoints() < 1) {
+//                        world.removeEntity(entityEnemy);
+//                        killsOverall++;
+//                        kills++;
+//                    }
+//                    world.removeEntity(entityBullet);
+//                }
+//            }
+//        }
+
+
+        for (Entity entityEnemy : world.getEntities()) {
+            for (Entity entityBullet : world.getEntities()) {
                 if (isCollided(entityEnemy, entityBullet)) {
-                    entityEnemy.setHealthPoints(entityEnemy.getHealthPoints() - 1);
-                    if (entityEnemy.getHealthPoints() < 1) {
-                        world.removeEntity(entityEnemy);
-                        killsOverall++;
-                        kills++;
-                    }
+                    Enemy enemy = (Enemy) entityEnemy;
+                    enemy.handleAttack();
+
+//                    entityEnemy.setHealthPoints(entityEnemy.getHealthPoints() - 1);
+
+//                    if (entityEnemy.getHealthPoints() < 1) {
+//                        world.removeEntity(entityEnemy);
+//                        killsOverall++;
+//                        kills++;
+//                    }
                     world.removeEntity(entityBullet);
                 }
             }
         }
+
 
 
 //        // TODO: New collision
