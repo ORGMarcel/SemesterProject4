@@ -5,7 +5,7 @@ import dk.sdu.mmmi.cbse.common.data.GameData;
 
 public class AccelerationPart implements EntityPart {
 
-    private float acceleration;
+    private float acceleration = 0;
 
     public float getAcceleration() {
         return acceleration;

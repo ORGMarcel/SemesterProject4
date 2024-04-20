@@ -1,5 +1,6 @@
 package dk.sdu.mmmi.cbse.playersystem;
 
+import dk.sdu.mmmi.cbse.common.data.entityparts.AccelerationPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
 import dk.sdu.mmmi.cbse.commonplayer.Player;
 import dk.sdu.mmmi.cbse.common.data.Entity;
@@ -30,6 +31,7 @@ public class PlayerPlugin implements IGamePluginService {
         playerShip.setHealthPoints(5);
         playerShip.setDmg(10);
         playerShip.add(new LifePart(3));
+        playerShip.add(new AccelerationPart());
         world.addEntity(playerShip);
 
         return playerShip;
