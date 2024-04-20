@@ -42,11 +42,11 @@ public class UziWeaponControlSystem implements IEntityProcessingService {
 
             }
             if (gameData.getKeys().isDown(GameKeys.SPACE)) {
-                getBulletSPIs().stream().findFirst().ifPresent(
-                        spi -> {
-                            world.addEntity(spi.createBullet(weaponUzi, gameData));
-                        }
-                );
+//                getBulletSPIs().stream().findFirst().ifPresent(
+//                        spi -> {
+//                            world.addEntity(spi.createBullet(weaponUzi, gameData));
+//                        }
+//                );
             }
 
             if (weaponUzi.getX() < 0) {
