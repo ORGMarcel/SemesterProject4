@@ -3,7 +3,7 @@
 module CommonMap {
     requires Common;
 
-    exports dk.sdu.mmmi.commonmap;
+    exports dk.sdu.mmmi.cbse.commonmap;
 
 
 }

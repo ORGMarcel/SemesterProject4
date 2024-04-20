@@ -1,7 +1,7 @@
 package dk.sdu.mmmi.mapsystem;
 
-import dk.sdu.mmmi.cbse.common.data.World;
-import dk.sdu.mmmi.commonmap.CommonMap;
+import dk.sdu.mmmi.cbse.common.data.entityparts.ColorPart;
+import dk.sdu.mmmi.cbse.commonmap.CommonMap;
 //import dk.sdu.mmmi.commonwall.CommonWall;
 //TODO: Dont think this is componentbased
 //import dk.sdu.mmmi.commonwall.WallSPI;
@@ -10,9 +10,12 @@ public class MapElement extends CommonMap {
 
 
     ElementType type;
-    boolean wall;
     float length;
     float height;
+
+    public MapElement(){
+        this.add(new ColorPart(0));
+    }
 
 
 
@@ -39,26 +42,21 @@ public class MapElement extends CommonMap {
     }
 
     public void setType(ElementType type) {
+        ColorPart colorPart = this.getPart(ColorPart.class);
         switch (type){
             case WALL:
-                setColorInt(1);
+                colorPart.setColorInt(1);
                 break;
             case WEAPON:
-                setColorInt(2);
+                colorPart.setColorInt(2);
                 break;
             case NOTHING:
-                setColorInt(0);
+                colorPart.setColorInt(3);
         }
         this.type = type;
     }
 
-    public boolean isWall() {
-        return wall;
-    }
 
-    public void setWall(boolean wall) {
-        this.wall = wall;
-    }
 
 
 

@@ -1,6 +1,6 @@
 package dk.sdu.mmmi.mapsystem;
 
-import dk.sdu.mmmi.commonmap.CommonMap;
+import dk.sdu.mmmi.cbse.commonmap.CommonMap;
 
 
 public class Map extends CommonMap {

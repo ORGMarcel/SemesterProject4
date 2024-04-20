@@ -13,6 +13,8 @@
     <file url="file://$PROJECT_DIR$/CommonEnemy/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonMap/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonMap/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonObstacle/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonObstacle/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonPlayer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonPlayer/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonWall/src/main/java" charset="UTF-8" />

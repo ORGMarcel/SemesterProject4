@@ -1,4 +1,4 @@
-package dk.sdu.mmmi.commonmap;
+package dk.sdu.mmmi.cbse.commonmap;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
 

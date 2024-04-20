@@ -2,10 +2,16 @@ package dk.sdu.mmmi.cbse.commonenemy;
 
 import dk.sdu.mmmi.cbse.common.data.CollideableInterface;
 import dk.sdu.mmmi.cbse.common.data.Entity;
+import dk.sdu.mmmi.cbse.common.data.entityparts.ColorPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
 
 public class Enemy extends Entity implements CollideableInterface {
 
+
+    public Enemy() {
+        this.add(new ColorPart(1));
+        this.add(new LifePart(3));
+    }
 
 
 //    private int dmg = 10;

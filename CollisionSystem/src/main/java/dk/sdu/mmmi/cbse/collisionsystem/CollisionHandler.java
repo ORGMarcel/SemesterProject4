@@ -27,6 +27,12 @@ public class CollisionHandler {
         if (e1 instanceof Bullet && e2 instanceof Bullet) {
             return true; // Nothing should happen
         }
+//        // Player and Weapon
+//        // TODO: Change weapon to the common weapon
+//        if (e1 instanceof Player && e2 instanceof Weapon) {
+//            return true; // Nothing should happen
+//        }
+
 
         Entity enemy = this.findEnemy(e1, e2);
         Entity bullet = this.findBullet(e1, e2);

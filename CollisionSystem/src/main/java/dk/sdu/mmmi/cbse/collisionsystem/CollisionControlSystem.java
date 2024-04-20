@@ -39,6 +39,7 @@ public class CollisionControlSystem implements IEntityProcessingService {
 //        }
 
 
+        // TODO: New collision with CollisionHandler class
         for (Entity entity1 : world.getEntities()) {
             for (Entity entity2 : world.getEntities()) {
 
@@ -110,18 +111,18 @@ public class CollisionControlSystem implements IEntityProcessingService {
         }
 
 
-        // for loop for collision between bullet and Player
-        for (Entity entityPlayer : world.getEntities(Player.class)) {
-            for (Entity entityBullet : world.getEntities(Bullet.class)) {
-                if (isCollided(entityPlayer, entityBullet)) {
-                    entityPlayer.setHealthPoints(entityPlayer.getHealthPoints()-1);
-                    if (entityPlayer.getHealthPoints()<1) {
-                        world.removeEntity(entityPlayer);
-                    }
-                    world.removeEntity(entityBullet);
-                }
-            }
-        }
+//        // for loop for collision between bullet and Player
+//        for (Entity entityPlayer : world.getEntities(Player.class)) {
+//            for (Entity entityBullet : world.getEntities(Bullet.class)) {
+//                if (isCollided(entityPlayer, entityBullet)) {
+//                    entityPlayer.setHealthPoints(entityPlayer.getHealthPoints()-1);
+//                    if (entityPlayer.getHealthPoints()<1) {
+//                        world.removeEntity(entityPlayer);
+//                    }
+//                    world.removeEntity(entityBullet);
+//                }
+//            }
+//        }
 
     }
 

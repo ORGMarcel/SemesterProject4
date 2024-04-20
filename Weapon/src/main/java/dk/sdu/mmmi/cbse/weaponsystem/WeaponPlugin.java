@@ -10,6 +10,7 @@ public class WeaponPlugin implements IGamePluginService {
     private Entity weapon;
 
     public WeaponPlugin() {
+
     }
 
     @Override

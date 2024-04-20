@@ -1,5 +1,6 @@
 package dk.sdu.mmmi.cbse.common.data;
 
+import dk.sdu.mmmi.cbse.common.data.entityparts.ColorPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.EntityPart;
 
 import java.io.Serializable;
@@ -22,34 +23,22 @@ public class Entity implements Serializable {
 
 
 
-    // 1 = Black
-    // 2 = Invisible
-    // 3 = Red
-    protected int colorInt = 1;
+//    protected EntityType entityType;
+//
+//    private int healthPoints;
+//
+//    private int dmg;
 
 
-    protected EntityType entityType;
-
-    private int healthPoints;
-
-    private int dmg;
-
-    private double gravity;
-
-    private boolean immortal;
-
-    private boolean invisible;
-
-
-    private boolean immortal;
-
-    public void setEntityType(EntityType entityType) {
-        this.entityType = entityType;
-    }
+//    public void setEntityType(EntityType entityType) {
+//        this.entityType = entityType;
+//    }
 
 
     public Entity() {
         parts = new ConcurrentHashMap<>();
+        ColorPart colorPart = new ColorPart(0);
+        add(colorPart);
     }
 
 
@@ -65,17 +54,6 @@ public class Entity implements Serializable {
 
     public <E extends EntityPart> E getPart(Class partClass) {
         return (E) parts.get(partClass);
-    }
-
-
-
-
-    public double getGravity() {
-        return gravity;
-    }
-
-    public void setGravity(double gravity) {
-        this.gravity = gravity;
     }
             
 
@@ -124,24 +102,24 @@ public class Entity implements Serializable {
     }
 
 
-    public void setHealthPoints(int healthPoints) {
-        this.healthPoints = healthPoints;
-    }
-
-
-    public int getHealthPoints() {
-        return healthPoints;
-    }
-
-
-    public void setDmg(int dmg) {
-        this.dmg = dmg;
-    }
-
-
-    public int getDmg() {
-        return dmg;
-    }
+//    public void setHealthPoints(int healthPoints) {
+//        this.healthPoints = healthPoints;
+//    }
+//
+//
+//    public int getHealthPoints() {
+//        return healthPoints;
+//    }
+//
+//
+//    public void setDmg(int dmg) {
+//        this.dmg = dmg;
+//    }
+//
+//
+//    public int getDmg() {
+//        return dmg;
+//    }
 
 
 

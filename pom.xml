@@ -21,9 +21,9 @@
         <module>CollisionSystem</module>
         <module>CommonMap</module>
         <module>Map</module>
-        <module>CommonWall</module>
         <module>CommonEnemy</module>
         <module>CommonPlayer</module>
+        <module>CommonObstacle</module>
 
     </modules>
     <properties>

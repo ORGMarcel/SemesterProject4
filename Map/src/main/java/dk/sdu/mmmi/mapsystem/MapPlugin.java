@@ -2,6 +2,7 @@ package dk.sdu.mmmi.mapsystem;
 
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
+import dk.sdu.mmmi.cbse.common.data.entityparts.ColorPart;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 
 import java.util.List;
@@ -58,20 +59,19 @@ public class MapPlugin implements IGamePluginService {
 
             for (int j = 0; j < mapList[i].length; j++) {
                 MapElement mapElement = new MapElement();
+                ColorPart colorPart = mapElement.getPart(ColorPart.class);
 
                 if(random.nextInt(0, chance) == 1){
-                    mapElement.setWall(true);
                     mapElement.setType(ElementType.WALL);
+                    colorPart.setColorInt(1);
                     chance = 30;
                 }else if(random.nextInt(0, chance) == 2){
-                    mapElement.setWall(false);
                     mapElement.setType(ElementType.WEAPON);
-                    mapElement.setInvisible(false);
+                    colorPart.setColorInt(2);
                     chance = 30;
                 }else{
-                    mapElement.setWall(false);
                     mapElement.setType(ElementType.NOTHING);
-                    mapElement.setInvisible(true);
+                    colorPart.setColorInt(0);
                     chance = 30;
                 }
                 // TODO: Maybe change height with length

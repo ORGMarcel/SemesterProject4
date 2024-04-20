@@ -4,6 +4,7 @@ import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.GameKeys;
 import dk.sdu.mmmi.cbse.common.data.World;
+import dk.sdu.mmmi.cbse.common.data.entityparts.ColorPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.EntityPart;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
@@ -181,13 +182,26 @@ public class Main extends Application {
             polygon.setTranslateY(entity.getY());
             polygon.setRotate(entity.getRotation());
 
-            // Check condition to make specific entities invisible
+//            // Check condition to make specific entities invisible
+//            // TODO: Check this
+//            if(entity.getColorInt() == 0){
+//                polygon.setFill(Color.TRANSPARENT);
+//            }else if(entity.getColorInt() == 1){
+//                polygon.setFill(Color.BLACK);
+//            }else if(entity.getColorInt() == 2){
+//                polygon.setFill(Color.RED);
+//            }else {
+//                polygon.setFill(Color.BLACK); // Default visible color
+//            }
+
             // TODO: Check this
-            if(entity.getColorInt() == 0){
+            ColorPart colorPart = entity.getPart(ColorPart.class);
+
+            if(colorPart.getColorInt() == 0){
                 polygon.setFill(Color.TRANSPARENT);
-            }else if(entity.getColorInt() == 1){
+            }else if(colorPart.getColorInt() == 1){
                 polygon.setFill(Color.BLACK);
-            }else if(entity.getColorInt() == 2){
+            }else if(colorPart.getColorInt() == 2){
                 polygon.setFill(Color.RED);
             }else {
                 polygon.setFill(Color.BLACK); // Default visible color
