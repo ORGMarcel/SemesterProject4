@@ -34,7 +34,7 @@ public class CollisionHandler {
 //        Entity obstacle = this.findObstacle(e1, e2);
 
         // Bullet and enemy collides
-        if (enemy instanceof Enemy && bullet instanceof Enemy) {
+        if (enemy instanceof Enemy && bullet instanceof Bullet) {
             return enemyAndBullet(enemy, bullet, world);
         }
 
