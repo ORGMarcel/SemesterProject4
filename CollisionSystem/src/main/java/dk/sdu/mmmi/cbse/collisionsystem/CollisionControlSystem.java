@@ -14,6 +14,7 @@ import static java.lang.Math.sqrt;
 public class CollisionControlSystem implements IEntityProcessingService {
     @Override
     public void process(GameData gameData, World world) {
+        CollisionHandler collisionHandler = new CollisionHandler();
 
         // Get current kills from the world
         int killsOverall = world.getKillsOverall();
@@ -36,11 +37,14 @@ public class CollisionControlSystem implements IEntityProcessingService {
 //        }
 
 
-        for (Entity entityEnemy : world.getEntities(Enemy.class)) {
-            for (Entity entityBullet : world.getEntities(Bullet.class)) {
-                if (isCollided(entityEnemy, entityBullet)) {
-                    Enemy enemy = (Enemy) entityEnemy;
-                    enemy.handleAttack();
+        for (Entity entity1 : world.getEntities()) {
+            for (Entity entity2 : world.getEntities()) {
+
+                if (isCollided(entity1, entity2)) {
+                    System.out.println("Collided");
+                    collisionHandler.handleCollision(world, entity1, entity2);
+//                    Enemy enemy = (Enemy) entityEnemy;
+//                    enemy.handleCollide();
 
 //                    entityEnemy.setHealthPoints(entityEnemy.getHealthPoints() - 1);
 
@@ -49,7 +53,7 @@ public class CollisionControlSystem implements IEntityProcessingService {
 //                        killsOverall++;
 //                        kills++;
 //                    }
-                    world.removeEntity(entityBullet);
+//                    world.removeEntity(entityBullet);
                 }
             }
         }

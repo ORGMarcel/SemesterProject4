@@ -1,12 +1,10 @@
 package dk.sdu.mmmi.cbse.commonenemy;
 
-import dk.sdu.mmmi.cbse.common.data.AttackableInterface;
+import dk.sdu.mmmi.cbse.common.data.CollideableInterface;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
 
-import java.time.Instant;
-
-public class Enemy extends Entity implements AttackableInterface {
+public class Enemy extends Entity implements CollideableInterface {
 
 
 
@@ -25,11 +23,14 @@ public class Enemy extends Entity implements AttackableInterface {
 
 
     @Override
-    public void handleAttack() {
+    public void handleCollide() {
         LifePart lifePart = this.getPart(LifePart.class);
-        lifePart.setIsHit(true);
+        lifePart.setLife(0);
+//        lifePart.setIsHit(true);
 //        lifePart.setLife(lifePart.getLife() - damage);
     }
+
+
 
 //    public void attack(AttackableInterface entity) {
 //            entity.handleAttack(this.dmg);

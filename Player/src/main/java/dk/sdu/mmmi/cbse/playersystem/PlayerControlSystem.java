@@ -30,6 +30,10 @@ public class PlayerControlSystem implements IEntityProcessingService {
             AccelerationPart accelerationPart = x.getPart(AccelerationPart.class);
 
 
+            if(lifePart.getLife()<=0){
+                world.removeEntity(player);
+            }
+
 
 //            // Gravity
 //            if(player.getGravity()<2){
