@@ -12,4 +12,4 @@
 /Users/OliverLarsen/Desktop/SDU/4 Semester Project/SemesterProject4/Common/src/main/java/dk/sdu/mmmi/cbse/common/data/GameKeys.java
 /Users/OliverLarsen/Desktop/SDU/4 Semester Project/SemesterProject4/Common/src/main/java/dk/sdu/mmmi/cbse/common/services/IGamePluginService.java
 /Users/OliverLarsen/Desktop/SDU/4 Semester Project/SemesterProject4/Common/src/main/java/dk/sdu/mmmi/cbse/common/data/entityparts/ColorPart.java
-/Users/OliverLarsen/Desktop/SDU/4 Semester Project/SemesterProject4/Common/src/main/java/dk/sdu/mmmi/cbse/common/data/entityparts/AccelerationPart.java
+/Users/OliverLarsen/Desktop/SDU/4 Semester Project/SemesterProject4/Common/src/main/java/dk/sdu/mmmi/cbse/common/data/entityparts/MovingPart.java

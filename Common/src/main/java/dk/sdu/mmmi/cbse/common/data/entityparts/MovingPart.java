@@ -3,7 +3,7 @@ package dk.sdu.mmmi.cbse.common.data.entityparts;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 
-public class AccelerationPart implements EntityPart {
+public class MovingPart implements EntityPart {
 
     private float acceleration = 0;
 
@@ -32,6 +32,10 @@ public class AccelerationPart implements EntityPart {
         if(getAcceleration()<2 && !atObstacle){
             setAcceleration((float) (getAcceleration()+0.1));
         }
+//        if(atObstacle){
+////            setAcceleration(-2.1F);
+//            setAtObstacle(false);
+//        }
     }
 
 

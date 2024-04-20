@@ -1,16 +1,12 @@
 package dk.sdu.mmmi.cbse.collisionsystem;
 
-import dk.sdu.mmmi.cbse.common.data.entityparts.AccelerationPart;
-import dk.sdu.mmmi.cbse.commonenemy.Enemy;
+import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.commonobstacle.Obstacle;
 import dk.sdu.mmmi.cbse.commonplayer.Player;
-import dk.sdu.mmmi.cbse.commonbullet.Bullet;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
-
-import java.util.ArrayList;
 
 import static java.lang.Math.sqrt;
 
@@ -62,8 +58,8 @@ public class CollisionControlSystem implements IEntityProcessingService {
                 }
                 else if (entity1 instanceof Player && entity2 instanceof Obstacle){
                     // If player and obstacle not collides, it has to change atObstacle to false
-                    AccelerationPart accelerationPart = entity1.getPart(AccelerationPart.class);
-                    accelerationPart.setAtObstacle(false);
+                    MovingPart movingPart = entity1.getPart(MovingPart.class);
+                    movingPart.setAtObstacle(false);
                 }
             }
         }

@@ -11,5 +11,5 @@ module-info.class
 dk/sdu/mmmi/cbse/common/services/IEntityProcessingService.class
 dk/sdu/mmmi/cbse/common/data/CollideableInterface.class
 dk/sdu/mmmi/cbse/common/data/entityparts/LifePart.class
-dk/sdu/mmmi/cbse/common/data/entityparts/AccelerationPart.class
 dk/sdu/mmmi/cbse/common/data/World.class
+dk/sdu/mmmi/cbse/common/data/entityparts/MovingPart.class

@@ -2,7 +2,7 @@ package dk.sdu.mmmi.cbse.collisionsystem;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.World;
-import dk.sdu.mmmi.cbse.common.data.entityparts.AccelerationPart;
+import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
 import dk.sdu.mmmi.cbse.commonbullet.Bullet;
 import dk.sdu.mmmi.cbse.commonenemy.Enemy;
@@ -159,12 +159,21 @@ public class CollisionHandler {
 
     private boolean playerAndObstacle(Player player, Obstacle obstacle, World world) {
 //        moveEntities(player, obstacle, world);
-        AccelerationPart accelerationPart = player.getPart(AccelerationPart.class);
+        MovingPart movingPart = player.getPart(MovingPart.class);
 
-        if(!accelerationPart.isAtObstacle()){
-            accelerationPart.setAcceleration(0);
-            accelerationPart.setAtObstacle(true);
+        if(!movingPart.isAtObstacle() && player.isJumping()){
+//            movingPart.setAcceleration(5F);
+//            movingPart.setAtObstacle(false);
+            movingPart.setAcceleration(0.5F);
+            player.setY(player.getY()+5);
+        }else if(!movingPart.isAtObstacle()){
+            movingPart.setAcceleration(0);
+            player.setY(player.getY()-5);
+//            movingPart.setAtObstacle(true);
         }
+
+
+
 
         return true;
     }
