@@ -24,8 +24,14 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>dk.sdu.cbse.commonbullet</groupId>
+            <groupId>dk.sdu.mmmi.cbse.commonbullet</groupId>
             <artifactId>CommonBullet</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>dk.sdu.cbse.common.player</groupId>
+            <artifactId>CommonPlayer</artifactId>
             <version>1.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

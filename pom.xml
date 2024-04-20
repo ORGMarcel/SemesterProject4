@@ -22,6 +22,8 @@
         <module>CommonMap</module>
         <module>Map</module>
         <module>CommonWall</module>
+        <module>CommonEnemy</module>
+        <module>CommonPlayer</module>
 
     </modules>
     <properties>
@@ -33,11 +35,21 @@
     
     <dependencyManagement>
         <dependencies>
+
+                <dependency>
+                    <groupId>dk.sdu.mmmi.cbse.commonbullet</groupId>
+                    <artifactId>CommonBullet</artifactId>
+                    <version>1.0.1-SNAPSHOT</version>
+                </dependency>
+
+
+
             <dependency>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-controls</artifactId>
                 <version>21.0.2</version>
             </dependency>
+
         </dependencies>
     </dependencyManagement>    
     <build>

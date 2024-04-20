@@ -9,7 +9,7 @@
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>dk.sdu.cbse.enemiessystem</groupId>
+    <groupId>dk.sdu.mmmi.cbse.enemiessystem</groupId>
     <artifactId>Enemies</artifactId>
 
     <properties>
@@ -19,8 +19,14 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>dk.sdu.cbse.commonbullet</groupId>
+            <groupId>dk.sdu.mmmi.cbse.commonbullet</groupId>
             <artifactId>CommonBullet</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>dk.sdu.cbse.common.enemy</groupId>
+            <artifactId>CommonEnemy</artifactId>
             <version>1.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

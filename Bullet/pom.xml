@@ -9,7 +9,7 @@
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>dk.sdu.cbse.bulletsystem</groupId>
+    <groupId>dk.sdu.mmmi.cbse.bulletsystem</groupId>
     <artifactId>Bullet</artifactId>
 
     <properties>
@@ -25,7 +25,7 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>dk.sdu.cbse.commonbullet</groupId>
+            <groupId>dk.sdu.mmmi.cbse.commonbullet</groupId>
             <artifactId>CommonBullet</artifactId>
             <version>1.0.1-SNAPSHOT</version>
             <scope>compile</scope>

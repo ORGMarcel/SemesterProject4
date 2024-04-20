@@ -1,8 +1,12 @@
 package dk.sdu.mmmi.cbse.common.data;
 
+import dk.sdu.mmmi.cbse.common.data.entityparts.EntityPart;
+
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 
 public class Entity implements Serializable {
@@ -13,6 +17,10 @@ public class Entity implements Serializable {
     private double x;
     private double y;
     private double rotation;
+
+    private Map<Class, EntityPart> parts;
+
+
 
     // 1 = Black
     // 2 = Invisible
@@ -33,40 +41,33 @@ public class Entity implements Serializable {
     private boolean invisible;
 
 
-    public EntityType getEntityType() {
-        return entityType;
-    }
+    private boolean immortal;
 
     public void setEntityType(EntityType entityType) {
         this.entityType = entityType;
     }
 
 
-    public int getColorInt() {
-        return colorInt;
-    }
-
-    public void setColorInt(int colorInt) {
-        this.colorInt = colorInt;
+    public Entity() {
+        parts = new ConcurrentHashMap<>();
     }
 
 
-
-    public boolean isInvisible() {
-        return invisible;
+    public void add(EntityPart part) {
+        parts.put(part.getClass(), part);
     }
 
-    public void setInvisible(boolean invisible) {
-        this.invisible = invisible;
+
+    public void remove(Class partClass) {
+        parts.remove(partClass);
     }
 
-    public boolean isImmortal() {
-        return immortal;
+
+    public <E extends EntityPart> E getPart(Class partClass) {
+        return (E) parts.get(partClass);
     }
 
-    public void setImmortal(boolean immortal) {
-        this.immortal = immortal;
-    }
+
 
 
     public double getGravity() {

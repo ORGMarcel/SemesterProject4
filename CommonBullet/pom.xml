@@ -9,7 +9,7 @@
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>dk.sdu.cbse.commonbullet</groupId>
+    <groupId>dk.sdu.mmmi.cbse.commonbullet</groupId>
     <artifactId>CommonBullet</artifactId>
 
     <properties>
