@@ -19,6 +19,10 @@
         <module>Weapon</module>
         <module>Enemies</module>
         <module>CollisionSystem</module>
+        <module>CommonEnemy</module>
+        <module>CommonPlayer</module>
+        <module>CommonWeapon</module>
+        <module>WeaponUzi</module>
 
     </modules>
     <properties>

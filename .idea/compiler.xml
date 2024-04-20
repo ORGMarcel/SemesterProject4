@@ -6,22 +6,30 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="CommonEnemyy" />
         <module name="Bullet" />
         <module name="Player" />
         <module name="Enemies" />
-        <module name="Asteroid" />
+        <module name="CommonEnemy" />
         <module name="Collision" />
-        <module name="CollisionSystem" />
         <module name="CommonBullet" />
         <module name="Weapon" />
         <module name="Common" />
+        <module name="CommonPlayer" />
+        <module name="Asteroid" />
+        <module name="CommonWeapon" />
+        <module name="CommonPlayerr" />
+        <module name="CollisionSystem" />
         <module name="Core" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="asteroids.jpms" target="9" />
       <module name="CommonAsteroid" target="21" />
+      <module name="CommonMap" target="21" />
+      <module name="CommonWall" target="21" />
       <module name="Enemy" target="9" />
+      <module name="Map" target="21" />
       <module name="shadowshurken.jpms" target="9" />
     </bytecodeTargetLevel>
   </component>
