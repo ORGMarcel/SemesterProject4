@@ -21,6 +21,7 @@
         <module>CollisionSystem</module>
         <module>CommonEnemy</module>
         <module>CommonPlayer</module>
+        <module>CommonWeapon</module>
 
     </modules>
     <properties>

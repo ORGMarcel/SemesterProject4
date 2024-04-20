@@ -9,8 +9,8 @@
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>dk.sdu.mmmi.cbse.weaponsystem</groupId>
-    <artifactId>Weapon</artifactId>
+    <groupId>dk.sdu.mmmi.cbse.commonweapon</groupId>
+    <artifactId>CommonWeapon</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -19,20 +19,8 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>dk.sdu.mmmi.cbse.commonbullet</groupId>
-            <artifactId>CommonBullet</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
             <groupId>dk.sdu.mmmi.cbse</groupId>
-            <artifactId>Player</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>dk.sdu.mmmi.cbse.commonweapon</groupId>
-            <artifactId>CommonWeapon</artifactId>
+            <artifactId>Common</artifactId>
             <version>1.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
