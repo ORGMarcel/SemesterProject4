@@ -36,6 +36,10 @@ public class MovingPart implements EntityPart {
 ////            setAcceleration(-2.1F);
 //            setAtObstacle(false);
 //        }
+
+        // TODO: When moving everything about moving into this, make sure to set isJumping to false when acceleration is positive
+
+
     }
 
 
