@@ -1,4 +1,4 @@
-package dk.sdu.mmmi.mapsystem;
+package dk.sdu.mmmi.cbse.commoninvisibleobject;
 
 public class Main {
     public static void main(String[] args) {

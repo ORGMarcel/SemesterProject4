@@ -11,14 +11,22 @@
     <file url="file://$PROJECT_DIR$/CommonBullet/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonEnemy/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonEnemy/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonInvisibleObject/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonInvisibleObject/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonMap/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonMap/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonMapObject/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonMapObject/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonObstacle/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonObstacle/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonPlayer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonPlayer/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonWall/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonWall/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonWeapon/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonWeapon/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonWeaponCoin/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonWeaponCoin/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Core/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Core/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Enemies/src/main/java" charset="UTF-8" />

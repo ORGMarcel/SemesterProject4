@@ -50,6 +50,7 @@ public class PlayerControlSystem implements IEntityProcessingService {
 
             // Controlling
             if (gameData.getKeys().isDown(GameKeys.LEFT)) {
+
                 player.setX(player.getX()-5);
 //                player.setRotation(player.getRotation() - 5);
                 player.setRotation(180);

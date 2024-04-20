@@ -1,4 +1,4 @@
-package dk.sdu.mmmi.mapsystem;
+package dk.sdu.mmmi.cbse.mapsystem;
 
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;

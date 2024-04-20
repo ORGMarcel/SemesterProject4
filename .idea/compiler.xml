@@ -16,6 +16,10 @@
         <module name="CommonPlayer" />
         <module name="CommonObstacle" />
         <module name="CommonMap" />
+        <module name="CommonMapObject" />
+        <module name="CommonWeapon" />
+        <module name="CommonWeaponCoin" />
+        <module name="CommonInvisibleObject" />
         <module name="CollisionSystem" />
         <module name="Map" />
         <module name="Core" />

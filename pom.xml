@@ -24,6 +24,10 @@
         <module>CommonEnemy</module>
         <module>CommonPlayer</module>
         <module>CommonObstacle</module>
+        <module>CommonWeapon</module>
+        <module>CommonWeaponCoin</module>
+        <module>CommonMapObject</module>
+        <module>CommonInvisibleObject</module>
 
     </modules>
     <properties>

@@ -9,7 +9,7 @@
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>CommonObstacle</artifactId>
+    <artifactId>CommonWeaponCoin</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -17,12 +17,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
-        <dependency>
-            <groupId>dk.sdu.mmmi.cbse</groupId>
-            <artifactId>Common</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
         <dependency>
             <groupId>dk.sdu.mmmi.cbse</groupId>
             <artifactId>CommonMapObject</artifactId>

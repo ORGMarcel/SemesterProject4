@@ -1,6 +1,8 @@
 package dk.sdu.mmmi.cbse.collisionsystem;
 
+import dk.sdu.mmmi.cbse.common.data.entityparts.AccelerationPart;
 import dk.sdu.mmmi.cbse.commonenemy.Enemy;
+import dk.sdu.mmmi.cbse.commonobstacle.Obstacle;
 import dk.sdu.mmmi.cbse.commonplayer.Player;
 import dk.sdu.mmmi.cbse.commonbullet.Bullet;
 import dk.sdu.mmmi.cbse.common.data.Entity;
@@ -57,6 +59,11 @@ public class CollisionControlSystem implements IEntityProcessingService {
 //                        kills++;
 //                    }
 //                    world.removeEntity(entityBullet);
+                }
+                else if (entity1 instanceof Player && entity2 instanceof Obstacle){
+                    // If player and obstacle not collides, it has to change atObstacle to false
+                    AccelerationPart accelerationPart = entity1.getPart(AccelerationPart.class);
+                    accelerationPart.setAtObstacle(false);
                 }
             }
         }

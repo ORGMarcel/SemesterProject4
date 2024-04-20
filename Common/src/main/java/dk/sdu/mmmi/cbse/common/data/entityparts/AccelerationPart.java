@@ -7,6 +7,17 @@ public class AccelerationPart implements EntityPart {
 
     private float acceleration = 0;
 
+    private boolean atObstacle = false;
+
+
+    public boolean isAtObstacle() {
+        return atObstacle;
+    }
+
+    public void setAtObstacle(boolean atObstacle) {
+        this.atObstacle = atObstacle;
+    }
+
     public float getAcceleration() {
         return acceleration;
     }
@@ -18,7 +29,7 @@ public class AccelerationPart implements EntityPart {
 
     @Override
     public void process(GameData gameData, Entity entity) {
-        if(getAcceleration()<2){
+        if(getAcceleration()<2 && !atObstacle){
             setAcceleration((float) (getAcceleration()+0.1));
         }
     }

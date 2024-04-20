@@ -2,7 +2,7 @@
 
 module CommonObstacle {
     requires Common;
-    requires java.xml;
+    requires CommonMapObject;
 
     exports dk.sdu.mmmi.cbse.commonobstacle;
 

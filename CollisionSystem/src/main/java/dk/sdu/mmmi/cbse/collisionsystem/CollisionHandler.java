@@ -2,10 +2,15 @@ package dk.sdu.mmmi.cbse.collisionsystem;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.World;
+import dk.sdu.mmmi.cbse.common.data.entityparts.AccelerationPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
 import dk.sdu.mmmi.cbse.commonbullet.Bullet;
 import dk.sdu.mmmi.cbse.commonenemy.Enemy;
+import dk.sdu.mmmi.cbse.commonmapobject.CommonMapObject;
+import dk.sdu.mmmi.cbse.commonobstacle.Obstacle;
 import dk.sdu.mmmi.cbse.commonplayer.Player;
+import dk.sdu.mmmi.cbse.commonweapon.Weapon;
+import dk.sdu.mmmi.cbse.commonweaponcoin.WeaponCoin;
 
 public class CollisionHandler {
 
@@ -27,27 +32,38 @@ public class CollisionHandler {
         if (e1 instanceof Bullet && e2 instanceof Bullet) {
             return true; // Nothing should happen
         }
-//        // Player and Weapon
-//        // TODO: Change weapon to the common weapon
-//        if (e1 instanceof Player && e2 instanceof Weapon) {
-//            return true; // Nothing should happen
-//        }
+        // Player and Weapon
+        if (e1 instanceof Player && e2 instanceof Weapon) {
+            return true; // Nothing should happen
+        }
+
+        // Map object and map object
+        if (e1 instanceof CommonMapObject && e2 instanceof CommonMapObject) {
+            return true; // Nothing should happen
+        }
+
 
 
         Entity enemy = this.findEnemy(e1, e2);
         Entity bullet = this.findBullet(e1, e2);
         Entity player = this.findPlayer(e1, e2);
-//        Entity obstacle = this.findObstacle(e1, e2);
+        Entity obstacle = this.findObstacle(e1, e2);
 
         // Bullet and enemy collides
         if (enemy instanceof Enemy && bullet instanceof Bullet) {
             return enemyAndBullet(enemy, bullet, world);
         }
 
-//        // Bullet and obstacle collides
-//        if (obstacle instanceof CommonObstacle && bullet instanceof CommonBullet) {
-//            return obstacleAndBullet(bullet, world);
-//        }
+        // Bullet and player collides
+        if (player instanceof Player && bullet instanceof Bullet) {
+            return playerAndBullet(player, bullet, world);
+        }
+
+        // Bullet and obstacle collides
+        if (obstacle instanceof CommonMapObject && bullet instanceof Bullet) {
+            // It then removes the bullet
+            return obstacleAndBullet(bullet, world);
+        }
 
         // Player and enemy collides
         if (player instanceof Player && enemy instanceof Enemy) {
@@ -64,10 +80,12 @@ public class CollisionHandler {
 //            return enemyAndObstacle(co1, co2, world);
 //        }
 
-//        // Player and obstacle collides
-//        if (player instanceof CommonPlayer && obstacle instanceof CommonObstacle) {
-//            return playerAndObstacle(co1, co2, world);
-//        }
+        // Player and obstacle collides
+        if (player instanceof Player && obstacle instanceof Obstacle) {
+            Player player1 = (Player) player;
+            Obstacle obstacle1 = (Obstacle) obstacle;
+            return playerAndObstacle(player1, obstacle1, world);
+        }
 
         return false;
     }
@@ -82,6 +100,17 @@ public class CollisionHandler {
         world.removeEntity(bullet);
         return true;
     }
+
+    private boolean playerAndBullet(Entity player, Entity bullet, World world){
+        LifePart playerLifePart = player.getPart(LifePart.class);
+        playerLifePart.setIsHit(true);
+
+        // Remove bullet on impact
+        world.removeEntity(bullet);
+        return true;
+    }
+
+
 
     private boolean obstacleAndBullet(Entity bullet, World world) {
         // Remove bullet on impact
@@ -128,10 +157,17 @@ public class CollisionHandler {
 //        return true;
 //    }
 
-//    private boolean playerAndObstacle(CollisionObject player, CollisionObject obstacle, World world) {
+    private boolean playerAndObstacle(Player player, Obstacle obstacle, World world) {
 //        moveEntities(player, obstacle, world);
-//        return true;
-//    }
+        AccelerationPart accelerationPart = player.getPart(AccelerationPart.class);
+
+        if(!accelerationPart.isAtObstacle()){
+            accelerationPart.setAcceleration(0);
+            accelerationPart.setAtObstacle(true);
+        }
+
+        return true;
+    }
 
     private Entity findEnemy(Entity e, Entity r) {
         if (e instanceof Enemy) {
@@ -160,14 +196,26 @@ public class CollisionHandler {
         return null;
     }
 
-//    private Entity findObstacle(Entity e, Entity r) {
-//        if (e instanceof CommonObstacle) {
-//            return e;
-//        } else if (r instanceof CommonObstacle) {
-//            return r;
-//        }
-//        return null;
-//    }
+    private Entity findObstacle(Entity e, Entity r) {
+        if (e instanceof Obstacle) {
+            return e;
+        } else if (r instanceof Obstacle) {
+            return r;
+        }
+        return null;
+    }
+
+    private Entity findWeaponCoin(Entity e, Entity r) {
+        if (e instanceof WeaponCoin) {
+            return e;
+        } else if (r instanceof WeaponCoin) {
+            return r;
+        }
+        return null;
+    }
+
+
+
 
 
 
