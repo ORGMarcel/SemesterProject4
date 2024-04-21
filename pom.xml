@@ -19,6 +19,30 @@
             <version>1.8.4</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>dk.sdu.mmmi.cbse</groupId>
+            <artifactId>Player</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>dk.sdu.cbse.weaponsystem</groupId>
+            <artifactId>Weapon</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>dk.sdu.cbse.collisionsystem</groupId>
+            <artifactId>CollisionSystem</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>dk.sdu.cbse.bulletsystem</groupId>
+            <artifactId>Bullet</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <repositories>
     </repositories>
