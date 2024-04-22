@@ -1,0 +1,4 @@
+--patch-module
+CommonObstacle=_
+--add-reads
+CommonObstacle=ALL-UNNAMED
