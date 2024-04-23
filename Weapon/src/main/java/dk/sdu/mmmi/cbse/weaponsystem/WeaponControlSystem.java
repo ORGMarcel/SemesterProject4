@@ -1,7 +1,5 @@
 package dk.sdu.mmmi.cbse.weaponsystem;
 
-//import dk.sdu.mmmi.cbse.common.bullet.BulletSPI;
-
 import dk.sdu.mmmi.cbse.commonplayer.Player;
 import dk.sdu.mmmi.cbse.commonbullet.BulletSPI;
 import dk.sdu.mmmi.cbse.common.data.Entity;
@@ -35,51 +33,14 @@ public class WeaponControlSystem implements IEntityProcessingService {
             }
 
 
-            // Gravity
-//            weapon.setY(weapon.getY()+1);
-
-
-
             // Controlling
-            if (gameData.getKeys().isDown(GameKeys.LEFT)) {
-//                weapon.setX(weapon.getX()-5);
-//                player.setRotation(player.getRotation() - 5);
-            }
-            if (gameData.getKeys().isDown(GameKeys.RIGHT)) {
-//                weapon.setX(weapon.getX()+5);
-//                player.setRotation(player.getRotation() + 5);
-            }
-            if (gameData.getKeys().isPressed(GameKeys.UP)) {
-//                player.setY(player.getY()-50);
-//                Thread jumpThread = new Thread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        for (int i = 0; i < 100; i++) {
-//                            weapon.setY(weapon.getY()-1);
-//
-//                            try {
-//                                Thread.sleep(5);
-//                                System.out.println("Sleep");
-//                            } catch (InterruptedException e) {
-//                                throw new RuntimeException(e);
-//                            }
+//            if (gameData.getKeys().isPressed(GameKeys.SPACE)) {
+//                getBulletSPIs().stream().findFirst().ifPresent(
+//                        spi -> {
+//                            world.addEntity(spi.createBullet(weapon, gameData));
 //                        }
-//                    }
-//                });
-//
-//                jumpThread.start(); // Start the thread
-
-
-//                double changeX = Math.cos(Math.toRadians(player.getRotation()));
-//                double changeY = Math.sin(Math.toRadians(player.getRotation()));
-//                player.setX(player.getX() + changeX);
-//                player.setY(player.getY() + changeY);
-            }
-            if(gameData.getKeys().isPressed(GameKeys.SPACE)) {
-                getBulletSPIs().stream().findFirst().ifPresent(
-                        spi -> {world.addEntity(spi.createBullet(weapon, gameData));}
-                );
-            }
+//                );
+//            }
             
         if (weapon.getX() < 0) {
             weapon.setX(1);
