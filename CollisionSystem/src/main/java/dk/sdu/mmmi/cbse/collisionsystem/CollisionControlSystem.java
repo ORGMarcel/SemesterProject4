@@ -61,6 +61,8 @@ public class CollisionControlSystem implements IEntityProcessingService {
                     // If player and obstacle not collides, it has to change atObstacle to false
                     MovingPart movingPart = entity1.getPart(MovingPart.class);
                     movingPart.setAtObstacle(false);
+
+
                 }
             }
         }

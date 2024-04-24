@@ -9,6 +9,17 @@ public class MovingPart implements EntityPart {
 
     private boolean atObstacle = false;
 
+    private boolean jumping;
+
+
+    public boolean isJumping() {
+        return jumping;
+    }
+
+    public void setJumping(boolean jumping) {
+        this.jumping = jumping;
+    }
+
 
     public boolean isAtObstacle() {
         return atObstacle;
@@ -31,6 +42,10 @@ public class MovingPart implements EntityPart {
     public void process(GameData gameData, Entity entity) {
         if(getAcceleration()<2 && !atObstacle){
             setAcceleration((float) (getAcceleration()+0.1));
+        }
+        // TODO: Placeholder, it should not only do it when acceleration is positive
+        if(getAcceleration()>0){
+            setJumping(false);
         }
 //        if(atObstacle){
 ////            setAcceleration(-2.1F);

@@ -40,7 +40,7 @@ public class PlayerControlSystem implements IEntityProcessingService {
 //                player.setGravity(player.getGravity()+0.1);
 //            }
             if(movingPart.getAcceleration()>2){
-                player.setJumping(false);
+                movingPart.setJumping(false);
             }
 //
 //            player.setY(player.getY()+player.getGravity());
@@ -67,7 +67,7 @@ public class PlayerControlSystem implements IEntityProcessingService {
                         playerShip.setX(player.getX());
                         playerShip.setY(player.getY());
                         playerShip.setRotation(player.getRotation());
-                        playerShip.setJumping(player.isJumping());
+                        movingPart.setJumping(movingPart.isJumping());
 
 
                         for (Entity entityPlayer : world.getEntities(Player.class)) {
@@ -101,7 +101,7 @@ public class PlayerControlSystem implements IEntityProcessingService {
                         playerShip.setX(player.getX());
                         playerShip.setY(player.getY());
                         playerShip.setRotation(player.getRotation());
-                        playerShip.setJumping(player.isJumping());
+                        movingPart.setJumping(movingPart.isJumping());
 
                         for (Entity entityPlayer : world.getEntities(Player.class)) {
                             world.removeEntity(entityPlayer);
@@ -119,10 +119,10 @@ public class PlayerControlSystem implements IEntityProcessingService {
             }
 
             if (gameData.getKeys().isPressed(GameKeys.UP)) {
-                if(!player.isJumping() && !movingPart.isAtObstacle()){
+                if(!movingPart.isJumping() && !movingPart.isAtObstacle()){
 //                    player.setGravity(-5);
                     movingPart.setAcceleration(-5);
-                    player.setJumping(true);
+                    movingPart.setJumping(true);
                 }
 
             }

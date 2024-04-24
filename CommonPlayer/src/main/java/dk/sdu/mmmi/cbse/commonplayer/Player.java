@@ -16,17 +16,6 @@ public class Player extends Entity implements CollideableInterface {
     }
 
 
-    private boolean jumping;
-
-
-    public boolean isJumping() {
-        return jumping;
-    }
-
-    public void setJumping(boolean jumping) {
-        this.jumping = jumping;
-    }
-
 
     @Override
     public void handleCollide() {

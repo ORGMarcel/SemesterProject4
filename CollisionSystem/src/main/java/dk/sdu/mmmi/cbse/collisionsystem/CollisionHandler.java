@@ -185,7 +185,7 @@ public class CollisionHandler {
 //        moveEntities(player, obstacle, world);
         MovingPart movingPart = player.getPart(MovingPart.class);
 
-        if(!movingPart.isAtObstacle() && player.isJumping()){
+        if(!movingPart.isAtObstacle() && movingPart.isJumping()){
 //            movingPart.setAcceleration(5F);
 //            movingPart.setAtObstacle(false);
             movingPart.setAcceleration(0.5F);
