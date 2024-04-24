@@ -1,6 +1,7 @@
 package dk.sdu.mmmi.cbse.collisionsystem;
 
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
+import dk.sdu.mmmi.cbse.commonmap.CommonMap;
 import dk.sdu.mmmi.cbse.commonobstacle.Obstacle;
 import dk.sdu.mmmi.cbse.commonplayer.Player;
 import dk.sdu.mmmi.cbse.common.data.Entity;
@@ -41,7 +42,7 @@ public class CollisionControlSystem implements IEntityProcessingService {
         for (Entity entity1 : world.getEntities()) {
             for (Entity entity2 : world.getEntities()) {
 
-                if (isCollided(entity1, entity2)) {
+                if (!(entity1 instanceof CommonMap) && !(entity2 instanceof CommonMap) && isCollided(entity1, entity2)) {
                     System.out.println("Collided");
                     collisionHandler.handleCollision(world, entity1, entity2);
 //                    Enemy enemy = (Enemy) entityEnemy;

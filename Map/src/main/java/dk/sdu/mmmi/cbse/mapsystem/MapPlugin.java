@@ -5,6 +5,7 @@ import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.data.entityparts.ColorPart;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.commoninvisibleobject.InvisibleObject;
+import dk.sdu.mmmi.cbse.commonmap.CommonMap;
 import dk.sdu.mmmi.cbse.commonmapobject.CommonMapObject;
 import dk.sdu.mmmi.cbse.commonobstacle.Obstacle;
 import dk.sdu.mmmi.cbse.commonweaponcoin.WeaponCoin;
@@ -35,6 +36,11 @@ public class MapPlugin implements IGamePluginService {
         // Code to create the arraylist of map
 //        MapElement[][] mapObstacle = createObstacleList(world, gameData, 40, 40);
         CommonMapObject[][] mapObstacle = createObstacleList(world, gameData, 40, 40);
+
+        // TODO: Line to add the map to world of entities
+        CommonMap commonMap = new CommonMap();
+        commonMap.setMap(mapObstacle);
+        world.addEntity(commonMap);
 
         for (int i = 0; i < mapObstacle.length; i++) {
             for (int j = 0; j < mapObstacle[i].length; j++) {
@@ -152,6 +158,7 @@ public class MapPlugin implements IGamePluginService {
                 mapList[i][j] = mapElement;
             }
         }
+
 
 
         return mapList;

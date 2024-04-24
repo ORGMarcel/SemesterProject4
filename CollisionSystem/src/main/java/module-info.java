@@ -13,5 +13,6 @@ module CollisionSystem {
     requires CommonMapObject;
     requires CommonObstacle;
     requires CommonWeaponCoin;
+    requires CommonMap;
     provides IEntityProcessingService with CollisionControlSystem;
 }

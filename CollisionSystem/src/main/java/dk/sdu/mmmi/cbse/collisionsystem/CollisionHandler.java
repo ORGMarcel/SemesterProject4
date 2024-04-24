@@ -1,5 +1,6 @@
 package dk.sdu.mmmi.cbse.collisionsystem;
 
+import dk.sdu.mmmi.cbse.common.data.CollideableInterface;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
@@ -23,15 +24,23 @@ public class CollisionHandler {
             return false;
         }
 
-        // Enemy and Enemy
-        if (e1 instanceof Enemy && e2 instanceof Enemy) {
-            return enemyAndEnemy(co1, co2, world);
+//        // Enemy and Enemy
+//        if (e1 instanceof Enemy && e2 instanceof Enemy) {
+//            return enemyAndEnemy(co1, co2, world);
+//        }
+
+
+//         CollideableInterface and CollideableInterface
+        if (e1 instanceof CollideableInterface && e2 instanceof CollideableInterface) {
+            return CollideableAndCollideable(co1, co2, world);
         }
+
 
         // Bullet and Bullet
         if (e1 instanceof Bullet && e2 instanceof Bullet) {
             return true; // Nothing should happen
         }
+
         // Player and Weapon
         if (e1 instanceof Player && e2 instanceof Weapon) {
             return true; // Nothing should happen
@@ -65,11 +74,12 @@ public class CollisionHandler {
             return obstacleAndBullet(bullet, world);
         }
 
-        // Player and enemy collides
-        if (player instanceof Player && enemy instanceof Enemy) {
-            enemyAndPlayer(enemy, player);
-            return enemyAndPlayer(enemy, player);
-        }
+//        // Player and enemy collides
+//        if (player instanceof Player && enemy instanceof Enemy) {
+////            enemyAndPlayer(enemy, player);
+//            return enemyAndPlayer(enemy, player);
+//        }
+
 
 //        // Enemy and obstacle collides
 //        if (enemy instanceof CommonEnemy && obstacle instanceof CommonObstacle) {
@@ -122,6 +132,20 @@ public class CollisionHandler {
 //        moveEntities(enemy, player, world);
 //        return true;
 //    }
+
+
+    // TODO: New with interface
+
+    private boolean CollideableAndCollideable(Entity e1, Entity e2, World world) {
+
+        CollideableInterface commonCollideable1 = (CollideableInterface) e1;
+        CollideableInterface commonCollideable2 = (CollideableInterface) e2;
+
+        commonCollideable1.handleCollide();
+        commonCollideable2.handleCollide();
+
+        return true;
+    }
 
     private boolean enemyAndEnemy(Entity e1, Entity e2, World world) {
 

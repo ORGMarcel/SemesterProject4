@@ -6,10 +6,7 @@ import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.ColorPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
 
-/**
- *
- * @author Emil
- */
+
 public class Player extends Entity implements CollideableInterface {
 
     public Player() {
