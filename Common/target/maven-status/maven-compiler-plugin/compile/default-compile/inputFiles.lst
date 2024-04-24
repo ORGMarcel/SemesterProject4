@@ -1,4 +1,3 @@
-/Users/OliverLarsen/Desktop/SDU/4 Semester Project/SemesterProject4/Common/src/main/java/dk/sdu/mmmi/cbse/common/data/entityparts/mapparts/MapObjectPart.java
 /Users/OliverLarsen/Desktop/SDU/4 Semester Project/SemesterProject4/Common/src/main/java/dk/sdu/mmmi/cbse/common/data/Entity.java
 /Users/OliverLarsen/Desktop/SDU/4 Semester Project/SemesterProject4/Common/src/main/java/dk/sdu/mmmi/cbse/common/data/GameData.java
 /Users/OliverLarsen/Desktop/SDU/4 Semester Project/SemesterProject4/Common/src/main/java/dk/sdu/mmmi/cbse/common/services/IPostEntityProcessingService.java
@@ -8,7 +7,6 @@
 /Users/OliverLarsen/Desktop/SDU/4 Semester Project/SemesterProject4/Common/src/main/java/module-info.java
 /Users/OliverLarsen/Desktop/SDU/4 Semester Project/SemesterProject4/Common/src/main/java/dk/sdu/mmmi/cbse/common/data/World.java
 /Users/OliverLarsen/Desktop/SDU/4 Semester Project/SemesterProject4/Common/src/main/java/dk/sdu/mmmi/cbse/common/data/CollideableInterface.java
-/Users/OliverLarsen/Desktop/SDU/4 Semester Project/SemesterProject4/Common/src/main/java/dk/sdu/mmmi/cbse/common/data/entityparts/mapparts/MapObjectType.java
 /Users/OliverLarsen/Desktop/SDU/4 Semester Project/SemesterProject4/Common/src/main/java/dk/sdu/mmmi/cbse/common/data/GameKeys.java
 /Users/OliverLarsen/Desktop/SDU/4 Semester Project/SemesterProject4/Common/src/main/java/dk/sdu/mmmi/cbse/common/services/IGamePluginService.java
 /Users/OliverLarsen/Desktop/SDU/4 Semester Project/SemesterProject4/Common/src/main/java/dk/sdu/mmmi/cbse/common/data/entityparts/ColorPart.java
