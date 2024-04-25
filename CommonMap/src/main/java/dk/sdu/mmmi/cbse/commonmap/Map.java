@@ -4,7 +4,7 @@ import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.commonmapobject.CommonMapObject;
 
 
-public class CommonMap extends Entity {
+public class Map extends Entity {
 
     private CommonMapObject[][] map;
 
