@@ -8,7 +8,7 @@ import dk.sdu.mmmi.cbse.commonweapon.Weapon;
 
 public class UziWeaponPlugin implements IGamePluginService {
 
-    private Entity weapon;
+    private Entity weaponUzi;
 
     public UziWeaponPlugin() {
     }
@@ -17,8 +17,8 @@ public class UziWeaponPlugin implements IGamePluginService {
     public void start(GameData gameData, World world) {
 
         // Add entities to the world
-//        weapon = createBaseWeapon(gameData);
-//        world.addEntity(weapon);
+//        weaponUzi = createBaseWeapon(gameData);
+//        world.addEntity(weaponUzi);
     }
 
     private Entity createBaseWeapon(GameData gameData) {
@@ -37,7 +37,7 @@ public class UziWeaponPlugin implements IGamePluginService {
     @Override
     public void stop(GameData gameData, World world) {
         // Remove entities
-        world.removeEntity(weapon);
+        world.removeEntity(weaponUzi);
     }
 
 }

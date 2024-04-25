@@ -23,7 +23,7 @@ public class ShotgunWeaponControlSystem implements IEntityProcessingService {
         // Assuming there's only one player entity
         Entity player = world.getEntities(Player.class).stream().findFirst().orElse(null);
 
-        // If no player entity is found, exit the method
+        // To prevent game crashing after player dies
         if (player == null) {
             return;
         }
