@@ -1,4 +1,4 @@
-package dk.sdu.mmmi.cbse.weaponuzi;
+package dk.sdu.mmmi.cbse.weaponshotgun;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
@@ -6,19 +6,19 @@ import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.commonweapon.Weapon;
 
-public class UziWeaponPlugin implements IGamePluginService {
+public class ShotgunWeaponPlugin implements IGamePluginService {
 
     private Entity weapon;
 
-    public UziWeaponPlugin() {
+    public ShotgunWeaponPlugin() {
     }
 
     @Override
     public void start(GameData gameData, World world) {
 
         // Add entities to the world
-//        weapon = createBaseWeapon(gameData);
-//        world.addEntity(weapon);
+        weapon = createBaseWeapon(gameData);
+        world.addEntity(weapon);
     }
 
     private Entity createBaseWeapon(GameData gameData) {
