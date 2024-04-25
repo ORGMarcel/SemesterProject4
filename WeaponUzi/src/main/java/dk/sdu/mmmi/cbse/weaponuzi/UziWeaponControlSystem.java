@@ -19,22 +19,22 @@ public class UziWeaponControlSystem implements IEntityProcessingService {
     @Override
     public void process(GameData gameData, World world) {
 
-        for (Entity weaponUzi : world.getEntities(Uzi.class)) {
+        for (Entity weapon : world.getEntities(Weapon.class)) {
             for (Entity player : world.getEntities(Player.class)) {
-                weaponUzi.setY(player.getY());
-                weaponUzi.setX(player.getX());
-                weaponUzi.setRotation(player.getRotation());
-                double changeX = Math.cos(Math.toRadians(weaponUzi.getRotation()));
-                double changeY = Math.sin(Math.toRadians(weaponUzi.getRotation()));
-                weaponUzi.setX(weaponUzi.getX() + changeX * 15);
-                weaponUzi.setY(weaponUzi.getY() + changeY * 15);
+                weapon.setY(player.getY());
+                weapon.setX(player.getX());
+                weapon.setRotation(player.getRotation());
+                double changeX = Math.cos(Math.toRadians(weapon.getRotation()));
+                double changeY = Math.sin(Math.toRadians(weapon.getRotation()));
+                weapon.setX(weapon.getX() + changeX * 15);
+                weapon.setY(weapon.getY() + changeY * 15);
 
             }
 
 
             // Controlling
             if(gameData.getKeys().isPressed(GameKeys.SPACE)) {
-                Uzi weapon1 = (Uzi) weaponUzi;
+                Weapon weapon1 = (Weapon) weapon;
 
                 Thread thread1 = new Thread(() -> {
                     weapon1.setShooting(true);
@@ -43,7 +43,7 @@ public class UziWeaponControlSystem implements IEntityProcessingService {
                         for (int i = 0; i < 40; i++) {
                             // Execute the action
                             getBulletSPIs().stream().findFirst().ifPresent(
-                                    spi -> world.addEntity(spi.createBullet(weaponUzi, gameData))
+                                    spi -> world.addEntity(spi.createBullet(weapon, gameData))
                             );
 
                             // Wait for 0.05 seconds between bullets
@@ -65,20 +65,20 @@ public class UziWeaponControlSystem implements IEntityProcessingService {
             }
 
 
-            if (weaponUzi.getX() < 0) {
-                weaponUzi.setX(1);
+            if (weapon.getX() < 0) {
+                weapon.setX(1);
             }
 
-            if (weaponUzi.getX() > gameData.getDisplayWidth()) {
-                weaponUzi.setX(gameData.getDisplayWidth() - 1);
+            if (weapon.getX() > gameData.getDisplayWidth()) {
+                weapon.setX(gameData.getDisplayWidth() - 1);
             }
 
-            if (weaponUzi.getY() < 0) {
-                weaponUzi.setY(1);
+            if (weapon.getY() < 0) {
+                weapon.setY(1);
             }
 
-            if (weaponUzi.getY() > gameData.getDisplayHeight()) {
-                weaponUzi.setY(gameData.getDisplayHeight() - 1);
+            if (weapon.getY() > gameData.getDisplayHeight()) {
+                weapon.setY(gameData.getDisplayHeight() - 1);
             }
 
 

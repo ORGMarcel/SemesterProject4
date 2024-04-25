@@ -23,6 +23,7 @@
         <module>CommonPlayer</module>
         <module>CommonWeapon</module>
         <module>WeaponUzi</module>
+        <module>WeaponShotgun</module>
 
     </modules>
     <properties>

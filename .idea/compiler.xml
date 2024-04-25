@@ -12,6 +12,8 @@
         <module name="Enemies" />
         <module name="CommonEnemy" />
         <module name="Collision" />
+        <module name="WeaponShotgun" />
+        <module name="WeaponUzi" />
         <module name="CommonBullet" />
         <module name="Weapon" />
         <module name="Common" />
