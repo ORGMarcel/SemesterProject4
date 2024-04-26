@@ -1,8 +1,8 @@
-/Users/dj/Desktop/Software_ingeniør/4_Semester/Semesterprojekt_4/SemesterProject4/Common/src/main/java/dk/sdu/mmmi/cbse/common/services/IPostEntityProcessingService.java
-/Users/dj/Desktop/Software_ingeniør/4_Semester/Semesterprojekt_4/SemesterProject4/Common/src/main/java/dk/sdu/mmmi/cbse/common/data/World.java
-/Users/dj/Desktop/Software_ingeniør/4_Semester/Semesterprojekt_4/SemesterProject4/Common/src/main/java/dk/sdu/mmmi/cbse/common/services/IGamePluginService.java
-/Users/dj/Desktop/Software_ingeniør/4_Semester/Semesterprojekt_4/SemesterProject4/Common/src/main/java/dk/sdu/mmmi/cbse/common/data/Entity.java
-/Users/dj/Desktop/Software_ingeniør/4_Semester/Semesterprojekt_4/SemesterProject4/Common/src/main/java/module-info.java
-/Users/dj/Desktop/Software_ingeniør/4_Semester/Semesterprojekt_4/SemesterProject4/Common/src/main/java/dk/sdu/mmmi/cbse/common/data/GameData.java
-/Users/dj/Desktop/Software_ingeniør/4_Semester/Semesterprojekt_4/SemesterProject4/Common/src/main/java/dk/sdu/mmmi/cbse/common/data/GameKeys.java
-/Users/dj/Desktop/Software_ingeniør/4_Semester/Semesterprojekt_4/SemesterProject4/Common/src/main/java/dk/sdu/mmmi/cbse/common/services/IEntityProcessingService.java
+C:\Users\hej\SemesterProject4\Common\src\main\java\dk\sdu\mmmi\cbse\common\data\World.java
+C:\Users\hej\SemesterProject4\Common\src\main\java\dk\sdu\mmmi\cbse\common\data\Entity.java
+C:\Users\hej\SemesterProject4\Common\src\main\java\dk\sdu\mmmi\cbse\common\services\IEntityProcessingService.java
+C:\Users\hej\SemesterProject4\Common\src\main\java\module-info.java
+C:\Users\hej\SemesterProject4\Common\src\main\java\dk\sdu\mmmi\cbse\common\data\GameData.java
+C:\Users\hej\SemesterProject4\Common\src\main\java\dk\sdu\mmmi\cbse\common\data\GameKeys.java
+C:\Users\hej\SemesterProject4\Common\src\main\java\dk\sdu\mmmi\cbse\common\services\IGamePluginService.java
+C:\Users\hej\SemesterProject4\Common\src\main\java\dk\sdu\mmmi\cbse\common\services\IPostEntityProcessingService.java
