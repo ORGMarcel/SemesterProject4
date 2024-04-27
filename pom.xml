@@ -25,6 +25,8 @@
         <module>WeaponUzi</module>
         <module>WeaponShotgun</module>
         <module>CommonCoins</module>
+        <module>ShotgunCoin</module>
+        <module>UziCoin</module>
 
     </modules>
     <properties>
