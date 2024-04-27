@@ -35,7 +35,6 @@ public class CollisionHandler {
             return CollideableAndCollideable(co1, co2, world);
         }
 
-
         // Bullet and Bullet
         if (e1 instanceof Bullet && e2 instanceof Bullet) {
             return true; // Nothing should happen

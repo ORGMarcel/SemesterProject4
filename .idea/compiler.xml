@@ -10,29 +10,21 @@
         <module name="Player" />
         <module name="CommonEnemy" />
         <module name="Enemies" />
+        <module name="WeaponUzi" />
         <module name="CommonBullet" />
         <module name="Weapon" />
         <module name="Common" />
         <module name="CommonPlayer" />
-<<<<<<< HEAD
-        <module name="Asteroid" />
-        <module name="CommonWeapon" />
-        <module name="CommonPlayerr" />
-=======
         <module name="CommonObstacle" />
         <module name="CommonMap" />
         <module name="CommonMapObject" />
         <module name="CommonWeapon" />
         <module name="CommonWeaponCoin" />
         <module name="CommonInvisibleObject" />
->>>>>>> feature/mapimplementation
         <module name="CollisionSystem" />
         <module name="Map" />
         <module name="Core" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="CommonWall" target="21" />
-    </bytecodeTargetLevel>
   </component>
 </project>
