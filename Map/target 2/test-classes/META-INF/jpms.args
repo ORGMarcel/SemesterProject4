@@ -1,4 +1,0 @@
---patch-module
-Map=_
---add-reads
-Map=ALL-UNNAMED
