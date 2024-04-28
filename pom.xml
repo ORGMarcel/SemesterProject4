@@ -28,6 +28,7 @@
         <module>CommonWeaponCoin</module>
         <module>CommonMapObject</module>
         <module>CommonInvisibleObject</module>
+        <module>WeaponUzi</module>
 
     </modules>
     <properties>
