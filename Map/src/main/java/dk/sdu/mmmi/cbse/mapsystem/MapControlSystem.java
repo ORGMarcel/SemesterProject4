@@ -33,7 +33,7 @@ public class MapControlSystem implements IEntityProcessingService {
             for (int i = 0; i < mapArray.length; i++) {
                 for (int j = 0; j < mapArray[i].length; j++) {
                     if(mapArray[i][j] instanceof MapPlayer){
-                        System.out.println("First is: " + i + " second is: " + j);
+//                        System.out.println("First is: " + i + " second is: " + j);
                         mapArray[i][j] = new InvisibleObject();
                         playerPositionI = i;
                         playerPositionJ = j;
