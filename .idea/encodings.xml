@@ -15,8 +15,12 @@
     <file url="file://$PROJECT_DIR$/CommonInvisibleObject/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonMap/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonMap/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonMapEnemy/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonMapEnemy/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonMapObject/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonMapObject/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonMapPlayer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonMapPlayer/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonObstacle/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonObstacle/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonPlayer/src/main/java" charset="UTF-8" />

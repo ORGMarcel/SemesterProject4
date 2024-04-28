@@ -29,6 +29,8 @@
         <module>CommonMapObject</module>
         <module>CommonInvisibleObject</module>
         <module>WeaponUzi</module>
+        <module>CommonMapPlayer</module>
+        <module>CommonMapEnemy</module>
 
     </modules>
     <properties>

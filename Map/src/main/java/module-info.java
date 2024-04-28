@@ -12,6 +12,10 @@ module Map {
     requires CommonWeaponCoin;
     requires CommonObstacle;
     requires CommonInvisibleObject;
+    requires CommonPlayer;
+    requires CommonMapPlayer;
+    requires CommonEnemyy;
+    requires CommonMapEnemy;
 //    requires CommonBullet;
 //    uses dk.sdu.mmmi.cbse.common.bullet.BulletSPI;
     provides IGamePluginService with MapPlugin;
