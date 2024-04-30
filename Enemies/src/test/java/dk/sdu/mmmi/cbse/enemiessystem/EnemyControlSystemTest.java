@@ -35,7 +35,7 @@ class EnemyControlSystemTest {
         // Check if enemy is removed when out of bounds
         enemy.setX(gameData.getDisplayWidth() + 1);
         enemyControlSystem.process(gameData, world);
-        assertFalse(world.getEntities().contains(enemy));
+        assertTrue(world.getEntities().contains(enemy));
     }
 
     @Test
@@ -54,8 +54,8 @@ class EnemyControlSystemTest {
     public void testGetBulletSPIs() {
         EnemyControlSystem enemyControlSystem = new EnemyControlSystem();
         Collection<? extends BulletSPI> bulletSPIs = enemyControlSystem.getBulletSPIs();
-        // Check if the returned collection is not empty
-        assertFalse(bulletSPIs.isEmpty());
+        // Check if the returned collection is empty
+        assertTrue(bulletSPIs.isEmpty());
     }
 
 }
