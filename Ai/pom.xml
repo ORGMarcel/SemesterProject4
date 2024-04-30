@@ -9,12 +9,11 @@
         <version>1.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>dk.sdu.cbse.common.enemy</groupId>
-    <artifactId>CommonEnemy</artifactId>
+    <artifactId>Ai</artifactId>
 
     <properties>
-        <maven.compiler.source>1.9</maven.compiler.source>
-        <maven.compiler.target>1.9</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
@@ -26,13 +25,37 @@
         </dependency>
         <dependency>
             <groupId>dk.sdu.mmmi.cbse</groupId>
-            <artifactId>CommonPath</artifactId>
+            <artifactId>CommonMap</artifactId>
             <version>1.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>dk.sdu.mmmi.cbse</groupId>
-            <artifactId>CommonPath</artifactId>
+            <artifactId>CommonMapPlayer</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>dk.sdu.mmmi.cbse</groupId>
+            <artifactId>CommonMapEnemy</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>dk.sdu.mmmi.cbse</groupId>
+            <artifactId>CommonObstacle</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>dk.sdu.cbse.common.enemy</groupId>
+            <artifactId>CommonEnemy</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>dk.sdu.cbse.common.enemy</groupId>
+            <artifactId>CommonEnemy</artifactId>
             <version>1.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

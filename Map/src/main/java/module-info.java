@@ -14,7 +14,7 @@ module Map {
     requires CommonInvisibleObject;
     requires CommonPlayer;
     requires CommonMapPlayer;
-    requires CommonEnemyy;
+    requires CommonEnemy;
     requires CommonMapEnemy;
 //    requires CommonBullet;
 //    uses dk.sdu.mmmi.cbse.common.bullet.BulletSPI;

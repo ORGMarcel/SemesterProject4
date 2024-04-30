@@ -11,6 +11,7 @@
         <module name="CommonEnemy" />
         <module name="Enemies" />
         <module name="CommonMapEnemy" />
+        <module name="Ai" />
         <module name="WeaponUzi" />
         <module name="CommonBullet" />
         <module name="Weapon" />
@@ -23,6 +24,7 @@
         <module name="CommonWeapon" />
         <module name="CommonWeaponCoin" />
         <module name="CommonInvisibleObject" />
+        <module name="CommonPath" />
         <module name="CollisionSystem" />
         <module name="Map" />
         <module name="Core" />

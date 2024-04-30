@@ -31,6 +31,8 @@
         <module>WeaponUzi</module>
         <module>CommonMapPlayer</module>
         <module>CommonMapEnemy</module>
+        <module>Ai</module>
+        <module>CommonPath</module>
 
     </modules>
     <properties>
