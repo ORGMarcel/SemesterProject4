@@ -88,7 +88,7 @@ public class EnemyControlSystem implements IEntityProcessingService {
 
     }
 
-    private Entity createEnemyShip(GameData gameData) {
+    Entity createEnemyShip(GameData gameData) {
 
         Random random = new Random();
         int randomWidthX = random.nextInt(gameData.getDisplayWidth());
@@ -102,7 +102,7 @@ public class EnemyControlSystem implements IEntityProcessingService {
         return enemyShip;
     }
 
-    private Collection<? extends BulletSPI> getBulletSPIs() {
+    Collection<? extends BulletSPI> getBulletSPIs() {
         return ServiceLoader.load(BulletSPI.class).stream().map(ServiceLoader.Provider::get).collect(toList());
     }
 }
