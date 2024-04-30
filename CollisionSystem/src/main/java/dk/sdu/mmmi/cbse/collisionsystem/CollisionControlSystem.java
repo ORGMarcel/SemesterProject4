@@ -1,8 +1,10 @@
 package dk.sdu.mmmi.cbse.collisionsystem;
 
-import dk.sdu.mmmi.cbse.commonenemy.Enemy;
+import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
+import dk.sdu.mmmi.cbse.commoninvisibleobject.InvisibleObject;
+import dk.sdu.mmmi.cbse.commonmap.Map;
+import dk.sdu.mmmi.cbse.commonobstacle.Obstacle;
 import dk.sdu.mmmi.cbse.commonplayer.Player;
-import dk.sdu.mmmi.cbse.commonbullet.Bullet;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
@@ -14,29 +16,61 @@ import static java.lang.Math.sqrt;
 public class CollisionControlSystem implements IEntityProcessingService {
     @Override
     public void process(GameData gameData, World world) {
+        CollisionHandler collisionHandler = new CollisionHandler();
 
         // Get current kills from the world
         int killsOverall = world.getKillsOverall();
         int kills = world.getKills();
 
-        // for loop for collision between bullet and Enemies
-        // TODO: Old collision
-        for (Entity entityEnemy : world.getEntities(Enemy.class)) {
-            for (Entity entityBullet : world.getEntities(Bullet.class)) {
-                if (isCollided(entityEnemy, entityBullet)) {
-                    entityEnemy.setHealthPoints(entityEnemy.getHealthPoints() - 1);
-                    if (entityEnemy.getHealthPoints() < 1) {
-                        world.removeEntity(entityEnemy);
-                        killsOverall++;
-                        kills++;
-                    }
-                    world.removeEntity(entityBullet);
+//        // for loop for collision between bullet and Enemies
+//        // TODO: Old collision
+//        for (Entity entityEnemy : world.getEntities(Enemy.class)) {
+//            for (Entity entityBullet : world.getEntities(Bullet.class)) {
+//                if (isCollided(entityEnemy, entityBullet)) {
+//                    entityEnemy.setHealthPoints(entityEnemy.getHealthPoints() - 1);
+//                    if (entityEnemy.getHealthPoints() < 1) {
+//                        world.removeEntity(entityEnemy);
+//                        killsOverall++;
+//                        kills++;
+//                    }
+//                    world.removeEntity(entityBullet);
+//                }
+//            }
+//        }
+
+
+        // TODO: New collision with CollisionHandler class
+        for (Entity entity1 : world.getEntities()) {
+            for (Entity entity2 : world.getEntities()) {
+
+                // TODO: Change this to not check this every time
+                if (!(entity1 instanceof Map) && !(entity2 instanceof Map) &&!(entity1 instanceof InvisibleObject) &&!(entity2 instanceof InvisibleObject) && isCollided(entity1, entity2) && entity1.getClass() != entity2.getClass()) {
+//                    System.out.println("Collided" + entity1.getClass() + " " + entity2.getClass());
+                    collisionHandler.handleCollision(world, entity1, entity2);
+//                    Enemy enemy = (Enemy) entityEnemy;
+//                    enemy.handleCollide();
+
+//                    entityEnemy.setHealthPoints(entityEnemy.getHealthPoints() - 1);
+
+//                    if (entityEnemy.getHealthPoints() < 1) {
+//                        world.removeEntity(entityEnemy);
+//                        killsOverall++;
+//                        kills++;
+//                    }
+//                    world.removeEntity(entityBullet);
+                }
+                else if (entity1 instanceof Player && entity2 instanceof Obstacle){
+                    // If player and obstacle not collides, it has to change atObstacle to false
+                    MovingPart movingPart = entity1.getPart(MovingPart.class);
+                    movingPart.setAtObstacle(false);
+
+
                 }
             }
         }
 
 
-//        // TODO: New collision
+
 //        for (Entity entity:world.getEntities()) {
 //            for (Entity entity1:world.getEntities()){
 //                if(isCollided(entity, entity1) && entity.getClass() != entity1.getClass()){
@@ -84,18 +118,18 @@ public class CollisionControlSystem implements IEntityProcessingService {
         }
 
 
-        // for loop for collision between bullet and Player
-        for (Entity entityPlayer : world.getEntities(Player.class)) {
-            for (Entity entityBullet : world.getEntities(Bullet.class)) {
-                if (isCollided(entityPlayer, entityBullet)) {
-                    entityPlayer.setHealthPoints(entityPlayer.getHealthPoints()-1);
-                    if (entityPlayer.getHealthPoints()<1) {
-                        world.removeEntity(entityPlayer);
-                    }
-                    world.removeEntity(entityBullet);
-                }
-            }
-        }
+//        // for loop for collision between bullet and Player
+//        for (Entity entityPlayer : world.getEntities(Player.class)) {
+//            for (Entity entityBullet : world.getEntities(Bullet.class)) {
+//                if (isCollided(entityPlayer, entityBullet)) {
+//                    entityPlayer.setHealthPoints(entityPlayer.getHealthPoints()-1);
+//                    if (entityPlayer.getHealthPoints()<1) {
+//                        world.removeEntity(entityPlayer);
+//                    }
+//                    world.removeEntity(entityBullet);
+//                }
+//            }
+//        }
 
     }
 
@@ -118,5 +152,21 @@ public class CollisionControlSystem implements IEntityProcessingService {
 
         return false;
     }
+
+
+
+    // TODO: FIX THIS MAN.
+//    public Entity[] getWallObjects(World world){
+//        ArrayList<Entity> wallObjects = new ArrayList<>();
+//
+//        for (Entity entity : world.getEntities()) {
+//            if(entity.getEntityType() == WALL){
+//
+//            }
+//        }
+//
+//        return Entity[];
+//    }
+
 
 }

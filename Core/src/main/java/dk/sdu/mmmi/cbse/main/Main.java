@@ -4,6 +4,8 @@ import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.GameKeys;
 import dk.sdu.mmmi.cbse.common.data.World;
+import dk.sdu.mmmi.cbse.common.data.entityparts.ColorPart;
+import dk.sdu.mmmi.cbse.common.data.entityparts.EntityPart;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
@@ -18,6 +20,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -141,6 +144,7 @@ public class Main extends Application {
         for (IEntityProcessingService entityProcessorService : getEntityProcessingServices()) {
             entityProcessorService.process(gameData, world);
         }
+
         for (Entity entity : world.getEntities()) {
             if (polygons.get(entity) == null){
                 Polygon polygon = new Polygon(entity.getPolygonCoordinates());
@@ -177,6 +181,32 @@ public class Main extends Application {
             polygon.setTranslateX(entity.getX());
             polygon.setTranslateY(entity.getY());
             polygon.setRotate(entity.getRotation());
+
+//            // Check condition to make specific entities invisible
+//            // TODO: Check this
+//            if(entity.getColorInt() == 0){
+//                polygon.setFill(Color.TRANSPARENT);
+//            }else if(entity.getColorInt() == 1){
+//                polygon.setFill(Color.BLACK);
+//            }else if(entity.getColorInt() == 2){
+//                polygon.setFill(Color.RED);
+//            }else {
+//                polygon.setFill(Color.BLACK); // Default visible color
+//            }
+
+            // TODO: Check this
+            ColorPart colorPart = entity.getPart(ColorPart.class);
+
+            if(colorPart.getColorInt() == 0){
+                polygon.setFill(Color.TRANSPARENT);
+            }else if(colorPart.getColorInt() == 1){
+                polygon.setFill(Color.BLACK);
+            }else if(colorPart.getColorInt() == 2){
+                polygon.setFill(Color.RED);
+            }else {
+                polygon.setFill(Color.BLACK); // Default visible color
+            }
+
         }
 
     }
@@ -192,4 +222,8 @@ public class Main extends Application {
     private Collection<? extends IPostEntityProcessingService> getPostEntityProcessingServices() {
         return ServiceLoader.load(IPostEntityProcessingService.class).stream().map(ServiceLoader.Provider::get).collect(toList());
     }
+
+//    private Collection<? extends EntityPart> getEntityPart() {
+//        return ServiceLoader.load(EntityPart.class).stream().map(ServiceLoader.Provider::get).collect(toList());
+//    }
 }

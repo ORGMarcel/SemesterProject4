@@ -19,9 +19,15 @@
         <module>Weapon</module>
         <module>Enemies</module>
         <module>CollisionSystem</module>
+        <module>CommonMap</module>
+        <module>Map</module>
         <module>CommonEnemy</module>
         <module>CommonPlayer</module>
+        <module>CommonObstacle</module>
         <module>CommonWeapon</module>
+        <module>CommonWeaponCoin</module>
+        <module>CommonMapObject</module>
+        <module>CommonInvisibleObject</module>
         <module>WeaponUzi</module>
         <module>WeaponShotgun</module>
         <module>CommonCoins</module>

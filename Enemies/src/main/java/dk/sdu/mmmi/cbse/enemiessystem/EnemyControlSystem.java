@@ -1,6 +1,7 @@
 package dk.sdu.mmmi.cbse.enemiessystem;
 
 //import dk.sdu.mmmi.cbse.common.bullet.BulletSPI;
+import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
 import dk.sdu.mmmi.cbse.commonenemy.Enemy;
 import dk.sdu.mmmi.cbse.commonbullet.BulletSPI;
 import dk.sdu.mmmi.cbse.common.data.Entity;
@@ -26,6 +27,13 @@ public class EnemyControlSystem implements IEntityProcessingService {
         int randomInt = random.nextInt(500);
 
         for (Entity enemy : world.getEntities(Enemy.class)) {
+
+            LifePart lifePart = enemy.getPart(LifePart.class);
+
+            if(lifePart.getLife()<=0){
+                world.removeEntity(enemy);
+            }
+
 
             randomNumber = random.nextInt(50);
             randomNumber2 = random.nextInt(20);
@@ -67,12 +75,15 @@ public class EnemyControlSystem implements IEntityProcessingService {
                 enemy.setY(gameData.getDisplayHeight()-1);
                 enemy.setRotation(enemy.getRotation() + 180);
             }
+
+            lifePart.process(gameData, enemy);
+
         }
 
         // Spawning enemies that is round * 2
         if (!world.isRoundRunning()){
             for (int i = 0; i < world.getRound()*2; i++) {
-                Entity enemies;
+                Enemy enemies;
                 enemies = createEnemyShip(gameData);
                 world.addEntity(enemies);
             }
@@ -88,17 +99,17 @@ public class EnemyControlSystem implements IEntityProcessingService {
 
     }
 
-    private Entity createEnemyShip(GameData gameData) {
+    private Enemy createEnemyShip(GameData gameData) {
 
         Random random = new Random();
         int randomWidthX = random.nextInt(gameData.getDisplayWidth());
         int randomHeightY = random.nextInt(gameData.getDisplayHeight());
 
-        Entity enemyShip = new Enemy();
+        Enemy enemyShip = new Enemy();
+//        enemyShip.add(new LifePart(3));
         enemyShip.setPolygonCoordinates(18.0, -1.5, 12.0, -1.5, 12.0, -4.5, 9.0, -4.5, 9.0, -7.5, -3.0, -7.5, -3.0, -10.5, 0.0, -10.5, 0.0, -13.5, -15.0, -13.5, -15.0, -7.5, -12.0, -7.5, -12.0, -4.5, -9.0, -4.5, -9.0, -1.5, -15.0, -1.5, -15.0, 1.5, -9.0, 1.5, -9.0, 4.5, -12.0, 4.5, -12.0, 7.5, -15.0, 7.5, -15.0, 13.5, 0.0, 13.5, 0.0, 10.5, -6.0, 10.5, -6.0, 7.5, 6.0, 7.5, 6.0, 1.5, 12.0, 1.5, 12.0, -1.5, 6.0, -1.5, 6.0, -4.5, 12.0, -4.5, 12.0, -1.5, 18.0, -1.5);
         enemyShip.setX(randomWidthX);
         enemyShip.setY(randomHeightY);
-        enemyShip.setHealthPoints(6);
         return enemyShip;
     }
 

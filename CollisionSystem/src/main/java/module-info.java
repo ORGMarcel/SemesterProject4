@@ -9,5 +9,11 @@ module CollisionSystem {
     requires Enemies;
     requires CommonEnemyy;
     requires CommonPlayer;
+    requires CommonWeapon;
+    requires CommonMapObject;
+    requires CommonObstacle;
+    requires CommonWeaponCoin;
+    requires CommonMap;
+    requires CommonInvisibleObject;
     provides IEntityProcessingService with CollisionControlSystem;
 }
