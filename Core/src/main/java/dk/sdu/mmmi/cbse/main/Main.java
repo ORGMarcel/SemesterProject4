@@ -203,6 +203,8 @@ public class Main extends Application {
                 polygon.setFill(Color.BLACK);
             }else if(colorPart.getColorInt() == 2){
                 polygon.setFill(Color.RED);
+            }else if(colorPart.getColorInt() == 3){
+                polygon.setFill(Color.BLUE);
             }else {
                 polygon.setFill(Color.BLACK); // Default visible color
             }
