@@ -43,7 +43,7 @@ public class MapPlugin implements IGamePluginService {
 
         for (int i = 0; i < mapObstacle.length; i++) {
             for (int j = 0; j < mapObstacle[i].length; j++) {
-                System.out.println("x: " + mapObstacle[i][j].getX() + " y: " + mapObstacle[i][j].getY() + ": ");
+//                System.out.println("x: " + mapObstacle[i][j].getX() + " y: " + mapObstacle[i][j].getY() + ": ");
                 world.addEntity(mapObstacle[i][j]);
             }
         }

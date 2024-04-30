@@ -42,7 +42,7 @@ public class MapControlSystem implements IEntityProcessingService {
                 }
             }
             mapArray[playerPositionI][playerPositionJ] = new InvisibleObject();
-            mapArray[(int) (player.getY() / 40)][(int) (player.getX() / 40)] = new MapPlayer();
+            mapArray[(int) (player.getY() / 40)][(int) (player.getX() / 40)] = new MapPlayer(player.getX(), player.getY());
         }
 
 
@@ -63,7 +63,7 @@ public class MapControlSystem implements IEntityProcessingService {
                 }
             }
             mapArray[enemyPositionI][enemyPositionJ] = new InvisibleObject();
-            mapArray[(int) (enemy.getY() / 40)][(int) (enemy.getX() / 40)] = new MapEnemy();
+            mapArray[(int) (enemy.getY() / 40)][(int) (enemy.getX() / 40)] = new MapEnemy(enemy.getX(), enemy.getY());
         }
 
 
