@@ -8,7 +8,7 @@ import dk.sdu.mmmi.cbse.commonweapon.Weapon;
 
 public class UziWeaponPlugin implements IGamePluginService {
 
-    private Entity weaponUzi;
+    private Entity Uzi;
 
     public UziWeaponPlugin() {
     }
@@ -17,13 +17,13 @@ public class UziWeaponPlugin implements IGamePluginService {
     public void start(GameData gameData, World world) {
 
         // Add entities to the world
-//        weaponUzi = createBaseWeapon(gameData);
-//        world.addEntity(weaponUzi);
+        Uzi = createBaseWeapon(gameData);
+        world.addEntity(Uzi);
     }
 
     private Entity createBaseWeapon(GameData gameData) {
 
-        Entity uziWeapon = new Weapon();
+        Entity uziWeapon = new Uzi();
         uziWeapon.setPolygonCoordinates(
                 2, -0.5, 6, -0.5, 6, -1.5, 4, -1.5, 4, -3.5, 1, -3.5, 1, -4.5, -4, -4.5, -4, -2.5, -2, -2.5, -2, -1.5, -1, -1.5, -1, -0.5, -2, -0.5, -2, 0.5, -1, 0.5, -1, 1.5, -2, 1.5, -2, 0.5, -4, 0.5, -4, 2.5, -1, 2.5, -1, 0.5, 1, 0.5, 1, 2.5, 3, 2.5, 3, 1.5, 4, 1.5, 4, 0.5, 2, 0.5, 2, -0.5
         );
@@ -37,7 +37,7 @@ public class UziWeaponPlugin implements IGamePluginService {
     @Override
     public void stop(GameData gameData, World world) {
         // Remove entities
-        world.removeEntity(weaponUzi);
+        world.removeEntity(Uzi);
     }
 
 }

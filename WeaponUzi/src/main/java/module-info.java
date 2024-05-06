@@ -1,8 +1,9 @@
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.commonbullet.BulletSPI;
-import dk.sdu.mmmi.cbse.weaponuzi.UziWeaponControlSystem;
 import dk.sdu.mmmi.cbse.weaponuzi.UziWeaponPlugin;
+import dk.sdu.mmmi.cbse.weaponuzi.UziWeaponControlSystem;
+
 
 module WeaponUzi {
     uses BulletSPI;
