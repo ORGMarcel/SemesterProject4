@@ -17,8 +17,8 @@ public class UziWeaponPlugin implements IGamePluginService {
     public void start(GameData gameData, World world) {
 
         // Add entities to the world
-        weaponUzi = createBaseWeapon(gameData);
-        world.addEntity(weaponUzi);
+//        weaponUzi = createBaseWeapon(gameData);
+//        world.addEntity(weaponUzi);
     }
 
     private Entity createBaseWeapon(GameData gameData) {

@@ -18,8 +18,8 @@ public class WeaponPlugin implements IGamePluginService {
     public void start(GameData gameData, World world) {
 
 //         Add entities to the world
-//        weapon = createBaseWeapon(gameData);
-//        world.addEntity(weapon);
+        weapon = createBaseWeapon(gameData);
+        world.addEntity(weapon);
     }
 
     private Entity createBaseWeapon(GameData gameData) {

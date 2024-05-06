@@ -34,13 +34,13 @@ public class WeaponControlSystem implements IEntityProcessingService {
 
 
             // Controlling
-//            if (gameData.getKeys().isPressed(GameKeys.SPACE)) {
-//                getBulletSPIs().stream().findFirst().ifPresent(
-//                        spi -> {
-//                            world.addEntity(spi.createBullet(weapon, gameData));
-//                        }
-//                );
-//            }
+            if (gameData.getKeys().isPressed(GameKeys.SPACE)) {
+                getBulletSPIs().stream().findFirst().ifPresent(
+                        spi -> {
+                            world.addEntity(spi.createBullet(weapon, gameData));
+                        }
+                );
+            }
             
         if (weapon.getX() < 0) {
             weapon.setX(1);

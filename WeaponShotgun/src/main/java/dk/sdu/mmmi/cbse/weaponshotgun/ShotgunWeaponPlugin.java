@@ -17,8 +17,8 @@ public class ShotgunWeaponPlugin implements IGamePluginService {
     public void start(GameData gameData, World world) {
 
         // Add entities to the world
-        weaponShotgun = createBaseWeapon(gameData);
-        world.addEntity(weaponShotgun);
+//        weaponShotgun = createBaseWeapon(gameData);
+//        world.addEntity(weaponShotgun);
     }
 
     private Entity createBaseWeapon(GameData gameData) {

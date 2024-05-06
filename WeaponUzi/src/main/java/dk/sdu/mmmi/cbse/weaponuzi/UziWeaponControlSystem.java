@@ -33,36 +33,36 @@ public class UziWeaponControlSystem implements IEntityProcessingService {
 
 
             // Controlling
-//            if(gameData.getKeys().isPressed(GameKeys.SPACE)) {
-//                Weapon weapon1 = (Weapon) weapon;
-//
-//                Thread thread1 = new Thread(() -> {
-//                    weapon1.setShooting(true);
-//
-//                    try {
-//                        for (int i = 0; i < 40; i++) {
-//                            // Execute the action
-//                            getBulletSPIs().stream().findFirst().ifPresent(
-//                                    spi -> world.addEntity(spi.createBullet(weapon, gameData))
-//                            );
-//
-//                            // Wait for 0.05 seconds between bullets
-//                            Thread.sleep(50);
-//                        }
-//                        // Wait for 2 seconds after completing the loop
-//                        Thread.sleep(2000); // 2000 milliseconds
-//                        weapon1.setShooting(false);
-//                    } catch (InterruptedException e) {
-//                        Thread.currentThread().interrupt(); // Properly handle thread interruption
-//                        e.printStackTrace();
-//                    }
-//
-//                });
-//                if(!weapon1.isShooting()){
-//                    thread1.start();
-//                }
-//
-//            }
+            if(gameData.getKeys().isPressed(GameKeys.SPACE)) {
+                Weapon weapon1 = (Weapon) weapon;
+
+                Thread thread1 = new Thread(() -> {
+                    weapon1.setShooting(true);
+
+                    try {
+                        for (int i = 0; i < 40; i++) {
+                            // Execute the action
+                            getBulletSPIs().stream().findFirst().ifPresent(
+                                    spi -> world.addEntity(spi.createBullet(weapon, gameData))
+                            );
+
+                            // Wait for 0.05 seconds between bullets
+                            Thread.sleep(50);
+                        }
+                        // Wait for 2 seconds after completing the loop
+                        Thread.sleep(2000); // 2000 milliseconds
+                        weapon1.setShooting(false);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt(); // Properly handle thread interruption
+                        e.printStackTrace();
+                    }
+
+                });
+                if(!weapon1.isShooting()){
+                    thread1.start();
+                }
+
+            }
 
 
             if (weapon.getX() < 0) {

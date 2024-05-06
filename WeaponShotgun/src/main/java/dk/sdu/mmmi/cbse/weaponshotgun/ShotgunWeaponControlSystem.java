@@ -39,38 +39,38 @@ public class ShotgunWeaponControlSystem implements IEntityProcessingService {
             weapon.setY(weapon.getY() + changeY * 15);
 
             // Controlling
-            if (gameData.getKeys().isPressed(GameKeys.SPACE)) {
-                Weapon weapon1 = (Weapon) weapon;
-
-                Thread thread1 = new Thread(() -> {
-                    weapon1.setShooting(true);
-
-                    try {
-                        for (int i = 0; i < 5; i++) {
-                            // Execute the action
-                            double bulletRotation = player.getRotation() + (-2*10)+i*10;
-                            getBulletSPIs().stream().findFirst().ifPresent(
-                                    spi -> {
-                                        Entity bullet = spi.createBullet(weapon, gameData);
-                                        bullet.setRotation(bulletRotation);
-                                        world.addEntity(bullet);
-                                    }
-                            );
-                        }
-                        // Wait for 0.2 seconds after completing the loop
-                        Thread.sleep(200);
-                        weapon1.setShooting(false);
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt(); // Properly handle thread interruption
-                        e.printStackTrace();
-                    }
-
-                });
-                if (!weapon1.isShooting()) {
-                    thread1.start();
-                }
-
-            }
+//            if (gameData.getKeys().isPressed(GameKeys.SPACE)) {
+//                Weapon weapon1 = (Weapon) weapon;
+//
+//                Thread thread1 = new Thread(() -> {
+//                    weapon1.setShooting(true);
+//
+//                    try {
+//                        for (int i = 0; i < 5; i++) {
+//                            // Execute the action
+//                            double bulletRotation = player.getRotation() + (-2*10)+i*10;
+//                            getBulletSPIs().stream().findFirst().ifPresent(
+//                                    spi -> {
+//                                        Entity bullet = spi.createBullet(weapon, gameData);
+//                                        bullet.setRotation(bulletRotation);
+//                                        world.addEntity(bullet);
+//                                    }
+//                            );
+//                        }
+//                        // Wait for 0.2 seconds after completing the loop
+//                        Thread.sleep(200);
+//                        weapon1.setShooting(false);
+//                    } catch (InterruptedException e) {
+//                        Thread.currentThread().interrupt(); // Properly handle thread interruption
+//                        e.printStackTrace();
+//                    }
+//
+//                });
+//                if (!weapon1.isShooting()) {
+//                    thread1.start();
+//                }
+//
+//            }
 
             // Check if weapon is out of bounds
             if (weapon.getX() < 0) {
