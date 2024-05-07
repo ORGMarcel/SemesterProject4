@@ -11,14 +11,14 @@ public class Enemy extends Entity implements CollideableInterface {
 
     CommonPath path;
     int currentPathIndex = 0;
-    private float speed = 0.5f;
+    private double speed = 0.05;
 
 
-    public float getSpeed() {
+    public double getSpeed() {
         return speed;
     }
 
-    public void setSpeed(float speed) {
+    public void setSpeed(double speed) {
         this.speed = speed;
     }
 

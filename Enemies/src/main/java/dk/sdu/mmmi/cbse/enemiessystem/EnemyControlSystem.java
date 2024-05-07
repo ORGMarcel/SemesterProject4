@@ -77,44 +77,45 @@ public class EnemyControlSystem implements IEntityProcessingService {
 //                }
 //            }
 
-            if(enemy.getPath() != null){
-                CommonPath path = enemy.getPath();
-                int[][] pathArray = path.getPath();
-                int currentPathIndex = enemy.getCurrentPathIndex();
-
-                if (pathArray != null && currentPathIndex < pathArray.length) {
-                    int[] nextPosition = pathArray[currentPathIndex];
-                    int tileSize = 40;
-                    double speed = enemy.getSpeed();
-                    double targetX = nextPosition[0]*tileSize;
-                    double targetY = nextPosition[1]*tileSize;
-//                    System.out.println("Current Position: (" + enemy.getX() + ", " + enemy.getY() + ")");
-//                    System.out.println("Target Position: (" + targetX + ", " + targetY + ")");
-//                    System.out.println("Calculated New Position: (" + lerp(enemy.getX(), targetX, speed) + ", " + lerp(enemy.getY(), targetY, speed) + ")");
-
-
-                    enemy.setX(lerp(enemy.getX(), targetX, speed));
-                    enemy.setY(lerp(enemy.getY(), targetY, speed));
-
-
-//                    enemy.setX(enemy.getX() + (targetX - enemy.getX()) * speed);
-//                    enemy.setY(enemy.getY() + (targetY - enemy.getY()) * speed);
-//                    enemy.setX(nextPosition[0]*tileSize);
-//                    enemy.setY(nextPosition[1]*tileSize);
-
-                    if (Math.abs(enemy.getX() - targetX) < 1 && Math.abs(enemy.getY() - targetY) < 1) {
-//                        System.out.println("Next position reached");
-                        enemy.setCurrentPathIndex(currentPathIndex + 1);
-                    }
-
+            // TODO: NEW
+//            if(enemy.getPath() != null){
+//                CommonPath path = enemy.getPath();
+//                int[][] pathArray = path.getPath();
+//                int currentPathIndex = enemy.getCurrentPathIndex();
+//
+//                if (pathArray != null && currentPathIndex < pathArray.length) {
+//                    int[] nextPosition = pathArray[currentPathIndex];
+//                    int tileSize = 40;
+//                    double speed = enemy.getSpeed();
+//                    double targetX = nextPosition[0]*tileSize;
+//                    double targetY = nextPosition[1]*tileSize;
+////                    System.out.println("Current Position: (" + enemy.getX() + ", " + enemy.getY() + ")");
+////                    System.out.println("Target Position: (" + targetX + ", " + targetY + ")");
+////                    System.out.println("Calculated New Position: (" + lerp(enemy.getX(), targetX, speed) + ", " + lerp(enemy.getY(), targetY, speed) + ")");
+//
+//
+//                    enemy.setX(lerp(enemy.getX(), targetX, speed));
+//                    enemy.setY(lerp(enemy.getY(), targetY, speed));
+//
+//
+////                    enemy.setX(enemy.getX() + (targetX - enemy.getX()) * speed);
+////                    enemy.setY(enemy.getY() + (targetY - enemy.getY()) * speed);
+////                    enemy.setX(nextPosition[0]*tileSize);
+////                    enemy.setY(nextPosition[1]*tileSize);
+//
+//                    if (Math.abs(enemy.getX() - targetX) < 1 && Math.abs(enemy.getY() - targetY) < 1) {
+////                        System.out.println("Next position reached");
+//                        enemy.setCurrentPathIndex(currentPathIndex + 1);
+//                    }
+//
+////                    enemy.setCurrentPathIndex(currentPathIndex + 1);
+//                } else if (currentPathIndex >= pathArray.length) {
+//                    enemy.setCurrentPathIndex(0);
+//                } else {
+//                    // If the next position is not walkable, skip to the next position in the path
 //                    enemy.setCurrentPathIndex(currentPathIndex + 1);
-                } else if (currentPathIndex >= pathArray.length) {
-                    enemy.setCurrentPathIndex(0);
-                } else {
-                    // If the next position is not walkable, skip to the next position in the path
-                    enemy.setCurrentPathIndex(currentPathIndex + 1);
-                }
-            }
+//                }
+//            }
 
 
 

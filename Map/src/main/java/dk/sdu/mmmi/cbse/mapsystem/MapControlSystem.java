@@ -25,6 +25,8 @@ public class MapControlSystem implements IEntityProcessingService {
 
 
 
+
+
         // Code to update map position
         for (Entity player : world.getEntities(Player.class)) {
             int playerPositionI = (int) (player.getY() / 40);
@@ -65,10 +67,6 @@ public class MapControlSystem implements IEntityProcessingService {
             mapArray[enemyPositionI][enemyPositionJ] = new InvisibleObject();
             mapArray[(int) (enemy.getY() / 40)][(int) (enemy.getX() / 40)] = new MapEnemy(enemy.getX(), enemy.getY());
         }
-
-
-
-
 
 
 

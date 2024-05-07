@@ -87,7 +87,8 @@ public class AiControlSystem implements IEntityProcessingService {
                         pathArray[i][0] = path[i].i;
                         pathArray[i][1] = path[i].j;
 //                        System.out.println();
-//                        System.out.print("i is: " + path[i].i + " j is: " + path[i].j);
+                        System.out.println("i is: " + path[i].i + " j is: " + path[i].j);
+                        System.out.println("new");
                     }
                     enemy.setPath(new CommonPath(pathArray));
 
