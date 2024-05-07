@@ -122,7 +122,6 @@ public class Entity implements Serializable {
 //    }
 
 
-
-        
-
+    public void setWidth(int i) {
+    }
 }
