@@ -4,8 +4,43 @@ import dk.sdu.mmmi.cbse.common.data.CollideableInterface;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.entityparts.ColorPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
+import dk.sdu.mmmi.cbse.commonpath.CommonPath;
 
 public class Enemy extends Entity implements CollideableInterface {
+
+
+    CommonPath path;
+    int currentPathIndex = 0;
+    private double speed = 0.05;
+
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
+
+    public int getCurrentPathIndex() {
+        return currentPathIndex;
+    }
+
+    public void setCurrentPathIndex(int currentPathIndex) {
+        this.currentPathIndex = currentPathIndex;
+    }
+
+
+
+    public CommonPath getPath() {
+        return path;
+    }
+
+    public void setPath(CommonPath path) {
+        this.path = path;
+        setCurrentPathIndex(0);
+    }
+
 
 
     public Enemy() {

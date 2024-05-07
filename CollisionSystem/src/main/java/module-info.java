@@ -7,7 +7,7 @@ module CollisionSystem {
     requires CommonBullet;
     requires Player;
     requires Enemies;
-    requires CommonEnemyy;
+    requires CommonEnemy;
     requires CommonPlayer;
     requires CommonWeapon;
     requires CommonMapObject;

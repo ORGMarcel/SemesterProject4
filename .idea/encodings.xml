@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/Ai/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ai/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Bullet/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Bullet/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CollisionSystem/src/main/java" charset="UTF-8" />
@@ -15,10 +17,16 @@
     <file url="file://$PROJECT_DIR$/CommonInvisibleObject/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonMap/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonMap/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonMapEnemy/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonMapEnemy/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonMapObject/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonMapObject/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonMapPlayer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonMapPlayer/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonObstacle/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonObstacle/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonPath/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonPath/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonPlayer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonPlayer/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonWeapon/src/main/java" charset="UTF-8" />

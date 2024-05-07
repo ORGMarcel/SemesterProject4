@@ -39,6 +39,7 @@ public class CollisionControlSystem implements IEntityProcessingService {
 //        }
 
 
+
         // TODO: New collision with CollisionHandler class
         for (Entity entity1 : world.getEntities()) {
             for (Entity entity2 : world.getEntities()) {
