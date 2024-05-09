@@ -1,17 +1,15 @@
-package dk.sdu.mmmi.cbse.shotguncoin;
+package dk.sdu.mmmi.cbse.weaponshotgun;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
-import dk.sdu.mmmi.cbse.commoncoins.Coin;
-
 import java.util.Random;
 
-public class ShotgunCoinControlSystem implements IEntityProcessingService {
+public class ShotgunCoinSpawnSystem implements IEntityProcessingService {
 
     Random random = new Random();
-    int randomNumber = random.nextInt(600);
+    int randomNumber = random.nextInt(5);
     @Override
     public void process(GameData gameData, World world) {
 
@@ -26,7 +24,7 @@ public class ShotgunCoinControlSystem implements IEntityProcessingService {
 
     private Entity createShotgunCoin(GameData gameData) {
 
-        Entity coinShotgun = new Coin();
+        Entity coinShotgun = new Shotgun();
         coinShotgun.setPolygonCoordinates(
                 4, -0.5, 12, -0.5, 12, -1.5, 8, -1.5, 8, -3.5, 6, -3.5, 6, -4.5, -4, -4.5, -4, -2.5, -8, -2.5, -8,
                 -1.5, -6, -1.5, -6, -0.5, -8, -0.5, -8, 0.5, -6, 0.5, -6, 1.5, -8, 1.5, -8, 0.5, -12, 0.5, -12, 2.5,

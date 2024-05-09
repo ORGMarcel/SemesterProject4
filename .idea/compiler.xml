@@ -17,12 +17,10 @@
         <module name="CommonBullet" />
         <module name="Common" />
         <module name="CommonPlayer" />
-        <module name="ShotgunCoin" />
         <module name="CommonObstacle" />
         <module name="CommonMap" />
         <module name="CommonMapObject" />
         <module name="Asteroid" />
-        <module name="CommonCoins" />
         <module name="CommonWeapon" />
         <module name="CommonWeaponCoin" />
         <module name="CommonInvisibleObject" />
@@ -31,5 +29,10 @@
         <module name="Core" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="CommonCoins" target="21" />
+      <module name="ShotgunCoin" target="21" />
+      <module name="UziCoin" target="21" />
+    </bytecodeTargetLevel>
   </component>
 </project>
