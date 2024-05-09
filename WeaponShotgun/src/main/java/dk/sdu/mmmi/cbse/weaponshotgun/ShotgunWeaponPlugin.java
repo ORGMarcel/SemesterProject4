@@ -17,13 +17,13 @@ public class ShotgunWeaponPlugin implements IGamePluginService {
     public void start(GameData gameData, World world) {
 
         // Add entities to the world
-//        weaponShotgun = createBaseWeapon(gameData);
-//        world.addEntity(weaponShotgun);
+        weaponShotgun = createBaseWeapon(gameData);
+        world.addEntity(weaponShotgun);
     }
 
     private Entity createBaseWeapon(GameData gameData) {
 
-        Entity shotgunWeapon = new Weapon();
+        Entity shotgunWeapon = new Shotgun();
         shotgunWeapon.setPolygonCoordinates(
                 4, -0.5, 12, -0.5, 12, -1.5, 8, -1.5, 8, -3.5, 6, -3.5, 6, -4.5, -4, -4.5, -4, -2.5, -8, -2.5, -8,
                 -1.5, -6, -1.5, -6, -0.5, -8, -0.5, -8, 0.5, -6, 0.5, -6, 1.5, -8, 1.5, -8, 0.5, -12, 0.5, -12, 2.5,
