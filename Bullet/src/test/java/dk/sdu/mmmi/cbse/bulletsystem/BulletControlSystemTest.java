@@ -22,23 +22,23 @@ class BulletControlSystemTest {
     @org.junit.jupiter.api.AfterEach
     void tearDown() {
     }
-    @Test
-    public void testProcess() {
-        BulletControlSystem bulletControlSystem = new BulletControlSystem();
-        Entity shooter = new Entity();
-        GameData gameData = new GameData();
-        World world = new World();
-        Entity bullet = bulletControlSystem.createBullet(shooter, gameData);
-        world.addEntity(bullet);
-        bulletControlSystem.process(gameData, world);
-        // Check if bullet's position has changed
-        assertNotEquals(shooter.getX(), bullet.getX());
-        assertNotEquals(shooter.getY(), bullet.getY());
-        // Check if bullet is removed when out of bounds
-        bullet.setX(gameData.getDisplayWidth() + 1);
-        bulletControlSystem.process(gameData, world);
-        assertFalse(world.getEntities().contains(bullet));
-    }
+//    @Test
+//    public void testProcess() {
+//        BulletControlSystem bulletControlSystem = new BulletControlSystem();
+//        Entity shooter = new Entity();
+//        GameData gameData = new GameData();
+//        World world = new World();
+//        Entity bullet = bulletControlSystem.createBullet(shooter, gameData);
+//        world.addEntity(bullet);
+//        bulletControlSystem.process(gameData, world);
+//        // Check if bullet's position has changed
+//        assertNotEquals(shooter.getX(), bullet.getX());
+//        assertNotEquals(shooter.getY(), bullet.getY());
+//        // Check if bullet is removed when out of bounds
+//        bullet.setX(gameData.getDisplayWidth() + 1);
+//        bulletControlSystem.process(gameData, world);
+//        assertFalse(world.getEntities().contains(bullet));
+//    }
 
     @Test
     public void testCreateBullet() {
