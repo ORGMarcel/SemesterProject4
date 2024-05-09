@@ -5,17 +5,18 @@ import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.commonenemy.Enemy;
+import dk.sdu.mmmi.cbse.commoninvisibleobject.InvisibleObject;
 import dk.sdu.mmmi.cbse.commonmap.Map;
 import dk.sdu.mmmi.cbse.commonmapenemy.MapEnemy;
 import dk.sdu.mmmi.cbse.commonmapobject.CommonMapObject;
 import dk.sdu.mmmi.cbse.commonmapplayer.MapPlayer;
 import dk.sdu.mmmi.cbse.commonobstacle.Obstacle;
 import dk.sdu.mmmi.cbse.commonpath.CommonPath;
+import dk.sdu.mmmi.cbse.commonplayer.Player;
+import dk.sdu.mmmi.cbse.commonweaponcoin.WeaponCoin;
 
 
 import java.util.*;
-
-
 
 
 public class AiControlSystem implements IEntityProcessingService {
@@ -44,60 +45,82 @@ public class AiControlSystem implements IEntityProcessingService {
 //        if (hasRun) {
 //            return;
 //        }
+        // Create a new 20x20 2D array to represent the game world
+        CommonMapObject[][] mapArray = new CommonMapObject[20][20];
 
-        for (Entity xMap : world.getEntities(Map.class)) {
-            Map map = (Map) xMap;
-            CommonMapObject[][] mapArray = map.getMap();
-//            System.out.println("Entered Map");
-
-            Node[][] nodes = new Node[mapArray.length][mapArray[0].length];
-            Node start = null, end = null;
-
-            //TODO: Fix this. This only works when there is only one enemy
-            Enemy enemy = new Enemy();
-
-            for (Entity enemy1 : world.getEntities(Enemy.class)){
-                enemy = (Enemy) enemy1;
+        // Initialize the gameWorld array with InvisibleObject
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 20; j++) {
+                mapArray[i][j] = new InvisibleObject();
             }
+        }
 
-            for (int i = 0; i < mapArray.length; i++) {
-                for (int j = 0; j < mapArray[i].length; j++) {
-                    nodes[i][j] = new Node(i, j, mapArray[i][j] instanceof Obstacle);
-                    if (mapArray[i][j] instanceof MapEnemy) {
-                        start = nodes[i][j];
-                    } else if (mapArray[i][j] instanceof MapPlayer) {
-                        end = nodes[i][j];
-                    }
+        // Iterate over all the entities
+        for (Entity entity : world.getEntities()) {
+            int x = (int) entity.getX() / (gameData.getDisplayWidth() / 20);
+            int y = (int) entity.getY() / (gameData.getDisplayHeight() / 20);
+
+            // Check the type of each entity and update the gameWorld array accordingly
+            if (entity instanceof Obstacle) {
+                mapArray[x][y] = new Obstacle();
+            } else if (entity instanceof WeaponCoin) {
+                mapArray[x][y] = new WeaponCoin();
+            } else if (entity instanceof Player) {
+                mapArray[x][y] = new MapPlayer(entity.getX(), entity.getY());
+            } else if (entity instanceof Enemy) {
+                mapArray[x][y] = new MapEnemy(entity.getX(), entity.getY());
+            }
+        }
+
+
+        Node[][] nodes = new Node[mapArray.length][mapArray[0].length];
+        Node start = null, end = null;
+
+        //TODO: Fix this. This only works when there is only one enemy
+        Enemy enemy = new Enemy();
+
+        for (Entity enemy1 : world.getEntities(Enemy.class)) {
+            enemy = (Enemy) enemy1;
+        }
+
+        for (int i = 0; i < mapArray.length; i++) {
+            for (int j = 0; j < mapArray[i].length; j++) {
+                nodes[i][j] = new Node(i, j, mapArray[i][j] instanceof Obstacle);
+                if (mapArray[i][j] instanceof MapEnemy) {
+                    start = nodes[i][j];
+                } else if (mapArray[i][j] instanceof MapPlayer) {
+                    end = nodes[i][j];
                 }
             }
+        }
 
-            if (start != null && end != null) {
+        if (start != null && end != null) {
 //                System.out.println("Just before AStar");
-                AStar aStar = new AStar();
+            AStar aStar = new AStar();
 //                System.out.printf("Before setNodes");
-                aStar.setNodes(nodes); // Pass the nodes array to the AStar instance
+            aStar.setNodes(nodes); // Pass the nodes array to the AStar instance
 //                System.out.println("Just after AStar");
-                Node[] path = aStar.aStar(mapArray, start, end);
-                // Do something with the path
+            Node[] path = aStar.aStar(mapArray, start, end);
+            // Do something with the path
 //                System.out.println("First path is: " + path[0].i + ", " + path[0].j);
 
-                if(path != null){
-                    int[][] pathArray = new int[path.length][2];
-                    for (int i = 0; i < path.length; i++) {
-                        pathArray[i][0] = path[i].i;
-                        pathArray[i][1] = path[i].j;
+            if (path != null) {
+                int[][] pathArray = new int[path.length][2];
+                for (int i = 0; i < path.length; i++) {
+                    pathArray[i][0] = path[i].i;
+                    pathArray[i][1] = path[i].j;
 //                        System.out.println();
-                        System.out.println("i is: " + path[i].i + " j is: " + path[i].j);
-                        System.out.println("new");
-                    }
-                    enemy.setPath(new CommonPath(pathArray));
-
+                    System.out.println("i is: " + path[i].i + " j is: " + path[i].j);
+                    System.out.println("new");
                 }
+                enemy.setPath(new CommonPath(pathArray));
+
+            }
 
 //                System.out.println("Last path is: " + path[path.length - 1].i + ", " + path[path.length - 1].j);
 //                System.out.println("Path is: " + path);
-            }
         }
+
 //        hasRun = true;
     }
 }
@@ -143,9 +166,9 @@ class AStar {
     private boolean[][] closed;
     private Node[][] nodes;
 
-        public void setNodes(Node[][] nodes) {
-            this.nodes = nodes;
-        }
+    public void setNodes(Node[][] nodes) {
+        this.nodes = nodes;
+    }
 
 
     public Node[] aStar(CommonMapObject[][] map, Node start, Node end) {
