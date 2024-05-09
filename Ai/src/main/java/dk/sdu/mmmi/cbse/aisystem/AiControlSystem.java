@@ -48,6 +48,30 @@ public class AiControlSystem implements IEntityProcessingService {
         // Create a new 20x20 2D array to represent the game world
         CommonMapObject[][] mapArray = new CommonMapObject[20][20];
 
+        // Initialize the gameWorld array with InvisibleObject
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 20; j++) {
+                mapArray[i][j] = new InvisibleObject();
+            }
+        }
+
+        // Iterate over all the entities
+        for (Entity entity : world.getEntities()) {
+            int x = (int) entity.getX() / (gameData.getDisplayWidth() / 20);
+            int y = (int) entity.getY() / (gameData.getDisplayHeight() / 20);
+
+            // Check the type of each entity and update the gameWorld array accordingly
+            if (entity instanceof Obstacle) {
+                mapArray[x][y] = new Obstacle();
+            } else if (entity instanceof WeaponCoin) {
+                mapArray[x][y] = new WeaponCoin();
+            } else if (entity instanceof Player) {
+                mapArray[x][y] = new MapPlayer(entity.getX(), entity.getY());
+            } else if (entity instanceof Enemy) {
+                mapArray[x][y] = new MapEnemy(entity.getX(), entity.getY());
+            }
+        }
+
 
         Node[][] nodes = new Node[mapArray.length][mapArray[0].length];
         Node start = null, end = null;
@@ -56,84 +80,48 @@ public class AiControlSystem implements IEntityProcessingService {
         Enemy enemy = new Enemy();
 
         for (Entity enemy1 : world.getEntities(Enemy.class)) {
-            // TODO: Calculate the path for each enemy inside here and set it to the enemy
             enemy = (Enemy) enemy1;
-            // Initialize the gameWorld array with InvisibleObject
-            for (int i = 0; i < 20; i++) {
-                for (int j = 0; j < 20; j++) {
-                    mapArray[i][j] = new InvisibleObject();
+        }
+
+        for (int i = 0; i < mapArray.length; i++) {
+            for (int j = 0; j < mapArray[i].length; j++) {
+                nodes[i][j] = new Node(i, j, mapArray[i][j] instanceof Obstacle);
+                if (mapArray[i][j] instanceof MapEnemy) {
+                    start = nodes[i][j];
+                } else if (mapArray[i][j] instanceof MapPlayer) {
+                    end = nodes[i][j];
                 }
             }
+        }
 
-            // Iterate over all the entities
-            for (Entity entity : world.getEntities()) {
-                int x = (int) entity.getX() / (gameData.getDisplayWidth() / 20);
-                int y = (int) entity.getY() / (gameData.getDisplayHeight() / 20);
-
-                // Check the type of each entity and update the gameWorld array accordingly
-                if (entity instanceof Obstacle) {
-                    mapArray[x][y] = new Obstacle();
-                } else if (entity instanceof WeaponCoin) {
-                    mapArray[x][y] = new WeaponCoin();
-                } else if (entity instanceof Player) {
-                    mapArray[x][y] = new MapPlayer(entity.getX(), entity.getY());
-                } else if (entity instanceof Enemy) {
-                    mapArray[x][y] = new MapEnemy(entity.getX(), entity.getY());
-                }
-            }
-
-
-            for (int i = 0; i < mapArray.length; i++) {
-                for (int j = 0; j < mapArray[i].length; j++) {
-                    nodes[i][j] = new Node(i, j, mapArray[i][j] instanceof Obstacle);
-                    if (mapArray[i][j] instanceof MapEnemy) {
-                        MapEnemy mapEnemy = (MapEnemy) mapArray[i][j];
-                        double threshold = 10.0;
-                        if (Math.abs(mapEnemy.getX() - enemy.getX()) <= threshold && Math.abs(mapEnemy.getY() - enemy.getY()) <= threshold) {
-                            start = nodes[i][j];
-                        }
-                    } else if (mapArray[i][j] instanceof MapPlayer) {
-                        end = nodes[i][j];
-                    }
-                }
-            }
-
-            if (start != null && end != null) {
-//                System.out.println(+start.i + ", " + start.j);
-//                System.out.println(end.i + ", " + end.j);
+        if (start != null && end != null) {
 //                System.out.println("Just before AStar");
-                AStar aStar = new AStar();
+            AStar aStar = new AStar();
 //                System.out.printf("Before setNodes");
-                aStar.setNodes(nodes); // Pass the nodes array to the AStar instance
+            aStar.setNodes(nodes); // Pass the nodes array to the AStar instance
 //                System.out.println("Just after AStar");
-                Node[] path = aStar.aStar(mapArray, start, end);
-                // Do something with the path
+            Node[] path = aStar.aStar(mapArray, start, end);
+            // Do something with the path
 //                System.out.println("First path is: " + path[0].i + ", " + path[0].j);
 
-                if (path != null) {
-                    int[][] pathArray = new int[path.length][2];
-                    for (int i = 0; i < path.length; i++) {
-                        pathArray[i][0] = path[i].i;
-                        pathArray[i][1] = path[i].j;
+            if (path != null) {
+                int[][] pathArray = new int[path.length][2];
+                for (int i = 0; i < path.length; i++) {
+                    pathArray[i][0] = path[i].i;
+                    pathArray[i][1] = path[i].j;
 //                        System.out.println();
-//                        System.out.println("i is: " + path[i].i + " j is: " + path[i].j);
-//                        System.out.println("new");
-                    }
-//                    System.out.println("Path is: " + pathArray);
-//                    System.out.println();
-//                    for (int i = 0; i < pathArray.length; i++) {
-//                        System.out.print("[" + pathArray[i][0] + ", " + pathArray[i][1] + "],");
-//                    }
-                    enemy.setPath(new CommonPath(pathArray));
-
+                    System.out.println("i is: " + path[i].i + " j is: " + path[i].j);
+                    System.out.println("new");
                 }
+                enemy.setPath(new CommonPath(pathArray));
+
+            }
 
 //                System.out.println("Last path is: " + path[path.length - 1].i + ", " + path[path.length - 1].j);
 //                System.out.println("Path is: " + path);
-            }
+        }
 
 //        hasRun = true;
-        }
     }
 }
 
