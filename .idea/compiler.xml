@@ -7,7 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Bullet" />
-        <module name="BaseWeapon" />
         <module name="Player" />
         <module name="CommonEnemy" />
         <module name="Enemies" />
@@ -23,6 +22,7 @@
         <module name="Asteroid" />
         <module name="CommonWeapon" />
         <module name="CommonWeaponCoin" />
+        <module name="Shuriken" />
         <module name="CommonInvisibleObject" />
         <module name="CollisionSystem" />
         <module name="Map" />

@@ -18,7 +18,7 @@ public class UziCoinSpawnSystem implements IEntityProcessingService {
                 // Add entities to the world
                 Entity shotgunCoin = createShotgunCoin(gameData);
                 world.addEntity(shotgunCoin);
-                System.out.println("Shotgun coin added");
+                System.out.println("Uzi coin added");
             }
         }
 

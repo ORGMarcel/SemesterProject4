@@ -15,12 +15,12 @@ import java.util.ServiceLoader;
 import static java.util.stream.Collectors.toList;
 
 
-public class WeaponControlSystem implements IEntityProcessingService {
+public class ShurikenWeaponControlSystem implements IEntityProcessingService {
 
     @Override
     public void process(GameData gameData, World world) {
             
-        for (Entity weapon : world.getEntities(Weapon.class)) {
+        for (Entity weapon : world.getEntities(Shuriken.class)) {
             for(Entity player : world.getEntities(Player.class)){
                 weapon.setY(player.getY());
                 weapon.setX(player.getX());

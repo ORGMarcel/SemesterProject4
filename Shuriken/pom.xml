@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>dk.sdu.mmmi.cbse.weaponsystem</groupId>
-    <artifactId>BaseWeapon</artifactId>
+    <artifactId>Shuriken</artifactId>
 
     <properties>
         <maven.compiler.source>1.9</maven.compiler.source>

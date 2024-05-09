@@ -9,6 +9,10 @@ import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
 
 public class Player extends Entity implements CollideableInterface {
 
+
+//    CommonWeapon equippedWeapon;
+
+
     public Player() {
         this.add(new ColorPart(1));
 //        this.add(new LifePart(5));
@@ -23,4 +27,11 @@ public class Player extends Entity implements CollideableInterface {
         playerLife.setLife(0);
 //        playerLife.setLife(playerLife.getLife() - 1);
     }
+
+//    public void equipWeapon(CommonWeapon commonWeapon){
+
+//    }
+
+
+
 }
