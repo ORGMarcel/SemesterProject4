@@ -20,48 +20,52 @@ public class UziWeaponControlSystem implements IEntityProcessingService {
     public void process(GameData gameData, World world) {
 
         for (Entity weaponUzi : world.getEntities(Uzi.class)) {
-            for (Entity player : world.getEntities(Player.class)) {
-                weaponUzi.setY(player.getY());
-                weaponUzi.setX(player.getX());
-                weaponUzi.setRotation(player.getRotation());
-                double changeX = Math.cos(Math.toRadians(weaponUzi.getRotation()));
-                double changeY = Math.sin(Math.toRadians(weaponUzi.getRotation()));
-                weaponUzi.setX(weaponUzi.getX() + changeX * 15);
-                weaponUzi.setY(weaponUzi.getY() + changeY * 15);
-
+            Uzi weapon1 = (Uzi) weaponUzi;
+            if (weapon1.isEquipped()) {
+                for (Entity player : world.getEntities(Player.class)) {
+                    weaponUzi.setY(player.getY());
+                    weaponUzi.setX(player.getX());
+                    weaponUzi.setRotation(player.getRotation());
+                    double changeX = Math.cos(Math.toRadians(weaponUzi.getRotation()));
+                    double changeY = Math.sin(Math.toRadians(weaponUzi.getRotation()));
+                    weaponUzi.setX(weaponUzi.getX() + changeX * 15);
+                    weaponUzi.setY(weaponUzi.getY() + changeY * 15);
+                }
             }
 
 
             // Controlling
-            if(gameData.getKeys().isPressed(GameKeys.SPACE)) {
-                Uzi weapon1 = (Uzi) weaponUzi;
+            if (gameData.getKeys().isPressed(GameKeys.SPACE)) {
+                if (weapon1.isEquipped()) {
 
-                Thread thread1 = new Thread(() -> {
-                    weapon1.setShooting(true);
 
-                    try {
-                        for (int i = 0; i < 40; i++) {
-                            // Execute the action
-                            getBulletSPIs().stream().findFirst().ifPresent(
-                                    spi -> world.addEntity(spi.createBullet(weaponUzi, gameData))
-                            );
+                    Thread thread1 = new Thread(() -> {
+                        weapon1.setShooting(true);
 
-                            // Wait for 0.05 seconds between bullets
-                            Thread.sleep(50);
+                        try {
+                            for (int i = 0; i < 40; i++) {
+                                // Execute the action
+                                getBulletSPIs().stream().findFirst().ifPresent(
+                                        spi -> world.addEntity(spi.createBullet(weaponUzi, gameData))
+                                );
+
+                                // Wait for 0.05 seconds between bullets
+                                Thread.sleep(50);
+                            }
+                            // Wait for 2 seconds after completing the loop
+                            Thread.sleep(2000); // 2000 milliseconds
+                            weapon1.setShooting(false);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt(); // Properly handle thread interruption
+                            e.printStackTrace();
                         }
-                        // Wait for 2 seconds after completing the loop
-                        Thread.sleep(2000); // 2000 milliseconds
-                        weapon1.setShooting(false);
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt(); // Properly handle thread interruption
-                        e.printStackTrace();
+
+                    });
+                    if (!weapon1.isShooting()) {
+                        thread1.start();
                     }
 
-                });
-                if(!weapon1.isShooting()){
-                    thread1.start();
                 }
-
             }
 
 

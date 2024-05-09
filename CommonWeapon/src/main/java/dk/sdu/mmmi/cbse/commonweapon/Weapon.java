@@ -21,5 +21,16 @@ public class Weapon extends Entity {
         isShooting = shooting;
     }
 
+    public boolean isEquipped() {
+        return Equipped;
+    }
+
+    public void setEquipped(boolean equipped) {
+        Equipped = equipped;
+    }
+
+    private boolean Equipped = false;
+
+
 }
 

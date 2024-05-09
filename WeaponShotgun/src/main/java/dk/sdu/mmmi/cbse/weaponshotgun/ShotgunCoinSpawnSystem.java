@@ -9,7 +9,7 @@ import java.util.Random;
 public class ShotgunCoinSpawnSystem implements IEntityProcessingService {
 
     Random random = new Random();
-    int randomNumber = random.nextInt(600);
+    int randomNumber = random.nextInt(5);
     @Override
     public void process(GameData gameData, World world) {
 

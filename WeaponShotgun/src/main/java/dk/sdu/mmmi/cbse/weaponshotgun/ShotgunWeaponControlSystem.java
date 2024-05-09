@@ -20,49 +20,55 @@ public class ShotgunWeaponControlSystem implements IEntityProcessingService {
     public void process(GameData gameData, World world) {
 
         for (Entity weaponShotgun : world.getEntities(Shotgun.class)) {
-            // Set weapon position and rotation based on player
+            Shotgun weapon1 = (Shotgun) weaponShotgun;
             for (Entity player : world.getEntities(Player.class)) {
-                weaponShotgun.setY(player.getY());
-                weaponShotgun.setX(player.getX());
-                weaponShotgun.setRotation(player.getRotation());
-                double changeX = Math.cos(Math.toRadians(weaponShotgun.getRotation()));
-                double changeY = Math.sin(Math.toRadians(weaponShotgun.getRotation()));
-                weaponShotgun.setX(weaponShotgun.getX() + changeX * 15);
-                weaponShotgun.setY(weaponShotgun.getY() + changeY * 15);
+
+                if (weapon1.isEquipped()) {
+
+
+                    weaponShotgun.setY(player.getY());
+                    weaponShotgun.setX(player.getX());
+                    weaponShotgun.setRotation(player.getRotation());
+                    double changeX = Math.cos(Math.toRadians(weaponShotgun.getRotation()));
+                    double changeY = Math.sin(Math.toRadians(weaponShotgun.getRotation()));
+                    weaponShotgun.setX(weaponShotgun.getX() + changeX * 15);
+                    weaponShotgun.setY(weaponShotgun.getY() + changeY * 15);
+                }
 
 
                 // Controlling
                 if (gameData.getKeys().isPressed(GameKeys.SPACE)) {
-                    Shotgun weapon1 = (Shotgun) weaponShotgun;
+                    if (weapon1.isEquipped()) {
 
-                    Thread thread1 = new Thread(() -> {
-                        weapon1.setShooting(true);
+                        Thread thread1 = new Thread(() -> {
+                            weapon1.setShooting(true);
 
-                        try {
-                            for (int i = 0; i < 5; i++) {
-                                // Execute the action
-                                double bulletRotation = player.getRotation() + (-2 * 10) + i * 10;
-                                getBulletSPIs().stream().findFirst().ifPresent(
-                                        spi -> {
-                                            Entity bullet = spi.createBullet(weaponShotgun, gameData);
-                                            bullet.setRotation(bulletRotation);
-                                            world.addEntity(bullet);
-                                        }
-                                );
+                            try {
+                                for (int i = 0; i < 5; i++) {
+                                    // Execute the action
+                                    double bulletRotation = player.getRotation() + (-2 * 10) + i * 10;
+                                    getBulletSPIs().stream().findFirst().ifPresent(
+                                            spi -> {
+                                                Entity bullet = spi.createBullet(weaponShotgun, gameData);
+                                                bullet.setRotation(bulletRotation);
+                                                world.addEntity(bullet);
+                                            }
+                                    );
+                                }
+                                // Wait for 0.2 seconds after completing the loop
+                                Thread.sleep(200);
+                                weapon1.setShooting(false);
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt(); // Properly handle thread interruption
+                                e.printStackTrace();
                             }
-                            // Wait for 0.2 seconds after completing the loop
-                            Thread.sleep(200);
-                            weapon1.setShooting(false);
-                        } catch (InterruptedException e) {
-                            Thread.currentThread().interrupt(); // Properly handle thread interruption
-                            e.printStackTrace();
+
+                        });
+                        if (!weapon1.isShooting()) {
+                            thread1.start();
                         }
 
-                    });
-                    if (!weapon1.isShooting()) {
-                        thread1.start();
                     }
-
                 }
 
                 // Check if weapon is out of bounds
