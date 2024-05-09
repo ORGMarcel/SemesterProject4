@@ -12,6 +12,7 @@
         <module name="Enemies" />
         <module name="CommonEnemy" />
         <module name="Collision" />
+        <module name="WeaponUzi" />
         <module name="CommonBullet" />
         <module name="Weapon" />
         <module name="Common" />
@@ -24,10 +25,17 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="AI" target="21" />
       <module name="asteroids.jpms" target="9" />
       <module name="CommonAsteroid" target="21" />
+      <module name="CommonInvisibleObject" target="21" />
       <module name="CommonMap" target="21" />
+      <module name="CommonMapEnemy" target="21" />
+      <module name="CommonMapObject" target="21" />
+      <module name="CommonMapPlayer" target="21" />
+      <module name="CommonObstacle" target="21" />
       <module name="CommonWall" target="21" />
+      <module name="CommonWeaponCoin" target="21" />
       <module name="Enemy" target="9" />
       <module name="Map" target="21" />
       <module name="shadowshurken.jpms" target="9" />
