@@ -11,7 +11,7 @@ public class Enemy extends Entity implements CollideableInterface {
 
     CommonPath path;
     int currentPathIndex = 0;
-    private double speed = 0.05;
+    private double speed = 1;
 
 
     public double getSpeed() {
