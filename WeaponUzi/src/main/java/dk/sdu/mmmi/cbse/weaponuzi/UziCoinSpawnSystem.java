@@ -10,7 +10,7 @@ import java.util.Random;
 public class UziCoinSpawnSystem implements IEntityProcessingService {
 
     Random random = new Random();
-    int randomNumber = random.nextInt(5);
+    int randomNumber = random.nextInt(600);
     @Override
     public void process(GameData gameData, World world) {
 

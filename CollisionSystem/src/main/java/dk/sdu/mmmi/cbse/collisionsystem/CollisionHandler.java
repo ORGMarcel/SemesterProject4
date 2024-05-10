@@ -56,6 +56,7 @@ public class CollisionHandler {
 
         Entity enemy = this.findEnemy(e1, e2);
         Entity bullet = this.findBullet(e1, e2);
+        Entity weapon = this.findWeapon(e1, e2);
         Entity player = this.findPlayer(e1, e2);
         Entity obstacle = this.findObstacle(e1, e2);
 
@@ -67,6 +68,11 @@ public class CollisionHandler {
         // Bullet and player collides
         if (player instanceof Player && bullet instanceof Bullet) {
             return playerAndBullet(player, bullet, world);
+        }
+
+        // Bullet and Weapon collides
+        if (player instanceof Player && weapon instanceof Weapon) {
+            return playerAndWeapon(player, weapon, world);
         }
 
         // Bullet and obstacle collides
@@ -118,6 +124,17 @@ public class CollisionHandler {
 
         // Remove bullet on impact
         world.removeEntity(bullet);
+        return true;
+    }
+
+    //Player and Weapon collide
+    private boolean playerAndWeapon(Entity player, Entity Weapon, World world){
+        Weapon weaponEquipped = new Weapon();
+        weaponEquipped.setEquipped(true);
+        System.out.println("Weapon equipped");
+
+        // Remove weapon after 10 seconds using threads
+//        weaponEquipped.setEquipped(false);
         return true;
     }
 
@@ -216,6 +233,15 @@ public class CollisionHandler {
         if (e instanceof Bullet) {
             return e;
         } else if (r instanceof Bullet) {
+            return r;
+        }
+        return null;
+    }
+
+    private Entity findWeapon(Entity e, Entity r) {
+        if (e instanceof Weapon) {
+            return e;
+        } else if (r instanceof Weapon) {
             return r;
         }
         return null;

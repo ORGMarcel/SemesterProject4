@@ -27,8 +27,8 @@ public class ShurikenWeaponControlSystem implements IEntityProcessingService {
                 weapon.setRotation(player.getRotation());
                 double changeX = Math.cos(Math.toRadians(weapon.getRotation()));
                 double changeY = Math.sin(Math.toRadians(weapon.getRotation()));
-                weapon.setX(weapon.getX() + changeX * 15);
-                weapon.setY(weapon.getY() + changeY * 15);
+                weapon.setX(weapon.getX() + changeX * 30);
+                weapon.setY(weapon.getY() + changeY * 30);
 
             }
 
