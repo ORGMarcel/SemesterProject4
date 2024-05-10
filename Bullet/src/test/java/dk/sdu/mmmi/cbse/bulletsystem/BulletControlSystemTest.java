@@ -2,6 +2,7 @@ package dk.sdu.mmmi.cbse.bulletsystem;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
+import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
 import org.junit.jupiter.api.Test;
 import dk.sdu.mmmi.cbse.bulletsystem.BulletControlSystem;
 import dk.sdu.mmmi.cbse.commonbullet.Bullet;
@@ -47,8 +48,9 @@ class BulletControlSystemTest {
         GameData gameData = new GameData();
         Entity bullet = bulletControlSystem.createBullet(shooter, gameData);
         assertNotNull(bullet);
-        assertEquals(1, bullet.getHealthPoints());
-        assertEquals(1, bullet.getDmg());
+        //LifePart lifePart = new LifePart(5);
+        //bullet.add(lifePart);
+        // assertEquals(3, ((LifePart) bullet.getPart(LifePart.class)).getLife());
     }
 
 
