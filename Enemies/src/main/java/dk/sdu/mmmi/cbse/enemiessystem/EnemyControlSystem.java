@@ -30,6 +30,13 @@ public class EnemyControlSystem implements IEntityProcessingService {
         int randomNumber;
         int randomNumber2;
         int randomInt = random.nextInt(500);
+        System.out.println(world.getEntities(Enemy.class).toArray().length);
+
+        if (world.getEntities(Enemy.class).toArray().length == 0) {
+            for (int i = 0; i < 3; i++) {
+                world.addEntity(createEnemyShip(gameData));
+            }
+        }
 
         for (Entity enemyEntity : world.getEntities(Enemy.class)) {
             Enemy enemy = (Enemy) enemyEntity;
@@ -279,9 +286,6 @@ public class EnemyControlSystem implements IEntityProcessingService {
 
     }
 
-    private double lerp(double start, double end, double t) {
-        return start + t * (end - start);
-    }
 
     private Enemy createEnemyShip(GameData gameData) {
 
@@ -290,10 +294,10 @@ public class EnemyControlSystem implements IEntityProcessingService {
         int randomHeightY = random.nextInt(gameData.getDisplayHeight());
 
         Enemy enemyShip = new Enemy();
-//        enemyShip.add(new LifePart(3));
         enemyShip.setPolygonCoordinates(18.0, -1.5, 12.0, -1.5, 12.0, -4.5, 9.0, -4.5, 9.0, -7.5, -3.0, -7.5, -3.0, -10.5, 0.0, -10.5, 0.0, -13.5, -15.0, -13.5, -15.0, -7.5, -12.0, -7.5, -12.0, -4.5, -9.0, -4.5, -9.0, -1.5, -15.0, -1.5, -15.0, 1.5, -9.0, 1.5, -9.0, 4.5, -12.0, 4.5, -12.0, 7.5, -15.0, 7.5, -15.0, 13.5, 0.0, 13.5, 0.0, 10.5, -6.0, 10.5, -6.0, 7.5, 6.0, 7.5, 6.0, 1.5, 12.0, 1.5, 12.0, -1.5, 6.0, -1.5, 6.0, -4.5, 12.0, -4.5, 12.0, -1.5, 18.0, -1.5);
         enemyShip.setX(randomWidthX);
         enemyShip.setY(randomHeightY);
+        enemyShip.add(new LifePart(5));
         return enemyShip;
     }
 
