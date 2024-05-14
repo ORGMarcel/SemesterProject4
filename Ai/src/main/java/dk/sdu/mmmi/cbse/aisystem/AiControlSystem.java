@@ -83,16 +83,20 @@ public class AiControlSystem implements IEntityProcessingService {
             }
 
 
-        for (int i = 0; i < mapArray.length; i++) {
-            for (int j = 0; j < mapArray[i].length; j++) {
-                nodes[i][j] = new Node(i, j, mapArray[i][j] instanceof Obstacle);
-                if (mapArray[i][j] instanceof MapEnemy) {
-                    start = nodes[i][j];
-                } else if (mapArray[i][j] instanceof MapPlayer) {
-                    end = nodes[i][j];
+            for (int i = 0; i < mapArray.length; i++) {
+                for (int j = 0; j < mapArray[i].length; j++) {
+                    nodes[i][j] = new Node(i, j, mapArray[i][j] instanceof Obstacle);
+                    if (mapArray[i][j] instanceof MapEnemy) {
+                        MapEnemy mapEnemy = (MapEnemy) mapArray[i][j];
+                        double threshold = 10.0;
+                        if (Math.abs(mapEnemy.getX() - enemy.getX()) <= threshold && Math.abs(mapEnemy.getY() - enemy.getY()) <= threshold) {
+                            start = nodes[i][j];
+                        }
+                    } else if (mapArray[i][j] instanceof MapPlayer) {
+                        end = nodes[i][j];
+                    }
                 }
             }
-        }
 
             if (start != null && end != null) {
 //                System.out.println(+start.i + ", " + start.j);
