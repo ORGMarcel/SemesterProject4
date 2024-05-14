@@ -164,6 +164,12 @@ public class EnemyControlSystem implements IEntityProcessingService {
                 enemy.setY(enemy.getY() + Math.sin(angle) * enemy.getSpeed());
             }
 
+//            if(enemy.getPath().getPath().length<5){
+//                getBulletSPIs().stream().findFirst().ifPresent(
+//                        spi -> {world.addEntity(spi.createBullet(enemy, gameData));}
+//                );
+//            }
+
 
 
             // TODO: Enemy facing player
