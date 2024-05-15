@@ -35,6 +35,7 @@ public class CollisionHandler {
             return CollideableAndCollideable(co1, co2, world);
         }
 
+
         // Bullet and Bullet
         if (e1 instanceof Bullet && e2 instanceof Bullet) {
             return true; // Nothing should happen
@@ -56,6 +57,23 @@ public class CollisionHandler {
         Entity bullet = this.findBullet(e1, e2);
         Entity player = this.findPlayer(e1, e2);
         Entity obstacle = this.findObstacle(e1, e2);
+        Entity weapon = this.findWeapon(e1, e2);
+
+
+        // Player and weapon
+        if(player instanceof Player && weapon instanceof Weapon){
+            if(!((Weapon) weapon).isEquipped()){
+                Player player1 = (Player) player;
+                Weapon weapon1 = (Weapon) weapon;
+//            world.removeEntity(player1.getEquippedWeapon());
+                System.out.println("Weapon picked up");
+                world.removeEntity(weapon1);
+                weapon1.setEquipped(false);
+                player1.addWeaponToInventory(weapon1);
+            }
+            return true;
+
+        }
 
 
         // Bullet and enemy collides
@@ -200,6 +218,15 @@ public class CollisionHandler {
 
 
         return true;
+    }
+
+    private Entity findWeapon(Entity e, Entity r) {
+        if (e instanceof Weapon) {
+            return e;
+        } else if (r instanceof Weapon) {
+            return r;
+        }
+        return null;
     }
 
     private Entity findEnemy(Entity e, Entity r) {

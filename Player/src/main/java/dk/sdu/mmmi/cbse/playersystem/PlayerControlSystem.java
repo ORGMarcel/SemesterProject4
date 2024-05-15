@@ -11,8 +11,10 @@ import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.GameKeys;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
+import dk.sdu.mmmi.cbse.commonweapon.Weapon;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.ServiceLoader;
 
 import static java.util.stream.Collectors.toList;
@@ -68,6 +70,12 @@ public class PlayerControlSystem implements IEntityProcessingService {
                         playerShip.setY(player.getY());
                         playerShip.setRotation(player.getRotation());
                         movingPart.setJumping(movingPart.isJumping());
+                        playerShip.setEquippedWeapon(player.getEquippedWeapon());
+                        playerShip.setCurrentWeapon(player.getCurrentWeapon());
+                        playerShip.setInventory(player.getInventory());
+
+//                        playerShip = player;
+//                        playerShip.setPolygonCoordinates(-9.4, -11.84, 6.36, 6.0, -12.4, -10.16, -13.84, -13.36, -9.32, -13.24, 3.2, 0.16, 16.0, -12.0, 20.72, -11.96, 19.16, -9.16, 16.08, -10.56, 4.64, 0.44, 8.24, 5.44, 12.88, 3.44, 15.8, -1.0, 13.52, -2.6, 16.2, -2.0, 19.32, -3.76, 18.76, -1.72, 16.8, -0.32, 13.92, 4.28, 9.8, 6.36, 13.2, 8.28, 14.76, 10.64, 14.88, 13.92, 13.08, 16.48, 10.2, 17.84, 7.12, 17.48, 5.48, 16.36, 2.68, 18.52, -1.08, 18.12, -3.0, 18.56, -1.16, 17.08, 2.56, 17.68, 3.96, 16.56, 4.4, 15.0, 1.48, 15.48, -1.56, 16.12, -6.12, 14.8, -4.64, 14.08, -1.6, 15.12, 3.84, 13.92, 3.76, 11.0, 5.28, 8.56, 7.4, 7.16, 1.28, 9.64, -1.16, 9.84, -4.0, 8.0, -7.36, 7.28, -8.48, 5.52, -7.36, 4.88, -5.76, 6.8, -5.72, 4.72, -4.08, 6.36, -2.6, 5.56, -1.16, 5.84, -2.76, 7.88, -0.76, 9.0);
 
 
                         for (Entity entityPlayer : world.getEntities(Player.class)) {
@@ -101,6 +109,13 @@ public class PlayerControlSystem implements IEntityProcessingService {
                         playerShip.setY(player.getY());
                         playerShip.setRotation(player.getRotation());
                         movingPart.setJumping(movingPart.isJumping());
+                        playerShip.setEquippedWeapon(player.getEquippedWeapon());
+                        playerShip.setCurrentWeapon(player.getCurrentWeapon());
+                        playerShip.setInventory(player.getInventory());
+
+//                        playerShip = player;
+//                        playerShip.setPolygonCoordinates(-9.4, 11.84, 6.36, -6.0, -12.4, 10.16, -13.84, 13.36, -9.32, 13.24, 3.2, -0.16, 16.0, 12.0, 20.72, 11.96, 19.16, 9.16, 16.08, 10.56, 4.64, -0.44, 8.24, -5.44, 12.88, -3.44, 15.8, 1.0, 13.52, 2.6, 16.2, 2.0, 19.32, 3.76, 18.76, 1.72, 16.8, 0.32, 13.92, -4.28, 9.8, -6.36, 13.2, -8.28, 14.76, -10.64, 14.88, -13.92, 13.08, -16.48, 10.2, -17.84, 7.12, -17.48, 5.48, -16.36, 2.68, -18.52, -1.08, -18.12, -3.0, -18.56, -1.16, -17.08, 2.56, -17.68, 3.96, -16.56, 4.4, -15.0, 1.48, -15.48, -1.56, -16.12, -6.12, -14.8, -4.64, -14.08, -1.6, -15.12, 3.84, -13.92, 3.76, -11.0, 5.28, -8.56, 7.4, -7.16, 1.28, -9.64, -1.16, -9.84, -4.0, -8.0, -7.36, -7.28, -8.48, -5.52, -7.36, -4.88, -5.76, -6.8, -5.72, -4.72, -4.08, -6.36, -2.6, -5.56, -1.16, -5.84, -2.76, -7.88, -0.76, -9.0);
+
 
                         for (Entity entityPlayer : world.getEntities(Player.class)) {
                             world.removeEntity(entityPlayer);
@@ -147,24 +162,124 @@ public class PlayerControlSystem implements IEntityProcessingService {
 
 
             if (gameData.getKeys().isPressed(GameKeys.NUM1)) {
-                world.removeEntity(player.getInventory()[player.getCurrentWeapon()]);
-                player.setCurrentWeapon(1);
-                world.addEntity(player.getInventory()[player.getCurrentWeapon()]);
+                if (player.getInventory().size() > 0) {
+                    System.out.println("Switched weapon to 1");
+                    System.out.println(player.getCurrentWeapon());
+                    List<Weapon> playerInventory = player.getInventory();
+                    for (int i = 0; i < playerInventory.size(); i++) {
+                        System.out.println(playerInventory.get(i).getClass().getName());
+                    }
+
+                    System.out.println(playerInventory.get(player.getCurrentWeapon()).getClass().getName());
+                    world.removeEntity(playerInventory.get(player.getCurrentWeapon()));
+                    if (player.getEquippedWeapon() != null) {
+                        player.getEquippedWeapon().setEquipped(false);
+                        world.removeEntity(player.getEquippedWeapon());
+                    }
+
+                    player.setCurrentWeapon(0);
+                    Weapon weapon = player.getInventory().get(player.getCurrentWeapon());
+//                world.addEntity(player.getInventory()[player.getCurrentWeapon()]);
+//                player.setEquippedWeapon(player.getInventory()[player.getCurrentWeapon()]);
+//                player.getInventory()[player.getCurrentWeapon()].setEquipped(true);
+                    world.addEntity(weapon);
+                    player.setEquippedWeapon(weapon);
+                    weapon.setEquipped(true);
+                }
+
+
             }
             if (gameData.getKeys().isPressed(GameKeys.NUM2)) {
-                world.removeEntity(player.getInventory()[player.getCurrentWeapon()]);
-                player.setCurrentWeapon(2);
-                world.addEntity(player.getInventory()[player.getCurrentWeapon()]);
+                if (player.getInventory().size() > 1) {
+
+                    System.out.println("Switched weapon to 2");
+                    List<Weapon> playerInventory = player.getInventory();
+
+                    world.removeEntity(playerInventory.get(player.getCurrentWeapon()));
+                    if (player.getEquippedWeapon() != null) {
+                        player.getEquippedWeapon().setEquipped(false);
+                        world.removeEntity(player.getEquippedWeapon());
+                    }
+                    player.setCurrentWeapon(1);
+                    Weapon weapon = player.getInventory().get(player.getCurrentWeapon());
+
+
+//                    world.removeEntity(player.getInventory().get(player.getCurrentWeapon()));
+//                    player.getEquippedWeapon().setEquipped(false);
+//                    world.removeEntity(player.getEquippedWeapon());
+//                    player.setCurrentWeapon(1);
+//                    Weapon weapon = player.getInventory().get(player.getCurrentWeapon());
+
+//                world.addEntity(player.getInventory()[player.getCurrentWeapon()]);
+//                player.setEquippedWeapon(player.getInventory()[player.getCurrentWeapon()]);
+//                player.getInventory()[player.getCurrentWeapon()].setEquipped(true);
+                    world.addEntity(weapon);
+                    player.setEquippedWeapon(weapon);
+                    weapon.setEquipped(true);
+                }
+
+
             }
             if (gameData.getKeys().isPressed(GameKeys.NUM3)) {
-                world.removeEntity(player.getInventory()[player.getCurrentWeapon()]);
-                player.setCurrentWeapon(3);
-                world.addEntity(player.getInventory()[player.getCurrentWeapon()]);
+                if (player.getInventory().size() > 2) {
+                    List<Weapon> playerInventory = player.getInventory();
+
+
+                    System.out.println("Switched weapon to 3");
+
+                    world.removeEntity(playerInventory.get(player.getCurrentWeapon()));
+                    if (player.getEquippedWeapon() != null) {
+                        player.getEquippedWeapon().setEquipped(false);
+                        world.removeEntity(player.getEquippedWeapon());
+                    }
+                    player.setCurrentWeapon(2);
+                    Weapon weapon = player.getInventory().get(player.getCurrentWeapon());
+
+//                    world.removeEntity(player.getInventory().get(player.getCurrentWeapon()));
+//                    player.getEquippedWeapon().setEquipped(false);
+//                    world.removeEntity(player.getEquippedWeapon());
+//                    player.setCurrentWeapon(2);
+//                    Weapon weapon = player.getInventory().get(player.getCurrentWeapon());
+
+//                world.addEntity(player.getInventory()[player.getCurrentWeapon()]);
+//                player.setEquippedWeapon(player.getInventory()[player.getCurrentWeapon()]);
+//                player.getInventory()[player.getCurrentWeapon()].setEquipped(true);
+                    world.addEntity(weapon);
+                    player.setEquippedWeapon(weapon);
+                    weapon.setEquipped(true);
+                }
+
+
             }
             if (gameData.getKeys().isPressed(GameKeys.NUM4)) {
-                world.removeEntity(player.getInventory()[player.getCurrentWeapon()]);
-                player.setCurrentWeapon(4);
-                world.addEntity(player.getInventory()[player.getCurrentWeapon()]);
+                if (player.getInventory().size() > 3) {
+                    List<Weapon> playerInventory = player.getInventory();
+
+                    System.out.println("Switched weapon to 4");
+
+                    world.removeEntity(playerInventory.get(player.getCurrentWeapon()));
+                    if (player.getEquippedWeapon() != null) {
+                        player.getEquippedWeapon().setEquipped(false);
+                        world.removeEntity(player.getEquippedWeapon());
+                    }
+                    player.setCurrentWeapon(3);
+                    Weapon weapon = player.getInventory().get(player.getCurrentWeapon());
+
+//                    world.removeEntity(player.getInventory().get(player.getCurrentWeapon()));
+//                    player.getEquippedWeapon().setEquipped(false);
+//                    world.removeEntity(player.getEquippedWeapon());
+//                    player.setCurrentWeapon(3);
+//                    Weapon weapon = player.getInventory().get(player.getCurrentWeapon());
+
+//                world.addEntity(player.getInventory()[player.getCurrentWeapon()]);
+//                player.setEquippedWeapon(player.getInventory()[player.getCurrentWeapon()]);
+//                player.getInventory()[player.getCurrentWeapon()].setEquipped(true);
+                    world.addEntity(weapon);
+                    player.setEquippedWeapon(weapon);
+                    weapon.setEquipped(true);
+                }
+
+
             }
 
 
