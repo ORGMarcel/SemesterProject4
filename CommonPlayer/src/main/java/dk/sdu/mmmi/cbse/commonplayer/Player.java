@@ -7,12 +7,16 @@ import dk.sdu.mmmi.cbse.common.data.entityparts.ColorPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
 import dk.sdu.mmmi.cbse.commonweapon.Weapon;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Player extends Entity implements CollideableInterface {
 
 
-    Weapon[] inventory;
-    private int currentWeapon;
+    List<Weapon> inventory = new ArrayList<Weapon>();
+    private int currentWeapon = 0;
+    Weapon equippedWeapon;
 
     public Player() {
         this.add(new ColorPart(1));
@@ -20,7 +24,13 @@ public class Player extends Entity implements CollideableInterface {
         this.add(new MovingPart());
     }
 
+    public Weapon getEquippedWeapon() {
+        return equippedWeapon;
+    }
 
+    public void setEquippedWeapon(Weapon equippedWeapon) {
+        this.equippedWeapon = equippedWeapon;
+    }
 
     public int getCurrentWeapon() {
         return currentWeapon;
@@ -30,12 +40,24 @@ public class Player extends Entity implements CollideableInterface {
         this.currentWeapon = currentWeapon;
     }
 
-    public Weapon[] getInventory() {
+    public List<Weapon> getInventory() {
         return inventory;
     }
 
-    public void setInventory(Weapon[] inventory) {
+    public void setInventory(List<Weapon> inventory) {
         this.inventory = inventory;
+    }
+
+    public void addWeaponToInventory(Weapon weapon) {
+
+        for (int i = 0; i < inventory.size(); i++) {
+            if(inventory.get(i).getClass()==weapon.getClass()){
+                return;
+            }
+
+        }
+        inventory.add(weapon);
+
     }
 
 

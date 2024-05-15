@@ -10,6 +10,7 @@ module Player {
     requires Common;
     requires CommonBullet;
     requires CommonPlayer;
+    requires CommonWeapon;
     uses BulletSPI;
     provides IGamePluginService with PlayerPlugin;
     provides IEntityProcessingService with PlayerControlSystem;

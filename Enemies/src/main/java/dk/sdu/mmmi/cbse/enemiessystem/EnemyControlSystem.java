@@ -30,7 +30,7 @@ public class EnemyControlSystem implements IEntityProcessingService {
         int randomNumber;
         int randomNumber2;
         int randomInt = random.nextInt(500);
-        System.out.println(world.getEntities(Enemy.class).toArray().length);
+//        System.out.println(world.getEntities(Enemy.class).toArray().length);
 
         if (world.getEntities(Enemy.class).toArray().length == 0) {
             for (int i = 0; i < 3; i++) {
@@ -107,18 +107,18 @@ public class EnemyControlSystem implements IEntityProcessingService {
             int tileY = (int) (enemy.getY() / (gameData.getDisplayHeight() / 20));
 
             // Print the tile coordinates
-            System.out.println("Enemy is on tile: (" + tileX + ", " + tileY + ")");
+//            System.out.println("Enemy is on tile: (" + tileX + ", " + tileY + ")");
 
 
             // Get the first tile in the path
             int[] currentDestination = path[0];
-            System.out.println("Current destination: (" + currentDestination[0] + ", " + currentDestination[1] + ")");
+//            System.out.println("Current destination: (" + currentDestination[0] + ", " + currentDestination[1] + ")");
             double destinationX = currentDestination[0] * (gameData.getDisplayWidth() / 20);
             double destinationY = currentDestination[1] * (gameData.getDisplayHeight() / 20);
 
             double dx = destinationX - enemy.getX();
             double dy = destinationY - enemy.getY();
-            System.out.println(dx + ", " + dy);
+//            System.out.println(dx + ", " + dy);
 
             double distanceToDestination = Math.sqrt(dx * dx + dy * dy);
 
