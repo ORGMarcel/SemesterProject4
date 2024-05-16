@@ -52,12 +52,18 @@ public class Player extends Entity implements CollideableInterface {
 
         for (int i = 0; i < inventory.size(); i++) {
             if(inventory.get(i).getClass()==weapon.getClass()){
+                inventory.get(i).setDurability(inventory.get(i).getDurability()+weapon.getDurability());
                 return;
             }
 
         }
         inventory.add(weapon);
 
+    }
+
+    // Remove from inventory method
+    public void removeWeaponFromInventory(Weapon weapon) {
+        inventory.remove(weapon);
     }
 
 

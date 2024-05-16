@@ -23,6 +23,14 @@ public class UziWeaponControlSystem implements IEntityProcessingService {
             Uzi weapon1 = (Uzi) weaponUzi;
             if (weapon1.isEquipped()) {
                 for (Entity player : world.getEntities(Player.class)) {
+                    Player player1 = (Player) player;
+
+                    if (weapon1.getDurability() <= 0) {
+                        player1.removeWeaponFromInventory(weapon1);
+                        player1.setEquippedWeapon(null);
+                        world.removeEntity(weapon1);
+                    }
+
                     weaponUzi.setY(player.getY());
                     weaponUzi.setX(player.getX());
                     weaponUzi.setRotation(player.getRotation());
@@ -37,6 +45,7 @@ public class UziWeaponControlSystem implements IEntityProcessingService {
             // Controlling
             if (gameData.getKeys().isPressed(GameKeys.SPACE)) {
                 if (weapon1.isEquipped()) {
+                    weapon1.setDurability(weapon1.getDurability() - 1);
 
 
                     Thread thread1 = new Thread(() -> {

@@ -19,46 +19,63 @@ public class ShurikenWeaponControlSystem implements IEntityProcessingService {
 
     @Override
     public void process(GameData gameData, World world) {
-            
+
         for (Entity weapon : world.getEntities(Shuriken.class)) {
-            for(Entity player : world.getEntities(Player.class)){
-                weapon.setY(player.getY());
-                weapon.setX(player.getX());
-                weapon.setRotation(player.getRotation());
-                double changeX = Math.cos(Math.toRadians(weapon.getRotation()));
-                double changeY = Math.sin(Math.toRadians(weapon.getRotation()));
-                weapon.setX(weapon.getX() + changeX * 30);
-                weapon.setY(weapon.getY() + changeY * 30);
+            Shuriken weapon1 = (Shuriken) weapon;
+            for (Entity player : world.getEntities(Player.class)) {
+                Player player1 = (Player) player;
+
+                if (weapon1.getDurability() <= 0) {
+                    player1.removeWeaponFromInventory(weapon1);
+                    player1.setEquippedWeapon(null);
+                    world.removeEntity(weapon1);
+                }
+                if (weapon1.isEquipped()) {
+                    weapon.setY(player.getY());
+                    weapon.setX(player.getX());
+                    weapon.setRotation(player.getRotation());
+                    double changeX = Math.cos(Math.toRadians(weapon.getRotation()));
+                    double changeY = Math.sin(Math.toRadians(weapon.getRotation()));
+                    weapon.setX(weapon.getX() + changeX * 30);
+                    weapon.setY(weapon.getY() + changeY * 30);
+                }
+
 
             }
 
 
             // Controlling
             if (gameData.getKeys().isPressed(GameKeys.SPACE)) {
-                getBulletSPIs().stream().findFirst().ifPresent(
-                        spi -> {
-                            world.addEntity(spi.createBullet(weapon, gameData));
-                        }
-                );
+                Shuriken shuriken = (Shuriken) weapon;
+                if (shuriken.isEquipped()) {
+                    shuriken.setDurability(shuriken.getDurability() - 1);
+                    getBulletSPIs().stream().findFirst().ifPresent(
+                            spi -> {
+                                world.addEntity(spi.createBullet(weapon, gameData));
+                            }
+                    );
+                }
+
+
             }
-            
-        if (weapon.getX() < 0) {
-            weapon.setX(1);
-        }
 
-        if (weapon.getX() > gameData.getDisplayWidth()) {
-            weapon.setX(gameData.getDisplayWidth()-1);
-        }
+            if (weapon.getX() < 0) {
+                weapon.setX(1);
+            }
 
-        if (weapon.getY() < 0) {
-            weapon.setY(1);
-        }
+            if (weapon.getX() > gameData.getDisplayWidth()) {
+                weapon.setX(gameData.getDisplayWidth() - 1);
+            }
 
-        if (weapon.getY() > gameData.getDisplayHeight()) {
-            weapon.setY(gameData.getDisplayHeight()-1);
-        }
+            if (weapon.getY() < 0) {
+                weapon.setY(1);
+            }
 
-                                        
+            if (weapon.getY() > gameData.getDisplayHeight()) {
+                weapon.setY(gameData.getDisplayHeight() - 1);
+            }
+
+
         }
     }
 

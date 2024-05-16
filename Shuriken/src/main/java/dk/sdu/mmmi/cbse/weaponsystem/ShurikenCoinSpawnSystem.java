@@ -12,7 +12,7 @@ import java.util.Random;
 public class ShurikenCoinSpawnSystem implements IEntityProcessingService {
 
     Random random = new Random();
-    int randomNumber = random.nextInt(200);
+    int randomNumber = random.nextInt(500);
     @Override
     public void process(GameData gameData, World world) {
 
@@ -27,8 +27,10 @@ public class ShurikenCoinSpawnSystem implements IEntityProcessingService {
 
     private Entity createShotgunCoin(GameData gameData) {
 
-        Entity coinShuriken = new Shuriken();
+        Shuriken coinShuriken = new Shuriken();
         coinShuriken.setPolygonCoordinates(6, -0.5, 4, -0.5, 4, -1.5, 3, -1.5, 3, -2.5, -1, -2.5, -1, -3.5, 0, -3.5, 0, -4.5, -5, -4.5, -5, -2.5, -4, -2.5, -4, -1.5, -3, -1.5, -3, -0.5, -5, -0.5, -5, 0.5, -3, 0.5, -3, 1.5, -4, 1.5, -4, 2.5, -5, 2.5, -5, 4.5, 0, 4.5, 0, 3.5, -1, 3.5, -1, 2.5, 1, 2.5, 1, 0.5, 2, 0.5, 2, -0.5, 1, -0.5, 1, -1.5, 2, -1.5, 2, -0.5, 3, -0.5, 3, 0.5, 2, 0.5, 2, 1.5, 1, 1.5, 1, 2.5, 3, 2.5, 3, 1.5, 4, 1.5, 4, 0.5, 6, 0.5, 6, 0.5, 8, 0.5, 8, 0.5, 12, 0.5);
+
+        coinShuriken.setDurability(10);
 
 
         int randomX = random.nextInt(gameData.getDisplayHeight()) + 1;
