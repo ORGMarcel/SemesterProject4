@@ -11,6 +11,8 @@ public class Weapon extends Entity {
     }
 
     private boolean isShooting = false;
+    private int durability = 10;
+
 
 
     public boolean isShooting() {
@@ -31,6 +33,12 @@ public class Weapon extends Entity {
 
     private boolean Equipped = false;
 
+    public int getDurability() {
+        return durability;
+    }
 
+    public void setDurability(int durability) {
+        this.durability = durability;
+    }
 }
 

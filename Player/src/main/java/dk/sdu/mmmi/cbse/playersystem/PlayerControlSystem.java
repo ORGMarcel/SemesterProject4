@@ -160,17 +160,29 @@ public class PlayerControlSystem implements IEntityProcessingService {
             lifePart.process(gameData, player);
             movingPart.process(gameData, player);
 
+            // Using Sorting algorithm to sort the inventory
+            List<Weapon> playerInventory = player.getInventory();
+            for (int i = 0; i < playerInventory.size(); i++) {
+                for (int j = i + 1; j < playerInventory.size(); j++) {
+                    if (playerInventory.get(i).getDurability() < playerInventory.get(j).getDurability()) {
+                        Weapon temp = playerInventory.get(i);
+                        playerInventory.set(i, playerInventory.get(j));
+                        playerInventory.set(j, temp);
+                    }
+                }
+            }
+
 
             if (gameData.getKeys().isPressed(GameKeys.NUM1)) {
                 if (player.getInventory().size() > 0) {
                     System.out.println("Switched weapon to 1");
                     System.out.println(player.getCurrentWeapon());
-                    List<Weapon> playerInventory = player.getInventory();
+                    playerInventory = player.getInventory();
                     for (int i = 0; i < playerInventory.size(); i++) {
                         System.out.println(playerInventory.get(i).getClass().getName());
                     }
 
-                    System.out.println(playerInventory.get(player.getCurrentWeapon()).getClass().getName());
+//                    System.out.println(playerInventory.get(player.getCurrentWeapon()).getClass().getName());
                     world.removeEntity(playerInventory.get(player.getCurrentWeapon()));
                     if (player.getEquippedWeapon() != null) {
                         player.getEquippedWeapon().setEquipped(false);
@@ -193,7 +205,7 @@ public class PlayerControlSystem implements IEntityProcessingService {
                 if (player.getInventory().size() > 1) {
 
                     System.out.println("Switched weapon to 2");
-                    List<Weapon> playerInventory = player.getInventory();
+                    playerInventory = player.getInventory();
 
                     world.removeEntity(playerInventory.get(player.getCurrentWeapon()));
                     if (player.getEquippedWeapon() != null) {
@@ -222,7 +234,7 @@ public class PlayerControlSystem implements IEntityProcessingService {
             }
             if (gameData.getKeys().isPressed(GameKeys.NUM3)) {
                 if (player.getInventory().size() > 2) {
-                    List<Weapon> playerInventory = player.getInventory();
+                    playerInventory = player.getInventory();
 
 
                     System.out.println("Switched weapon to 3");
@@ -253,7 +265,7 @@ public class PlayerControlSystem implements IEntityProcessingService {
             }
             if (gameData.getKeys().isPressed(GameKeys.NUM4)) {
                 if (player.getInventory().size() > 3) {
-                    List<Weapon> playerInventory = player.getInventory();
+                    playerInventory = player.getInventory();
 
                     System.out.println("Switched weapon to 4");
 

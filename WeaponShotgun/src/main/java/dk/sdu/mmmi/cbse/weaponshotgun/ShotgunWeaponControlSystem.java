@@ -22,6 +22,13 @@ public class ShotgunWeaponControlSystem implements IEntityProcessingService {
         for (Entity weaponShotgun : world.getEntities(Shotgun.class)) {
             Shotgun weapon1 = (Shotgun) weaponShotgun;
             for (Entity player : world.getEntities(Player.class)) {
+                Player player1 = (Player) player;
+
+                if (weapon1.getDurability() <= 0) {
+                    player1.removeWeaponFromInventory(weapon1);
+                    player1.setEquippedWeapon(null);
+                    world.removeEntity(weapon1);
+                }
 
                 if (weapon1.isEquipped()) {
 
@@ -39,6 +46,7 @@ public class ShotgunWeaponControlSystem implements IEntityProcessingService {
                 // Controlling
                 if (gameData.getKeys().isPressed(GameKeys.SPACE)) {
                     if (weapon1.isEquipped()) {
+                        weapon1.setDurability(weapon1.getDurability() - 1);
 
                         Thread thread1 = new Thread(() -> {
                             weapon1.setShooting(true);

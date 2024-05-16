@@ -26,6 +26,7 @@
         <module name="Shuriken" />
         <module name="CommonInvisibleObject" />
         <module name="CommonPath" />
+        <module name="weaponUzi" />
         <module name="CollisionSystem" />
         <module name="Map" />
         <module name="Core" />
