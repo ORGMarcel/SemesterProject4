@@ -206,10 +206,10 @@ public class CollisionHandler {
 //            movingPart.setAcceleration(5F);
 //            movingPart.setAtObstacle(false);
             movingPart.setAcceleration(0.5F);
-            player.setY(player.getY()+3);
+            player.setY(player.getY()+4);
         }else if(!movingPart.isAtObstacle()){
             movingPart.setAcceleration(0);
-            player.setY(player.getY()-3);
+            player.setY(player.getY()-4);
 //            movingPart.setAtObstacle(true);
         }
 

@@ -40,7 +40,7 @@ public class MovingPart implements EntityPart {
 
     @Override
     public void process(GameData gameData, Entity entity) {
-        if(getAcceleration()<2 && !atObstacle){
+        if(getAcceleration()<3 && !atObstacle){
             setAcceleration((float) (getAcceleration()+0.2));
         }
         // TODO: Placeholder, it should not only do it when acceleration is positive
