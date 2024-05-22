@@ -62,6 +62,18 @@ public class Main extends Application {
             if (event.getCode().equals(KeyCode.SPACE)) {
                 gameData.getKeys().setKey(GameKeys.SPACE, true);
             }
+            if (event.getCode().equals(KeyCode.DIGIT1)) {
+                gameData.getKeys().setKey(GameKeys.NUM1, true);
+            }
+            if (event.getCode().equals(KeyCode.DIGIT2)) {
+                gameData.getKeys().setKey(GameKeys.NUM2, true);
+            }
+            if (event.getCode().equals(KeyCode.DIGIT3)) {
+                gameData.getKeys().setKey(GameKeys.NUM3, true);
+            }
+            if (event.getCode().equals(KeyCode.DIGIT4)) {
+                gameData.getKeys().setKey(GameKeys.NUM4, true);
+            }
         });
         scene.setOnKeyReleased(event -> {
             if (event.getCode().equals(KeyCode.LEFT)) {
@@ -79,6 +91,18 @@ public class Main extends Application {
 
             if (event.getCode().equals(KeyCode.SPACE)) {
                 gameData.getKeys().setKey(GameKeys.SPACE, false);
+            }
+            if (event.getCode().equals(KeyCode.DIGIT1)) {
+                gameData.getKeys().setKey(GameKeys.NUM1, false);
+            }
+            if (event.getCode().equals(KeyCode.DIGIT2)) {
+                gameData.getKeys().setKey(GameKeys.NUM2, false);
+            }
+            if (event.getCode().equals(KeyCode.DIGIT3)) {
+                gameData.getKeys().setKey(GameKeys.NUM3, false);
+            }
+            if (event.getCode().equals(KeyCode.DIGIT4)) {
+                gameData.getKeys().setKey(GameKeys.NUM4, false);
             }
 
         });

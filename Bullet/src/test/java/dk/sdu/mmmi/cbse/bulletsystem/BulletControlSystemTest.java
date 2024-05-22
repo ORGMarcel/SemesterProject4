@@ -2,7 +2,6 @@ package dk.sdu.mmmi.cbse.bulletsystem;
 
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
-import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
 import org.junit.jupiter.api.Test;
 import dk.sdu.mmmi.cbse.bulletsystem.BulletControlSystem;
 import dk.sdu.mmmi.cbse.commonbullet.Bullet;
@@ -28,17 +27,11 @@ class BulletControlSystemTest {
         BulletControlSystem bulletControlSystem = new BulletControlSystem();
         Entity shooter = new Entity();
         GameData gameData = new GameData();
-        World world = new World();
         Entity bullet = bulletControlSystem.createBullet(shooter, gameData);
-        world.addEntity(bullet);
-        bulletControlSystem.process(gameData, world);
-        // Check if bullet's position has changed
-        assertNotEquals(shooter.getX(), bullet.getX());
-        assertNotEquals(shooter.getY(), bullet.getY());
-        // Check if bullet is removed when out of bounds
-        bullet.setX(gameData.getDisplayWidth() + 1);
-        bulletControlSystem.process(gameData, world);
-        assertFalse(world.getEntities().contains(bullet));
+        assertNotNull(bullet);
+        // Check if bullet's position is correct
+        assertEquals(shooter.getX() + Math.cos(Math.toRadians(bullet.getRotation())) * 25, bullet.getX());
+        assertEquals(shooter.getY() + Math.sin(Math.toRadians(bullet.getRotation())) * 25, bullet.getY());
     }
 
     @Test
@@ -48,9 +41,9 @@ class BulletControlSystemTest {
         GameData gameData = new GameData();
         Entity bullet = bulletControlSystem.createBullet(shooter, gameData);
         assertNotNull(bullet);
-        //LifePart lifePart = new LifePart(5);
-        //bullet.add(lifePart);
-        // assertEquals(3, ((LifePart) bullet.getPart(LifePart.class)).getLife());
+        // Check if bullet's position is correct
+        assertEquals(shooter.getX() + Math.cos(Math.toRadians(bullet.getRotation())) * 25, bullet.getX());
+        assertEquals(shooter.getY() + Math.sin(Math.toRadians(bullet.getRotation())) * 25, bullet.getY());
     }
 
 

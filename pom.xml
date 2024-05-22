@@ -16,7 +16,6 @@
         <module>Player</module>
         <module>Bullet</module>
         <module>CommonBullet</module>
-        <module>Weapon</module>
         <module>Enemies</module>
         <module>CollisionSystem</module>
         <module>CommonMap</module>
@@ -28,11 +27,13 @@
         <module>CommonWeaponCoin</module>
         <module>CommonMapObject</module>
         <module>CommonInvisibleObject</module>
-        <module>WeaponUzi</module>
         <module>CommonMapPlayer</module>
         <module>CommonMapEnemy</module>
         <module>Ai</module>
         <module>CommonPath</module>
+        <module>Shuriken</module>
+        <module>WeaponShotgun</module>
+        <module>WeaponUzi</module>
 
     </modules>
     <properties>

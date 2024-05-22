@@ -54,10 +54,34 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>dk.sdu.cbse.common.enemy</groupId>
-            <artifactId>CommonEnemy</artifactId>
+            <groupId>dk.sdu.mmmi.cbse</groupId>
+            <artifactId>CommonWeaponCoin</artifactId>
             <version>1.0.1-SNAPSHOT</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>dk.sdu.cbse.common.player</groupId>
+            <artifactId>CommonPlayer</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>dk.sdu.mmmi.cbse</groupId>
+            <artifactId>CommonInvisibleObject</artifactId>
+            <version>1.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.11.0-M1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.11.0-M1</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

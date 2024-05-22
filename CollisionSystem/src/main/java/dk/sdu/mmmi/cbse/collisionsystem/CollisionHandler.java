@@ -1,6 +1,6 @@
 package dk.sdu.mmmi.cbse.collisionsystem;
 
-import dk.sdu.mmmi.cbse.common.data.CollideableInterface;
+import dk.sdu.mmmi.cbse.common.data.ICollideable;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
@@ -11,7 +11,6 @@ import dk.sdu.mmmi.cbse.commonmapobject.CommonMapObject;
 import dk.sdu.mmmi.cbse.commonobstacle.Obstacle;
 import dk.sdu.mmmi.cbse.commonplayer.Player;
 import dk.sdu.mmmi.cbse.commonweapon.Weapon;
-import dk.sdu.mmmi.cbse.commonweaponcoin.WeaponCoin;
 
 public class CollisionHandler {
 
@@ -31,9 +30,10 @@ public class CollisionHandler {
 
 
 //         CollideableInterface and CollideableInterface
-        if (e1 instanceof CollideableInterface && e2 instanceof CollideableInterface) {
+        if (e1 instanceof ICollideable && e2 instanceof ICollideable) {
             return CollideableAndCollideable(co1, co2, world);
         }
+
 
         // Bullet and Bullet
         if (e1 instanceof Bullet && e2 instanceof Bullet) {
@@ -56,6 +56,23 @@ public class CollisionHandler {
         Entity bullet = this.findBullet(e1, e2);
         Entity player = this.findPlayer(e1, e2);
         Entity obstacle = this.findObstacle(e1, e2);
+        Entity weapon = this.findWeapon(e1, e2);
+
+
+        // Player and weapon
+        if(player instanceof Player && weapon instanceof Weapon){
+            if(!((Weapon) weapon).isEquipped()){
+                Player player1 = (Player) player;
+                Weapon weapon1 = (Weapon) weapon;
+//            world.removeEntity(player1.getEquippedWeapon());
+                System.out.println("Weapon picked up");
+                world.removeEntity(weapon1);
+                weapon1.setEquipped(false);
+                player1.addWeaponToInventory(weapon1);
+            }
+            return true;
+
+        }
 
 
         // Bullet and enemy collides
@@ -138,8 +155,8 @@ public class CollisionHandler {
 
     private boolean CollideableAndCollideable(Entity e1, Entity e2, World world) {
 
-        CollideableInterface commonCollideable1 = (CollideableInterface) e1;
-        CollideableInterface commonCollideable2 = (CollideableInterface) e2;
+        ICollideable commonCollideable1 = (ICollideable) e1;
+        ICollideable commonCollideable2 = (ICollideable) e2;
 
         commonCollideable1.handleCollide();
         commonCollideable2.handleCollide();
@@ -189,10 +206,10 @@ public class CollisionHandler {
 //            movingPart.setAcceleration(5F);
 //            movingPart.setAtObstacle(false);
             movingPart.setAcceleration(0.5F);
-            player.setY(player.getY()+5);
+            player.setY(player.getY()+4);
         }else if(!movingPart.isAtObstacle()){
             movingPart.setAcceleration(0);
-            player.setY(player.getY()-5);
+            player.setY(player.getY()-4);
 //            movingPart.setAtObstacle(true);
         }
 
@@ -200,6 +217,15 @@ public class CollisionHandler {
 
 
         return true;
+    }
+
+    private Entity findWeapon(Entity e, Entity r) {
+        if (e instanceof Weapon) {
+            return e;
+        } else if (r instanceof Weapon) {
+            return r;
+        }
+        return null;
     }
 
     private Entity findEnemy(Entity e, Entity r) {
@@ -238,14 +264,14 @@ public class CollisionHandler {
         return null;
     }
 
-    private Entity findWeaponCoin(Entity e, Entity r) {
-        if (e instanceof WeaponCoin) {
-            return e;
-        } else if (r instanceof WeaponCoin) {
-            return r;
-        }
-        return null;
-    }
+//    private Entity findWeaponCoin(Entity e, Entity r) {
+//        if (e instanceof WeaponCoin) {
+//            return e;
+//        } else if (r instanceof WeaponCoin) {
+//            return r;
+//        }
+//        return null;
+//    }
 
 
 

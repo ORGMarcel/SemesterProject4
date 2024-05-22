@@ -1,17 +1,27 @@
 package dk.sdu.mmmi.cbse.commonenemy;
 
-import dk.sdu.mmmi.cbse.common.data.CollideableInterface;
+import dk.sdu.mmmi.cbse.common.data.ICollideable;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.entityparts.ColorPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
 import dk.sdu.mmmi.cbse.commonpath.CommonPath;
 
-public class Enemy extends Entity implements CollideableInterface {
+public class Enemy extends Entity implements ICollideable {
 
 
     CommonPath path;
     int currentPathIndex = 0;
-    private double speed = 0.05;
+    private double speed = 1;
+    boolean isShooting = false;
+
+
+    public boolean isShooting() {
+        return isShooting;
+    }
+
+    public void setShooting(boolean isShooting) {
+        this.isShooting = isShooting;
+    }
 
 
     public double getSpeed() {

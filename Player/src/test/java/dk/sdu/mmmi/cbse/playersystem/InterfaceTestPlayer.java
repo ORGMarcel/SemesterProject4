@@ -10,7 +10,6 @@ public class InterfaceTestPlayer {
     @Test
     public void testPlayerImplementsInterface() {
         PlayerControlSystem playerControlSystem = new PlayerControlSystem();
-        assertSame(playerControlSystem.getClass().getInterfaces()[0], IEntityProcessingService.class,
-                "PlayerControlSystem should implement the interface IEntityProcessingService");
+        assertSame(playerControlSystem.getClass().getInterfaces()[0], IEntityProcessingService.class, "PlayerControlSystem should implement the interface IEntityProcessingService");
     }
 }

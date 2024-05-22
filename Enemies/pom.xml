@@ -35,6 +35,9 @@
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.11.0-M1</version>
             <scope>test</scope>
+
+        </dependency>
+        <dependency>
             <groupId>dk.sdu.cbse.common.player</groupId>
             <artifactId>CommonPlayer</artifactId>
             <version>1.0.1-SNAPSHOT</version>
