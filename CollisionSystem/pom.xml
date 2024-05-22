@@ -45,13 +45,17 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+<<<<<<< HEAD
             <version>4.12</version>
+=======
+            <version>4.8</version>
+>>>>>>> 37731549c845809d9d005c2b3d7355819d824808
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.8.1</version>
+            <version>5.11.0-M1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
