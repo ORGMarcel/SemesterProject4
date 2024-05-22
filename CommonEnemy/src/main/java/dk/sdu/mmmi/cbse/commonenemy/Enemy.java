@@ -1,12 +1,12 @@
 package dk.sdu.mmmi.cbse.commonenemy;
 
-import dk.sdu.mmmi.cbse.common.data.CollideableInterface;
+import dk.sdu.mmmi.cbse.common.data.ICollideable;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.entityparts.ColorPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
 import dk.sdu.mmmi.cbse.commonpath.CommonPath;
 
-public class Enemy extends Entity implements CollideableInterface {
+public class Enemy extends Entity implements ICollideable {
 
 
     CommonPath path;

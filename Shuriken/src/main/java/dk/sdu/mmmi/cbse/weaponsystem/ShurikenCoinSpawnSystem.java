@@ -18,14 +18,14 @@ public class ShurikenCoinSpawnSystem implements IEntityProcessingService {
 
             if (randomNumber == 1) {
                 // Add entities to the world
-                Entity coinShuriken = createShotgunCoin(gameData);
+                Entity coinShuriken = createShurikenCoin(gameData);
                 world.addEntity(coinShuriken);
                 System.out.println("Shuriken coin added");
             }
         }
 
 
-    private Entity createShotgunCoin(GameData gameData) {
+    private Entity createShurikenCoin(GameData gameData) {
 
         Shuriken coinShuriken = new Shuriken();
         coinShuriken.setPolygonCoordinates(6, -0.5, 4, -0.5, 4, -1.5, 3, -1.5, 3, -2.5, -1, -2.5, -1, -3.5, 0, -3.5, 0, -4.5, -5, -4.5, -5, -2.5, -4, -2.5, -4, -1.5, -3, -1.5, -3, -0.5, -5, -0.5, -5, 0.5, -3, 0.5, -3, 1.5, -4, 1.5, -4, 2.5, -5, 2.5, -5, 4.5, 0, 4.5, 0, 3.5, -1, 3.5, -1, 2.5, 1, 2.5, 1, 0.5, 2, 0.5, 2, -0.5, 1, -0.5, 1, -1.5, 2, -1.5, 2, -0.5, 3, -0.5, 3, 0.5, 2, 0.5, 2, 1.5, 1, 1.5, 1, 2.5, 3, 2.5, 3, 1.5, 4, 1.5, 4, 0.5, 6, 0.5, 6, 0.5, 8, 0.5, 8, 0.5, 12, 0.5);
@@ -42,3 +42,6 @@ public class ShurikenCoinSpawnSystem implements IEntityProcessingService {
     }
 
 }
+
+
+

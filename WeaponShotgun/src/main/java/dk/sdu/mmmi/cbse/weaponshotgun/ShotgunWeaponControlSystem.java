@@ -47,10 +47,8 @@ public class ShotgunWeaponControlSystem implements IEntityProcessingService {
                 if (gameData.getKeys().isPressed(GameKeys.SPACE)) {
                     if (weapon1.isEquipped()) {
                         weapon1.setDurability(weapon1.getDurability() - 1);
-
                         Thread thread1 = new Thread(() -> {
                             weapon1.setShooting(true);
-
                             try {
                                 for (int i = 0; i < 5; i++) {
                                     // Execute the action
@@ -70,28 +68,13 @@ public class ShotgunWeaponControlSystem implements IEntityProcessingService {
                                 Thread.currentThread().interrupt(); // Properly handle thread interruption
                                 e.printStackTrace();
                             }
-
                         });
                         if (!weapon1.isShooting()) {
                             thread1.start();
                         }
-
                     }
                 }
 
-                // Check if weapon is out of bounds
-                if (weaponShotgun.getX() < 0) {
-                    weaponShotgun.setX(1);
-                }
-                if (weaponShotgun.getX() > gameData.getDisplayWidth()) {
-                    weaponShotgun.setX(gameData.getDisplayWidth() - 1);
-                }
-                if (weaponShotgun.getY() < 0) {
-                    weaponShotgun.setY(1);
-                }
-                if (weaponShotgun.getY() > gameData.getDisplayHeight()) {
-                    weaponShotgun.setY(gameData.getDisplayHeight() - 1);
-                }
             }
         }
     }

@@ -1,6 +1,6 @@
 package dk.sdu.mmmi.cbse.commonplayer;
 
-import dk.sdu.mmmi.cbse.common.data.CollideableInterface;
+import dk.sdu.mmmi.cbse.common.data.ICollideable;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.ColorPart;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Player extends Entity implements CollideableInterface {
+public class Player extends Entity implements ICollideable {
 
 
     List<Weapon> inventory = new ArrayList<Weapon>();

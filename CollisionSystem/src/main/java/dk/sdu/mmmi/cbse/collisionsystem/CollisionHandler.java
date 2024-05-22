@@ -1,6 +1,6 @@
 package dk.sdu.mmmi.cbse.collisionsystem;
 
-import dk.sdu.mmmi.cbse.common.data.CollideableInterface;
+import dk.sdu.mmmi.cbse.common.data.ICollideable;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
@@ -30,7 +30,7 @@ public class CollisionHandler {
 
 
 //         CollideableInterface and CollideableInterface
-        if (e1 instanceof CollideableInterface && e2 instanceof CollideableInterface) {
+        if (e1 instanceof ICollideable && e2 instanceof ICollideable) {
             return CollideableAndCollideable(co1, co2, world);
         }
 
@@ -155,8 +155,8 @@ public class CollisionHandler {
 
     private boolean CollideableAndCollideable(Entity e1, Entity e2, World world) {
 
-        CollideableInterface commonCollideable1 = (CollideableInterface) e1;
-        CollideableInterface commonCollideable2 = (CollideableInterface) e2;
+        ICollideable commonCollideable1 = (ICollideable) e1;
+        ICollideable commonCollideable2 = (ICollideable) e2;
 
         commonCollideable1.handleCollide();
         commonCollideable2.handleCollide();

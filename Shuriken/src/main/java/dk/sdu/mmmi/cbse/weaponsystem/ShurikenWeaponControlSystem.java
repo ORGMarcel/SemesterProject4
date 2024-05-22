@@ -39,8 +39,6 @@ public class ShurikenWeaponControlSystem implements IEntityProcessingService {
                     weapon.setX(weapon.getX() + changeX * 30);
                     weapon.setY(weapon.getY() + changeY * 30);
                 }
-
-
             }
 
 
@@ -55,25 +53,9 @@ public class ShurikenWeaponControlSystem implements IEntityProcessingService {
                             }
                     );
                 }
-
-
             }
 
-            if (weapon.getX() < 0) {
-                weapon.setX(1);
-            }
 
-            if (weapon.getX() > gameData.getDisplayWidth()) {
-                weapon.setX(gameData.getDisplayWidth() - 1);
-            }
-
-            if (weapon.getY() < 0) {
-                weapon.setY(1);
-            }
-
-            if (weapon.getY() > gameData.getDisplayHeight()) {
-                weapon.setY(gameData.getDisplayHeight() - 1);
-            }
 
 
         }

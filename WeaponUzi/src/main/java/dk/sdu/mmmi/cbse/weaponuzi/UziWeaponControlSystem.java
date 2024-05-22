@@ -46,18 +46,14 @@ public class UziWeaponControlSystem implements IEntityProcessingService {
             if (gameData.getKeys().isPressed(GameKeys.SPACE)) {
                 if (weapon1.isEquipped()) {
                     weapon1.setDurability(weapon1.getDurability() - 1);
-
-
                     Thread thread1 = new Thread(() -> {
                         weapon1.setShooting(true);
-
                         try {
                             for (int i = 0; i < 10; i++) {
                                 // Execute the action
                                 getBulletSPIs().stream().findFirst().ifPresent(
                                         spi -> world.addEntity(spi.createBullet(weaponUzi, gameData))
                                 );
-
                                 // Wait for 0.05 seconds between bullets
                                 Thread.sleep(50);
                             }
@@ -68,33 +64,13 @@ public class UziWeaponControlSystem implements IEntityProcessingService {
                             Thread.currentThread().interrupt(); // Properly handle thread interruption
                             e.printStackTrace();
                         }
-
                     });
                     if (!weapon1.isShooting()) {
                         thread1.start();
                     }
-
                 }
             }
-
-
-            if (weaponUzi.getX() < 0) {
-                weaponUzi.setX(1);
-            }
-
-            if (weaponUzi.getX() > gameData.getDisplayWidth()) {
-                weaponUzi.setX(gameData.getDisplayWidth() - 1);
-            }
-
-            if (weaponUzi.getY() < 0) {
-                weaponUzi.setY(1);
-            }
-
-            if (weaponUzi.getY() > gameData.getDisplayHeight()) {
-                weaponUzi.setY(gameData.getDisplayHeight() - 1);
-            }
-
-
+            
         }
     }
 
