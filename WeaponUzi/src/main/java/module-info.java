@@ -9,11 +9,8 @@ module UziShotgun {
     uses BulletSPI;
     requires Common;
     requires CommonBullet;
-//    requires Player;
     requires CommonPlayer;
     requires CommonWeapon;
-//    requires CommonBullet;
-//    uses dk.sdu.mmmi.cbse.common.bullet.BulletSPI;
     provides IGamePluginService with UziWeaponPlugin;
     provides IEntityProcessingService with UziWeaponControlSystem, UziCoinSpawnSystem;
 }

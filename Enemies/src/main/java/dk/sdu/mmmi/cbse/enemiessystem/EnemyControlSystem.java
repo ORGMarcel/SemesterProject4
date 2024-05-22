@@ -10,7 +10,6 @@ import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.commonpath.CommonPath;
-import dk.sdu.mmmi.cbse.commonplayer.Player;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -47,6 +46,27 @@ public class EnemyControlSystem implements IEntityProcessingService {
             if (lifePart.getLife() <= 0) {
                 world.removeEntity(enemyEntity);
             }
+
+
+//            // TODO: Enemy facing player
+//            // Retrieve the player entity
+//            Entity player = world.getEntities(Player.class).stream().findFirst().orElse(null);
+//            if (player == null) {
+//                continue; // Skip if no player entity is found
+//            }
+//
+//            // Calculate the difference in x and y coordinates
+//            double dx = player.getX() - enemy.getX();
+//            double dy = player.getY() - enemy.getY();
+//
+//            // Calculate the angle in radians
+//            double angleRad = Math.atan2(dy, dx);
+//
+//            // Convert the angle to degrees
+//            double angleDeg = Math.toDegrees(angleRad);
+//
+//            // Set the enemy's rotation
+//            enemy.setRotation(angleDeg);
 
 //            CommonPath commonPath = enemy.getPath();
 //            if (commonPath == null) {
@@ -113,8 +133,8 @@ public class EnemyControlSystem implements IEntityProcessingService {
             // Get the first tile in the path
             int[] currentDestination = path[0];
 //            System.out.println("Current destination: (" + currentDestination[0] + ", " + currentDestination[1] + ")");
-            double destinationX = currentDestination[0] * (gameData.getDisplayWidth() / 20);
-            double destinationY = currentDestination[1] * (gameData.getDisplayHeight() / 20);
+            double destinationX = currentDestination[0] * (gameData.getDisplayWidth() / 20) + 20;
+            double destinationY = currentDestination[1] * (gameData.getDisplayHeight() / 20) + 20;
 
             double dx = destinationX - enemy.getX();
             double dy = destinationY - enemy.getY();
@@ -133,20 +153,68 @@ public class EnemyControlSystem implements IEntityProcessingService {
 ////            }
             if (distanceToDestination < enemy.getSpeed()) { // Check if the enemy is about to overshoot the destination
                 // Set the enemy's position to the destination
+
                 enemy.setX(destinationX);
                 enemy.setY(destinationY);
             } else {
+
                 // Move the enemy towards the current destination
                 double angle = Math.atan2(dy, dx);
                 enemy.setX(enemy.getX() + Math.cos(angle) * enemy.getSpeed());
                 enemy.setY(enemy.getY() + Math.sin(angle) * enemy.getSpeed());
             }
 
-//            if(enemy.getPath().getPath().length<5){
+
+
+            // TODO: Enemy facing player
+            int[] currentDestinationRotation = path[path.length - 1];
+//            System.out.println("Current destination: (" + currentDestination[0] + ", " + currentDestination[1] + ")");
+            double destinationX2 = currentDestinationRotation[0] * (gameData.getDisplayWidth() / 20);
+            double destinationY2 = currentDestinationRotation[1] * (gameData.getDisplayHeight() / 20);
+
+            double dx2 = destinationX2 - enemy.getX();
+            double dy2 = destinationY2 - enemy.getY();
+
+            // Calculate the angle in radians
+            double angleRad = Math.atan2(dy2, dx2);
+
+            // Convert the angle to degrees
+            double angleDeg = Math.toDegrees(angleRad);
+
+            // Set the enemy's rotation
+            enemy.setRotation(angleDeg);
+
+
+            if (enemy.getPath().getPath().length < 8 && !enemy.isShooting()) {
+
+                Thread thread1 = new Thread(() -> {
+                    enemy.setShooting(true);
+
+                    try {
+                        // Execute the action
+                        getBulletSPIs().stream().findFirst().ifPresent(
+                                spi -> world.addEntity(spi.createBullet(enemy, gameData))
+                        );
+
+
+                        // Wait for 2 seconds after completing the loop
+                        Thread.sleep(1500); // 1000 milliseconds
+                        enemy.setShooting(false);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt(); // Properly handle thread interruption
+                        e.printStackTrace();
+                    }
+
+                });
+                thread1.start();
+
+
 //                getBulletSPIs().stream().findFirst().ifPresent(
-//                        spi -> {world.addEntity(spi.createBullet(enemy, gameData));}
+//                        spi -> {
+//                            world.addEntity(spi.createBullet(enemy, gameData));
+//                        }
 //                );
-//            }
+            }
 
 
 //            if(enemy.getPath() != null){
