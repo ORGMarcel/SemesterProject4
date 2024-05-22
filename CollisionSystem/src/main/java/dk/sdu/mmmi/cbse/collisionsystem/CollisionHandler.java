@@ -11,7 +11,6 @@ import dk.sdu.mmmi.cbse.commonmapobject.CommonMapObject;
 import dk.sdu.mmmi.cbse.commonobstacle.Obstacle;
 import dk.sdu.mmmi.cbse.commonplayer.Player;
 import dk.sdu.mmmi.cbse.commonweapon.Weapon;
-import dk.sdu.mmmi.cbse.commonweaponcoin.WeaponCoin;
 
 public class CollisionHandler {
 
@@ -265,14 +264,14 @@ public class CollisionHandler {
         return null;
     }
 
-    private Entity findWeaponCoin(Entity e, Entity r) {
-        if (e instanceof WeaponCoin) {
-            return e;
-        } else if (r instanceof WeaponCoin) {
-            return r;
-        }
-        return null;
-    }
+//    private Entity findWeaponCoin(Entity e, Entity r) {
+//        if (e instanceof WeaponCoin) {
+//            return e;
+//        } else if (r instanceof WeaponCoin) {
+//            return r;
+//        }
+//        return null;
+//    }
 
 
 

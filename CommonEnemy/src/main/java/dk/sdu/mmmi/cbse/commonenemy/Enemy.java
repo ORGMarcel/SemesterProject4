@@ -12,6 +12,16 @@ public class Enemy extends Entity implements CollideableInterface {
     CommonPath path;
     int currentPathIndex = 0;
     private double speed = 1;
+    boolean isShooting = false;
+
+
+    public boolean isShooting() {
+        return isShooting;
+    }
+
+    public void setShooting(boolean isShooting) {
+        this.isShooting = isShooting;
+    }
 
 
     public double getSpeed() {
