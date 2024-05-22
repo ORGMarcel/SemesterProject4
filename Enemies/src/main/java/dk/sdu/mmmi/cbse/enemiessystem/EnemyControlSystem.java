@@ -218,23 +218,23 @@ public class EnemyControlSystem implements IEntityProcessingService {
 
 
 
-            // TODO: Enemy facing player
-            int[] currentDestinationRotation = path[path.length - 1];
-//            System.out.println("Current destination: (" + currentDestination[0] + ", " + currentDestination[1] + ")");
-            double destinationX2 = currentDestinationRotation[0] * (gameData.getDisplayWidth() / 20);
-            double destinationY2 = currentDestinationRotation[1] * (gameData.getDisplayHeight() / 20);
-
-            double dx2 = destinationX2 - enemy.getX();
-            double dy2 = destinationY2 - enemy.getY();
-
-            // Calculate the angle in radians
-            double angleRad = Math.atan2(dy2, dx2);
-
-            // Convert the angle to degrees
-            double angleDeg = Math.toDegrees(angleRad);
-
-            // Set the enemy's rotation
-            enemy.setRotation(angleDeg);
+//            // TODO: Enemy facing player
+//            int[] currentDestinationRotation = path[path.length - 1];
+////            System.out.println("Current destination: (" + currentDestination[0] + ", " + currentDestination[1] + ")");
+//            double destinationX2 = currentDestinationRotation[0] * (gameData.getDisplayWidth() / 20);
+//            double destinationY2 = currentDestinationRotation[1] * (gameData.getDisplayHeight() / 20);
+//
+//            double dx2 = destinationX2 - enemy.getX();
+//            double dy2 = destinationY2 - enemy.getY();
+//
+//            // Calculate the angle in radians
+//            double angleRad = Math.atan2(dy2, dx2);
+//
+//            // Convert the angle to degrees
+//            double angleDeg = Math.toDegrees(angleRad);
+//
+//            // Set the enemy's rotation
+//            enemy.setRotation(angleDeg);
 
 
             if (enemy.getPath().getPath().length < 8 && !enemy.isShooting()) {
