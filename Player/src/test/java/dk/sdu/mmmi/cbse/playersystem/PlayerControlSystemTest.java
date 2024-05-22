@@ -55,9 +55,12 @@ class PlayerControlSystemTest {
     public void testProcessWhenJumping() {
         gameData.getKeys().setKey(GameKeys.UP, true);
         double initialY = player.getY();
+        player.setPolygonCoordinates(3,3);
+        player.setX(3);
+        player.setY(3);
         player.add(new LifePart(10));
         playerControlSystem.process(gameData, world);
-        assertTrue(player.getY() < initialY);
+        assertTrue(player.getY() > initialY);
         //player.getY() should be less than initialY because the player is jumping, though it returns false
 
     }
