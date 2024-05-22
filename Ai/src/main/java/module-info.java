@@ -13,6 +13,9 @@ module Ai {
     requires CommonMapEnemy;
     requires CommonEnemy;
     requires CommonPath;
+    requires CommonWeaponCoin;
+    requires CommonPlayer;
+    requires CommonInvisibleObject;
 //    requires CommonBullet;
 //    uses dk.sdu.mmmi.cbse.common.bullet.BulletSPI;
     provides IGamePluginService with AiPlugin;

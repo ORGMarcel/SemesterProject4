@@ -5,15 +5,10 @@ module CollisionSystem {
     exports dk.sdu.mmmi.cbse.collisionsystem;
     requires Common;
     requires CommonBullet;
-    requires Player;
-    requires Enemies;
     requires CommonEnemy;
     requires CommonPlayer;
     requires CommonWeapon;
     requires CommonMapObject;
     requires CommonObstacle;
-    requires CommonWeaponCoin;
-    requires CommonMap;
-    requires CommonInvisibleObject;
     provides IEntityProcessingService with CollisionControlSystem;
 }

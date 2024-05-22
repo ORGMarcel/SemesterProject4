@@ -17,16 +17,21 @@ public class EnemyPlugin implements IGamePluginService {
     public void start(GameData gameData, World world) {
 
         // Add entities to the world
-        enemy = createEnemyShip(gameData);
+        enemy = createEnemyShip(gameData, gameData.getDisplayHeight()/5+500, gameData.getDisplayWidth()/5+500);
+        world.addEntity(enemy);
+
+        // Add entities to the world
+        enemy = createEnemyShip(gameData, gameData.getDisplayHeight()/5+100, gameData.getDisplayWidth()/5+100);
         world.addEntity(enemy);
     }
 
-    private Entity createEnemyShip(GameData gameData) {
+    private Entity createEnemyShip(GameData gameData, double x, double y) {
 
         Enemy enemyShip = new Enemy();
         enemyShip.setPolygonCoordinates(18.0, -1.5, 12.0, -1.5, 12.0, -4.5, 9.0, -4.5, 9.0, -7.5, -3.0, -7.5, -3.0, -10.5, 0.0, -10.5, 0.0, -13.5, -15.0, -13.5, -15.0, -7.5, -12.0, -7.5, -12.0, -4.5, -9.0, -4.5, -9.0, -1.5, -15.0, -1.5, -15.0, 1.5, -9.0, 1.5, -9.0, 4.5, -12.0, 4.5, -12.0, 7.5, -15.0, 7.5, -15.0, 13.5, 0.0, 13.5, 0.0, 10.5, -6.0, 10.5, -6.0, 7.5, 6.0, 7.5, 6.0, 1.5, 12.0, 1.5, 12.0, -1.5, 6.0, -1.5, 6.0, -4.5, 12.0, -4.5, 12.0, -1.5, 18.0, -1.5);
-        enemyShip.setX(gameData.getDisplayHeight()/5+500);
-        enemyShip.setY(gameData.getDisplayWidth()/5+500);
+        enemyShip.setX(x);
+        enemyShip.setY(y);
+        enemyShip.add(new LifePart(5));
         return enemyShip;
     }
 
