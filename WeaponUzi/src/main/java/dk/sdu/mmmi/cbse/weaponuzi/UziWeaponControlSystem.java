@@ -52,7 +52,7 @@ public class UziWeaponControlSystem implements IEntityProcessingService {
                         weapon1.setShooting(true);
 
                         try {
-                            for (int i = 0; i < 40; i++) {
+                            for (int i = 0; i < 10; i++) {
                                 // Execute the action
                                 getBulletSPIs().stream().findFirst().ifPresent(
                                         spi -> world.addEntity(spi.createBullet(weaponUzi, gameData))
@@ -62,7 +62,7 @@ public class UziWeaponControlSystem implements IEntityProcessingService {
                                 Thread.sleep(50);
                             }
                             // Wait for 2 seconds after completing the loop
-                            Thread.sleep(2000); // 2000 milliseconds
+                            Thread.sleep(1000); // 1000 milliseconds
                             weapon1.setShooting(false);
                         } catch (InterruptedException e) {
                             Thread.currentThread().interrupt(); // Properly handle thread interruption
