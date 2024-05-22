@@ -22,22 +22,6 @@ public class ShurikenWeaponPlugin implements IGamePluginService {
         weaponShuriken = createBaseWeapon(gameData);
         world.addEntity(weaponShuriken);
 
-//         Add entities to the world
-//        weaponShuriken = (Shuriken) createBaseWeapon(gameData);
-//        world.addEntity(weaponShuriken);
-//        weaponShuriken.setEquipped(true);
-
-//        for (Entity player : world.getEntities(Player.class)) {
-//            Player player1 = (Player) player;
-//            System.out.println("Added to inventory");
-//            player1.addWeaponToInventory(weaponShuriken);
-//            player1.setEquippedWeapon(weaponShuriken);
-//            player1.setCurrentWeapon(0);
-//            for (int i = 0; i < player1.getInventory().length; i++) {
-//                System.out.println(player1.getInventory()[i]);
-//            }
-//        }
-
     }
 
     private Entity createBaseWeapon(GameData gameData) {
@@ -47,10 +31,7 @@ public class ShurikenWeaponPlugin implements IGamePluginService {
 
         baseWeapon.setDurability(10);
 
-//        baseWeapon.setX(gameData.getDisplayHeight() / 2 + 20);
-//        baseWeapon.setY(gameData.getDisplayWidth() / 2);
         Random random = new Random();
-
 
         int randomX = random.nextInt(gameData.getDisplayHeight()) + 1;
         int randomY = random.nextInt(gameData.getDisplayHeight()) + 1;
