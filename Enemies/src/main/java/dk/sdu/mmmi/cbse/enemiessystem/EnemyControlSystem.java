@@ -164,11 +164,57 @@ public class EnemyControlSystem implements IEntityProcessingService {
                 enemy.setY(enemy.getY() + Math.sin(angle) * enemy.getSpeed());
             }
 
-//            if(enemy.getPath().getPath().length<5){
+
+
+            // TODO: Enemy facing player
+            int[] currentDestinationRotation = path[path.length - 1];
+//            System.out.println("Current destination: (" + currentDestination[0] + ", " + currentDestination[1] + ")");
+            double destinationX2 = currentDestinationRotation[0] * (gameData.getDisplayWidth() / 20);
+            double destinationY2 = currentDestinationRotation[1] * (gameData.getDisplayHeight() / 20);
+
+            double dx2 = destinationX2 - enemy.getX();
+            double dy2 = destinationY2 - enemy.getY();
+
+            // Calculate the angle in radians
+            double angleRad = Math.atan2(dy2, dx2);
+
+            // Convert the angle to degrees
+            double angleDeg = Math.toDegrees(angleRad);
+
+            // Set the enemy's rotation
+            enemy.setRotation(angleDeg);
+
+
+            if (enemy.getPath().getPath().length < 8 && !enemy.isShooting()) {
+
+                Thread thread1 = new Thread(() -> {
+                    enemy.setShooting(true);
+
+                    try {
+                        // Execute the action
+                        getBulletSPIs().stream().findFirst().ifPresent(
+                                spi -> world.addEntity(spi.createBullet(enemy, gameData))
+                        );
+
+
+                        // Wait for 2 seconds after completing the loop
+                        Thread.sleep(1500); // 1000 milliseconds
+                        enemy.setShooting(false);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt(); // Properly handle thread interruption
+                        e.printStackTrace();
+                    }
+
+                });
+                thread1.start();
+
+
 //                getBulletSPIs().stream().findFirst().ifPresent(
-//                        spi -> {world.addEntity(spi.createBullet(enemy, gameData));}
+//                        spi -> {
+//                            world.addEntity(spi.createBullet(enemy, gameData));
+//                        }
 //                );
-//            }
+            }
 
 
 
