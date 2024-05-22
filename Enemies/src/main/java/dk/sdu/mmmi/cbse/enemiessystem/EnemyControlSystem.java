@@ -407,7 +407,7 @@ public class EnemyControlSystem implements IEntityProcessingService {
     }
 
 
-    private Enemy createEnemyShip(GameData gameData) {
+    public Enemy createEnemyShip(GameData gameData) {
 
         Random random = new Random();
         int randomWidthX = random.nextInt(gameData.getDisplayWidth());

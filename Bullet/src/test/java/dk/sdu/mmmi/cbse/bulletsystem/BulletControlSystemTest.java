@@ -24,31 +24,26 @@ class BulletControlSystemTest {
     }
     @Test
     public void testProcess() {
-//        BulletControlSystem bulletControlSystem = new BulletControlSystem();
-//        Entity shooter = new Entity();
-//        GameData gameData = new GameData();
-//        World world = new World();
-//        Entity bullet = bulletControlSystem.createBullet(shooter, gameData);
-//        world.addEntity(bullet);
-//        bulletControlSystem.process(gameData, world);
-//        // Check if bullet's position has changed
-//        assertNotEquals(shooter.getX(), bullet.getX());
-//        assertNotEquals(shooter.getY(), bullet.getY());
-//        // Check if bullet is removed when out of bounds
-//        bullet.setX(gameData.getDisplayWidth() + 1);
-//        bulletControlSystem.process(gameData, world);
-//        assertFalse(world.getEntities().contains(bullet));
+        BulletControlSystem bulletControlSystem = new BulletControlSystem();
+        Entity shooter = new Entity();
+        GameData gameData = new GameData();
+        Entity bullet = bulletControlSystem.createBullet(shooter, gameData);
+        assertNotNull(bullet);
+        // Check if bullet's position is correct
+        assertEquals(shooter.getX() + Math.cos(Math.toRadians(bullet.getRotation())) * 25, bullet.getX());
+        assertEquals(shooter.getY() + Math.sin(Math.toRadians(bullet.getRotation())) * 25, bullet.getY());
     }
 
     @Test
     public void testCreateBullet() {
-//        BulletControlSystem bulletControlSystem = new BulletControlSystem();
-//        Entity shooter = new Entity();
-//        GameData gameData = new GameData();
-//        Entity bullet = bulletControlSystem.createBullet(shooter, gameData);
-//        assertNotNull(bullet);
-//        //assertEquals(1, bullet.getHealthPoints());
-//        //assertEquals(1, bullet.getDmg());
+        BulletControlSystem bulletControlSystem = new BulletControlSystem();
+        Entity shooter = new Entity();
+        GameData gameData = new GameData();
+        Entity bullet = bulletControlSystem.createBullet(shooter, gameData);
+        assertNotNull(bullet);
+        // Check if bullet's position is correct
+        assertEquals(shooter.getX() + Math.cos(Math.toRadians(bullet.getRotation())) * 25, bullet.getX());
+        assertEquals(shooter.getY() + Math.sin(Math.toRadians(bullet.getRotation())) * 25, bullet.getY());
     }
 
 
