@@ -27,27 +27,20 @@ public class PlayerControlSystem implements IEntityProcessingService {
 
 
         for (Entity x : world.getEntities(Player.class)) {
-//            System.out.println(player.isJumping());
-            Player player = (Player) x;
+            Player ninja = (Player) x;
             LifePart lifePart = x.getPart(LifePart.class);
             MovingPart movingPart = x.getPart(MovingPart.class);
 
 
             if (lifePart.getLife() <= 0) {
-                world.removeEntity(player);
+                world.removeEntity(ninja);
             }
 
-
-//            // Gravity
-//            if(player.getGravity()<2){
-//                player.setGravity(player.getGravity()+0.1);
-//            }
             if (movingPart.getAcceleration() > 2) {
                 movingPart.setJumping(false);
             }
-//
-//            player.setY(player.getY()+player.getGravity());
-            player.setY(player.getY() + movingPart.getAcceleration());
+
+            ninja.setY(ninja.getY() + movingPart.getAcceleration());
 
 
             // Controlling
@@ -55,38 +48,31 @@ public class PlayerControlSystem implements IEntityProcessingService {
 
 
                 if (!movingPart.isAtObstacle()) {
-                    player.setX(player.getX() - 3);
-//                player.setRotation(player.getRotation() - 5);
-                    player.setRotation(180);
+                    ninja.setX(ninja.getX() - 3);
+                    ninja.setRotation(180);
                     double[] targetArray = {-9.4, -11.84, 6.36, 6.0, -12.4, -10.16, -13.84, -13.36, -9.32, -13.24, 3.2, 0.16, 16.0, -12.0, 20.72, -11.96, 19.16, -9.16, 16.08, -10.56, 4.64, 0.44, 8.24, 5.44, 12.88, 3.44, 15.8, -1.0, 13.52, -2.6, 16.2, -2.0, 19.32, -3.76, 18.76, -1.72, 16.8, -0.32, 13.92, 4.28, 9.8, 6.36, 13.2, 8.28, 14.76, 10.64, 14.88, 13.92, 13.08, 16.48, 10.2, 17.84, 7.12, 17.48, 5.48, 16.36, 2.68, 18.52, -1.08, 18.12, -3.0, 18.56, -1.16, 17.08, 2.56, 17.68, 3.96, 16.56, 4.4, 15.0, 1.48, 15.48, -1.56, 16.12, -6.12, 14.8, -4.64, 14.08, -1.6, 15.12, 3.84, 13.92, 3.76, 11.0, 5.28, 8.56, 7.4, 7.16, 1.28, 9.64, -1.16, 9.84, -4.0, 8.0, -7.36, 7.28, -8.48, 5.52, -7.36, 4.88, -5.76, 6.8, -5.72, 4.72, -4.08, 6.36, -2.6, 5.56, -1.16, 5.84, -2.76, 7.88, -0.76, 9.0};
 
-                    if (!areEqual(targetArray, player.getPolygonCoordinates())) {
-                        Player playerShip = new Player();
-                        LifePart tempLifePart = player.getPart(LifePart.class);
-                        playerShip.add(new LifePart(tempLifePart.getLife()));
-//                    playerShip.add(new AccelerationPart());
-                        playerShip.setPolygonCoordinates(-9.4, -11.84, 6.36, 6.0, -12.4, -10.16, -13.84, -13.36, -9.32, -13.24, 3.2, 0.16, 16.0, -12.0, 20.72, -11.96, 19.16, -9.16, 16.08, -10.56, 4.64, 0.44, 8.24, 5.44, 12.88, 3.44, 15.8, -1.0, 13.52, -2.6, 16.2, -2.0, 19.32, -3.76, 18.76, -1.72, 16.8, -0.32, 13.92, 4.28, 9.8, 6.36, 13.2, 8.28, 14.76, 10.64, 14.88, 13.92, 13.08, 16.48, 10.2, 17.84, 7.12, 17.48, 5.48, 16.36, 2.68, 18.52, -1.08, 18.12, -3.0, 18.56, -1.16, 17.08, 2.56, 17.68, 3.96, 16.56, 4.4, 15.0, 1.48, 15.48, -1.56, 16.12, -6.12, 14.8, -4.64, 14.08, -1.6, 15.12, 3.84, 13.92, 3.76, 11.0, 5.28, 8.56, 7.4, 7.16, 1.28, 9.64, -1.16, 9.84, -4.0, 8.0, -7.36, 7.28, -8.48, 5.52, -7.36, 4.88, -5.76, 6.8, -5.72, 4.72, -4.08, 6.36, -2.6, 5.56, -1.16, 5.84, -2.76, 7.88, -0.76, 9.0);
-                        playerShip.setX(player.getX());
-                        playerShip.setY(player.getY());
-                        playerShip.setRotation(player.getRotation());
+                    if (!areEqual(targetArray, ninja.getPolygonCoordinates())) {
+                        Player playerNinja = new Player();
+                        LifePart tempLifePart = ninja.getPart(LifePart.class);
+                        playerNinja.add(new LifePart(tempLifePart.getLife()));
+                        playerNinja.setPolygonCoordinates(-9.4, -11.84, 6.36, 6.0, -12.4, -10.16, -13.84, -13.36, -9.32, -13.24, 3.2, 0.16, 16.0, -12.0, 20.72, -11.96, 19.16, -9.16, 16.08, -10.56, 4.64, 0.44, 8.24, 5.44, 12.88, 3.44, 15.8, -1.0, 13.52, -2.6, 16.2, -2.0, 19.32, -3.76, 18.76, -1.72, 16.8, -0.32, 13.92, 4.28, 9.8, 6.36, 13.2, 8.28, 14.76, 10.64, 14.88, 13.92, 13.08, 16.48, 10.2, 17.84, 7.12, 17.48, 5.48, 16.36, 2.68, 18.52, -1.08, 18.12, -3.0, 18.56, -1.16, 17.08, 2.56, 17.68, 3.96, 16.56, 4.4, 15.0, 1.48, 15.48, -1.56, 16.12, -6.12, 14.8, -4.64, 14.08, -1.6, 15.12, 3.84, 13.92, 3.76, 11.0, 5.28, 8.56, 7.4, 7.16, 1.28, 9.64, -1.16, 9.84, -4.0, 8.0, -7.36, 7.28, -8.48, 5.52, -7.36, 4.88, -5.76, 6.8, -5.72, 4.72, -4.08, 6.36, -2.6, 5.56, -1.16, 5.84, -2.76, 7.88, -0.76, 9.0);
+                        playerNinja.setX(ninja.getX());
+                        playerNinja.setY(ninja.getY());
+                        playerNinja.setRotation(ninja.getRotation());
                         movingPart.setJumping(movingPart.isJumping());
-                        playerShip.setEquippedWeapon(player.getEquippedWeapon());
-                        playerShip.setCurrentWeapon(player.getCurrentWeapon());
-                        playerShip.setInventory(player.getInventory());
-
-//                        playerShip = player;
-//                        playerShip.setPolygonCoordinates(-9.4, -11.84, 6.36, 6.0, -12.4, -10.16, -13.84, -13.36, -9.32, -13.24, 3.2, 0.16, 16.0, -12.0, 20.72, -11.96, 19.16, -9.16, 16.08, -10.56, 4.64, 0.44, 8.24, 5.44, 12.88, 3.44, 15.8, -1.0, 13.52, -2.6, 16.2, -2.0, 19.32, -3.76, 18.76, -1.72, 16.8, -0.32, 13.92, 4.28, 9.8, 6.36, 13.2, 8.28, 14.76, 10.64, 14.88, 13.92, 13.08, 16.48, 10.2, 17.84, 7.12, 17.48, 5.48, 16.36, 2.68, 18.52, -1.08, 18.12, -3.0, 18.56, -1.16, 17.08, 2.56, 17.68, 3.96, 16.56, 4.4, 15.0, 1.48, 15.48, -1.56, 16.12, -6.12, 14.8, -4.64, 14.08, -1.6, 15.12, 3.84, 13.92, 3.76, 11.0, 5.28, 8.56, 7.4, 7.16, 1.28, 9.64, -1.16, 9.84, -4.0, 8.0, -7.36, 7.28, -8.48, 5.52, -7.36, 4.88, -5.76, 6.8, -5.72, 4.72, -4.08, 6.36, -2.6, 5.56, -1.16, 5.84, -2.76, 7.88, -0.76, 9.0);
-
+                        playerNinja.setEquippedWeapon(ninja.getEquippedWeapon());
+                        playerNinja.setCurrentWeapon(ninja.getCurrentWeapon());
+                        playerNinja.setInventory(ninja.getInventory());
 
                         for (Entity entityPlayer : world.getEntities(Player.class)) {
                             world.removeEntity(entityPlayer);
                         }
 
-                        world.addEntity(playerShip);
-//                world.removeEntity(player);
+                        world.addEntity(playerNinja);
                     }
                 } else {
-                    player.setX(player.getX() + 6);
+                    ninja.setX(ninja.getX() + 6);
                 }
 
 
@@ -94,38 +80,32 @@ public class PlayerControlSystem implements IEntityProcessingService {
             if (gameData.getKeys().isDown(GameKeys.RIGHT)) {
 
                 if (!movingPart.isAtObstacle()) {
-                    player.setX(player.getX() + 3);
-//                player.setRotation(player.getRotation() + 5);
-                    player.setRotation(360);
+                    ninja.setX(ninja.getX() + 3);
+                    ninja.setRotation(360);
                     double[] targetArray = {-9.4, 11.84, 6.36, -6.0, -12.4, 10.16, -13.84, 13.36, -9.32, 13.24, 3.2, -0.16, 16.0, 12.0, 20.72, 11.96, 19.16, 9.16, 16.08, 10.56, 4.64, -0.44, 8.24, -5.44, 12.88, -3.44, 15.8, 1.0, 13.52, 2.6, 16.2, 2.0, 19.32, 3.76, 18.76, 1.72, 16.8, 0.32, 13.92, -4.28, 9.8, -6.36, 13.2, -8.28, 14.76, -10.64, 14.88, -13.92, 13.08, -16.48, 10.2, -17.84, 7.12, -17.48, 5.48, -16.36, 2.68, -18.52, -1.08, -18.12, -3.0, -18.56, -1.16, -17.08, 2.56, -17.68, 3.96, -16.56, 4.4, -15.0, 1.48, -15.48, -1.56, -16.12, -6.12, -14.8, -4.64, -14.08, -1.6, -15.12, 3.84, -13.92, 3.76, -11.0, 5.28, -8.56, 7.4, -7.16, 1.28, -9.64, -1.16, -9.84, -4.0, -8.0, -7.36, -7.28, -8.48, -5.52, -7.36, -4.88, -5.76, -6.8, -5.72, -4.72, -4.08, -6.36, -2.6, -5.56, -1.16, -5.84, -2.76, -7.88, -0.76, -9.0};
 
-                    if (!areEqual(targetArray, player.getPolygonCoordinates())) {
-                        Player playerShip = new Player();
-                        LifePart tempLifePart = player.getPart(LifePart.class);
-                        playerShip.add(new LifePart(tempLifePart.getLife()));
-//                    playerShip.add(new AccelerationPart());
-                        playerShip.setPolygonCoordinates(-9.4, 11.84, 6.36, -6.0, -12.4, 10.16, -13.84, 13.36, -9.32, 13.24, 3.2, -0.16, 16.0, 12.0, 20.72, 11.96, 19.16, 9.16, 16.08, 10.56, 4.64, -0.44, 8.24, -5.44, 12.88, -3.44, 15.8, 1.0, 13.52, 2.6, 16.2, 2.0, 19.32, 3.76, 18.76, 1.72, 16.8, 0.32, 13.92, -4.28, 9.8, -6.36, 13.2, -8.28, 14.76, -10.64, 14.88, -13.92, 13.08, -16.48, 10.2, -17.84, 7.12, -17.48, 5.48, -16.36, 2.68, -18.52, -1.08, -18.12, -3.0, -18.56, -1.16, -17.08, 2.56, -17.68, 3.96, -16.56, 4.4, -15.0, 1.48, -15.48, -1.56, -16.12, -6.12, -14.8, -4.64, -14.08, -1.6, -15.12, 3.84, -13.92, 3.76, -11.0, 5.28, -8.56, 7.4, -7.16, 1.28, -9.64, -1.16, -9.84, -4.0, -8.0, -7.36, -7.28, -8.48, -5.52, -7.36, -4.88, -5.76, -6.8, -5.72, -4.72, -4.08, -6.36, -2.6, -5.56, -1.16, -5.84, -2.76, -7.88, -0.76, -9.0);
-                        playerShip.setX(player.getX());
-                        playerShip.setY(player.getY());
-                        playerShip.setRotation(player.getRotation());
+                    if (!areEqual(targetArray, ninja.getPolygonCoordinates())) {
+                        Player playerninja = new Player();
+                        LifePart tempLifePart = ninja.getPart(LifePart.class);
+                        playerninja.add(new LifePart(tempLifePart.getLife()));
+                        playerninja.setPolygonCoordinates(-9.4, 11.84, 6.36, -6.0, -12.4, 10.16, -13.84, 13.36, -9.32, 13.24, 3.2, -0.16, 16.0, 12.0, 20.72, 11.96, 19.16, 9.16, 16.08, 10.56, 4.64, -0.44, 8.24, -5.44, 12.88, -3.44, 15.8, 1.0, 13.52, 2.6, 16.2, 2.0, 19.32, 3.76, 18.76, 1.72, 16.8, 0.32, 13.92, -4.28, 9.8, -6.36, 13.2, -8.28, 14.76, -10.64, 14.88, -13.92, 13.08, -16.48, 10.2, -17.84, 7.12, -17.48, 5.48, -16.36, 2.68, -18.52, -1.08, -18.12, -3.0, -18.56, -1.16, -17.08, 2.56, -17.68, 3.96, -16.56, 4.4, -15.0, 1.48, -15.48, -1.56, -16.12, -6.12, -14.8, -4.64, -14.08, -1.6, -15.12, 3.84, -13.92, 3.76, -11.0, 5.28, -8.56, 7.4, -7.16, 1.28, -9.64, -1.16, -9.84, -4.0, -8.0, -7.36, -7.28, -8.48, -5.52, -7.36, -4.88, -5.76, -6.8, -5.72, -4.72, -4.08, -6.36, -2.6, -5.56, -1.16, -5.84, -2.76, -7.88, -0.76, -9.0);
+                        playerninja.setX(ninja.getX());
+                        playerninja.setY(ninja.getY());
+                        playerninja.setRotation(ninja.getRotation());
                         movingPart.setJumping(movingPart.isJumping());
-                        playerShip.setEquippedWeapon(player.getEquippedWeapon());
-                        playerShip.setCurrentWeapon(player.getCurrentWeapon());
-                        playerShip.setInventory(player.getInventory());
-
-//                        playerShip = player;
-//                        playerShip.setPolygonCoordinates(-9.4, 11.84, 6.36, -6.0, -12.4, 10.16, -13.84, 13.36, -9.32, 13.24, 3.2, -0.16, 16.0, 12.0, 20.72, 11.96, 19.16, 9.16, 16.08, 10.56, 4.64, -0.44, 8.24, -5.44, 12.88, -3.44, 15.8, 1.0, 13.52, 2.6, 16.2, 2.0, 19.32, 3.76, 18.76, 1.72, 16.8, 0.32, 13.92, -4.28, 9.8, -6.36, 13.2, -8.28, 14.76, -10.64, 14.88, -13.92, 13.08, -16.48, 10.2, -17.84, 7.12, -17.48, 5.48, -16.36, 2.68, -18.52, -1.08, -18.12, -3.0, -18.56, -1.16, -17.08, 2.56, -17.68, 3.96, -16.56, 4.4, -15.0, 1.48, -15.48, -1.56, -16.12, -6.12, -14.8, -4.64, -14.08, -1.6, -15.12, 3.84, -13.92, 3.76, -11.0, 5.28, -8.56, 7.4, -7.16, 1.28, -9.64, -1.16, -9.84, -4.0, -8.0, -7.36, -7.28, -8.48, -5.52, -7.36, -4.88, -5.76, -6.8, -5.72, -4.72, -4.08, -6.36, -2.6, -5.56, -1.16, -5.84, -2.76, -7.88, -0.76, -9.0);
+                        playerninja.setEquippedWeapon(ninja.getEquippedWeapon());
+                        playerninja.setCurrentWeapon(ninja.getCurrentWeapon());
+                        playerninja.setInventory(ninja.getInventory());
 
 
                         for (Entity entityPlayer : world.getEntities(Player.class)) {
                             world.removeEntity(entityPlayer);
                         }
 
-                        world.addEntity(playerShip);
-//                world.removeEntity(player);
+                        world.addEntity(playerninja);
                     }
                 } else {
-                    player.setX(player.getX() - 6);
+                    ninja.setX(ninja.getX() - 6);
                 }
 
 
@@ -133,153 +113,121 @@ public class PlayerControlSystem implements IEntityProcessingService {
 
             if (gameData.getKeys().isPressed(GameKeys.UP)) {
                 if (!movingPart.isJumping() && !movingPart.isAtObstacle()) {
-//                    player.setGravity(-5);
                     movingPart.setAcceleration(-7);
                     movingPart.setJumping(true);
                 }
 
             }
 
-            if (player.getX() < 0) {
-                player.setX(1);
+            if (ninja.getX() < 0) {
+                ninja.setX(1);
             }
 
-            if (player.getX() > gameData.getDisplayWidth()) {
-                player.setX(gameData.getDisplayWidth() - 1);
+            if (ninja.getX() > gameData.getDisplayWidth()) {
+                ninja.setX(gameData.getDisplayWidth() - 1);
             }
 
-            if (player.getY() < 0) {
-                player.setY(1);
+            if (ninja.getY() < 0) {
+                ninja.setY(1);
             }
 
-            if (player.getY() > gameData.getDisplayHeight()) {
-                player.setY(gameData.getDisplayHeight() - 1);
+            if (ninja.getY() > gameData.getDisplayHeight()) {
+                ninja.setY(gameData.getDisplayHeight() - 1);
             }
 
 
-            lifePart.process(gameData, player);
-            movingPart.process(gameData, player);
+            lifePart.process(gameData, ninja);
+            movingPart.process(gameData, ninja);
 
             // Using Sorting algorithm to sort the inventory
-            List<Weapon> playerInventory = player.getInventory();
+            List<Weapon> playerInventory = ninja.getInventory();
             playerInventory = sortInventory(playerInventory);
 
 
             if (gameData.getKeys().isPressed(GameKeys.NUM1)) {
-                if (player.getInventory().size() > 0) {
+                if (ninja.getInventory().size() > 0) {
                     System.out.println("Switched weapon to 1");
-                    System.out.println(player.getCurrentWeapon());
-                    playerInventory = player.getInventory();
+                    System.out.println(ninja.getCurrentWeapon());
+                    playerInventory = ninja.getInventory();
                     for (int i = 0; i < playerInventory.size(); i++) {
                         System.out.println(playerInventory.get(i).getClass().getName());
                     }
 
-//                    System.out.println(playerInventory.get(player.getCurrentWeapon()).getClass().getName());
-                    world.removeEntity(playerInventory.get(player.getCurrentWeapon()));
-                    if (player.getEquippedWeapon() != null) {
-                        player.getEquippedWeapon().setEquipped(false);
-                        world.removeEntity(player.getEquippedWeapon());
+
+                    world.removeEntity(playerInventory.get(ninja.getCurrentWeapon()));
+                    if (ninja.getEquippedWeapon() != null) {
+                        ninja.getEquippedWeapon().setEquipped(false);
+                        world.removeEntity(ninja.getEquippedWeapon());
                     }
 
-                    player.setCurrentWeapon(0);
-                    Weapon weapon = player.getInventory().get(player.getCurrentWeapon());
-//                world.addEntity(player.getInventory()[player.getCurrentWeapon()]);
-//                player.setEquippedWeapon(player.getInventory()[player.getCurrentWeapon()]);
-//                player.getInventory()[player.getCurrentWeapon()].setEquipped(true);
+                    ninja.setCurrentWeapon(0);
+                    Weapon weapon = ninja.getInventory().get(ninja.getCurrentWeapon());
                     world.addEntity(weapon);
-                    player.setEquippedWeapon(weapon);
+                    ninja.setEquippedWeapon(weapon);
                     weapon.setEquipped(true);
                 }
 
 
             }
             if (gameData.getKeys().isPressed(GameKeys.NUM2)) {
-                if (player.getInventory().size() > 1) {
+                if (ninja.getInventory().size() > 1) {
 
                     System.out.println("Switched weapon to 2");
-                    playerInventory = player.getInventory();
+                    playerInventory = ninja.getInventory();
 
-                    world.removeEntity(playerInventory.get(player.getCurrentWeapon()));
-                    if (player.getEquippedWeapon() != null) {
-                        player.getEquippedWeapon().setEquipped(false);
-                        world.removeEntity(player.getEquippedWeapon());
+                    world.removeEntity(playerInventory.get(ninja.getCurrentWeapon()));
+                    if (ninja.getEquippedWeapon() != null) {
+                        ninja.getEquippedWeapon().setEquipped(false);
+                        world.removeEntity(ninja.getEquippedWeapon());
                     }
-                    player.setCurrentWeapon(1);
-                    Weapon weapon = player.getInventory().get(player.getCurrentWeapon());
+                    ninja.setCurrentWeapon(1);
+                    Weapon weapon = ninja.getInventory().get(ninja.getCurrentWeapon());
 
-
-//                    world.removeEntity(player.getInventory().get(player.getCurrentWeapon()));
-//                    player.getEquippedWeapon().setEquipped(false);
-//                    world.removeEntity(player.getEquippedWeapon());
-//                    player.setCurrentWeapon(1);
-//                    Weapon weapon = player.getInventory().get(player.getCurrentWeapon());
-
-//                world.addEntity(player.getInventory()[player.getCurrentWeapon()]);
-//                player.setEquippedWeapon(player.getInventory()[player.getCurrentWeapon()]);
-//                player.getInventory()[player.getCurrentWeapon()].setEquipped(true);
                     world.addEntity(weapon);
-                    player.setEquippedWeapon(weapon);
+                    ninja.setEquippedWeapon(weapon);
                     weapon.setEquipped(true);
                 }
 
 
             }
             if (gameData.getKeys().isPressed(GameKeys.NUM3)) {
-                if (player.getInventory().size() > 2) {
-                    playerInventory = player.getInventory();
+                if (ninja.getInventory().size() > 2) {
+                    playerInventory = ninja.getInventory();
 
 
                     System.out.println("Switched weapon to 3");
 
-                    world.removeEntity(playerInventory.get(player.getCurrentWeapon()));
-                    if (player.getEquippedWeapon() != null) {
-                        player.getEquippedWeapon().setEquipped(false);
-                        world.removeEntity(player.getEquippedWeapon());
+                    world.removeEntity(playerInventory.get(ninja.getCurrentWeapon()));
+                    if (ninja.getEquippedWeapon() != null) {
+                        ninja.getEquippedWeapon().setEquipped(false);
+                        world.removeEntity(ninja.getEquippedWeapon());
                     }
-                    player.setCurrentWeapon(2);
-                    Weapon weapon = player.getInventory().get(player.getCurrentWeapon());
+                    ninja.setCurrentWeapon(2);
+                    Weapon weapon = ninja.getInventory().get(ninja.getCurrentWeapon());
 
-//                    world.removeEntity(player.getInventory().get(player.getCurrentWeapon()));
-//                    player.getEquippedWeapon().setEquipped(false);
-//                    world.removeEntity(player.getEquippedWeapon());
-//                    player.setCurrentWeapon(2);
-//                    Weapon weapon = player.getInventory().get(player.getCurrentWeapon());
-
-//                world.addEntity(player.getInventory()[player.getCurrentWeapon()]);
-//                player.setEquippedWeapon(player.getInventory()[player.getCurrentWeapon()]);
-//                player.getInventory()[player.getCurrentWeapon()].setEquipped(true);
                     world.addEntity(weapon);
-                    player.setEquippedWeapon(weapon);
+                    ninja.setEquippedWeapon(weapon);
                     weapon.setEquipped(true);
                 }
 
 
             }
             if (gameData.getKeys().isPressed(GameKeys.NUM4)) {
-                if (player.getInventory().size() > 3) {
-                    playerInventory = player.getInventory();
+                if (ninja.getInventory().size() > 3) {
+                    playerInventory = ninja.getInventory();
 
                     System.out.println("Switched weapon to 4");
 
-                    world.removeEntity(playerInventory.get(player.getCurrentWeapon()));
-                    if (player.getEquippedWeapon() != null) {
-                        player.getEquippedWeapon().setEquipped(false);
-                        world.removeEntity(player.getEquippedWeapon());
+                    world.removeEntity(playerInventory.get(ninja.getCurrentWeapon()));
+                    if (ninja.getEquippedWeapon() != null) {
+                        ninja.getEquippedWeapon().setEquipped(false);
+                        world.removeEntity(ninja.getEquippedWeapon());
                     }
-                    player.setCurrentWeapon(3);
-                    Weapon weapon = player.getInventory().get(player.getCurrentWeapon());
+                    ninja.setCurrentWeapon(3);
+                    Weapon weapon = ninja.getInventory().get(ninja.getCurrentWeapon());
 
-//                    world.removeEntity(player.getInventory().get(player.getCurrentWeapon()));
-//                    player.getEquippedWeapon().setEquipped(false);
-//                    world.removeEntity(player.getEquippedWeapon());
-//                    player.setCurrentWeapon(3);
-//                    Weapon weapon = player.getInventory().get(player.getCurrentWeapon());
-
-//                world.addEntity(player.getInventory()[player.getCurrentWeapon()]);
-//                player.setEquippedWeapon(player.getInventory()[player.getCurrentWeapon()]);
-//                player.getInventory()[player.getCurrentWeapon()].setEquipped(true);
                     world.addEntity(weapon);
-                    player.setEquippedWeapon(weapon);
+                    ninja.setEquippedWeapon(weapon);
                     weapon.setEquipped(true);
                 }
 
