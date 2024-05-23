@@ -26,7 +26,8 @@ public class EnemyControlSystem implements IEntityProcessingService {
     public void process(GameData gameData, World world) {
 
         if (world.getEntities(Enemy.class).toArray().length == 0) {
-            for (int i = 0; i < 3; i++) {
+            gameData.setRounds(gameData.getRounds() + 1);
+            for (int i = 0; i < gameData.getRounds(); i++) {
                 world.addEntity(createEnemyShip(gameData));
             }
         }
@@ -38,6 +39,8 @@ public class EnemyControlSystem implements IEntityProcessingService {
 
             if (lifePart.getLife() <= 0) {
                 world.removeEntity(enemyEntity);
+                gameData.setKillCounter(gameData.getKillCounter() + 1);
+                break;
             }
 
             CommonPath commonPath = enemy.getPath();
@@ -50,6 +53,7 @@ public class EnemyControlSystem implements IEntityProcessingService {
                 continue;
             }
 
+
             // Get the first tile in the path
             int[] currentDestination = path[0];
             double destinationX = currentDestination[0] * (gameData.getDisplayWidth() / 20) + 20;
@@ -59,14 +63,11 @@ public class EnemyControlSystem implements IEntityProcessingService {
             double dy = destinationY - enemy.getY();
 
             double distanceToDestination = Math.sqrt(dx * dx + dy * dy);
-
             if (distanceToDestination < enemy.getSpeed()) { // Check if the enemy is about to overshoot the destination
                 // Set the enemy's position to the destination
-
                 enemy.setX(destinationX);
                 enemy.setY(destinationY);
             } else {
-
                 // Move the enemy towards the current destination
                 double angle = Math.atan2(dy, dx);
                 enemy.setX(enemy.getX() + Math.cos(angle) * enemy.getSpeed());
@@ -75,6 +76,7 @@ public class EnemyControlSystem implements IEntityProcessingService {
 
 
 
+            // Enemy has to be facing the player.
             int[] currentDestinationRotation = path[path.length - 1];
             double destinationX2 = currentDestinationRotation[0] * (gameData.getDisplayWidth() / 20);
             double destinationY2 = currentDestinationRotation[1] * (gameData.getDisplayHeight() / 20);
@@ -92,57 +94,26 @@ public class EnemyControlSystem implements IEntityProcessingService {
             enemy.setRotation(angleDeg);
 
 
-            if (enemy.getPath().getPath().length < 8 && !enemy.isShooting()) {
-
-                Thread thread1 = new Thread(() -> {
-                    enemy.setShooting(true);
-
-                    try {
-                        // Execute the action
-                        getBulletSPIs().stream().findFirst().ifPresent(
-                                spi -> world.addEntity(spi.createBullet(enemy, gameData))
-                        );
-
-
-                        // Wait for 2 seconds after completing the loop
-                        Thread.sleep(1500); // 1000 milliseconds
-                        enemy.setShooting(false);
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt(); // Properly handle thread interruption
-                        e.printStackTrace();
-                    }
-
-                });
-                thread1.start();
-
-
-            }
 
             if (enemy.getPath().getPath().length < 8 && !enemy.isShooting()) {
 
                 Thread thread1 = new Thread(() -> {
                     enemy.setShooting(true);
-
                     try {
                         // Execute the action
                         getBulletSPIs().stream().findFirst().ifPresent(
                                 spi -> world.addEntity(spi.createBullet(enemy, gameData))
                         );
-
-
                         // Wait for 2 seconds after completing the loop
-                        Thread.sleep(1500); // 1000 milliseconds
+                        Thread.sleep(1500); // 1500 milliseconds
                         enemy.setShooting(false);
                     } catch (InterruptedException e) {
                         Thread.currentThread().interrupt(); // Properly handle thread interruption
                         e.printStackTrace();
                     }
-
                 });
                 thread1.start();
-
             }
-
 
             lifePart.process(gameData, enemyEntity);
 

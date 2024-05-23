@@ -20,9 +20,12 @@ public class EnemyPlugin implements IGamePluginService {
         enemy = createEnemyShip(gameData, gameData.getDisplayHeight()/5+500, gameData.getDisplayWidth()/5+500);
         world.addEntity(enemy);
 
-        // Add entities to the world
-        enemy = createEnemyShip(gameData, gameData.getDisplayHeight()/5+100, gameData.getDisplayWidth()/5+100);
-        world.addEntity(enemy);
+        // Start the first round
+        gameData.setRounds(1);
+
+//        // Add entities to the world
+//        enemy = createEnemyShip(gameData, gameData.getDisplayHeight()/5+100, gameData.getDisplayWidth()/5+100);
+//        world.addEntity(enemy);
     }
 
     private Entity createEnemyShip(GameData gameData, double x, double y) {

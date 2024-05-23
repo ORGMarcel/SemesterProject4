@@ -10,13 +10,12 @@ import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
 
-import java.util.Collection;
-import java.util.Map;
-import java.util.ServiceLoader;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import static java.util.stream.Collectors.toList;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
@@ -154,6 +153,13 @@ public class Main extends Application {
             postEntityProcessorService.process(gameData, world);
         }
 
+        List<Node> nodesToRemove = new ArrayList<>(gameWindow.getChildren().filtered(node -> node instanceof Text));
+        gameWindow.getChildren().removeAll(nodesToRemove);
+
+        List<Text> textBoxes = new ArrayList<>();
+        textBoxes.add(new Text(10, 20 + 0 * 20, "Rounds: " + gameData.getRounds()));
+        textBoxes.add(new Text(10, 20 + 1 * 20, "Kill Counter: " + gameData.getKillCounter()));
+        gameWindow.getChildren().addAll(textBoxes);
     }
 
     private void draw() {
