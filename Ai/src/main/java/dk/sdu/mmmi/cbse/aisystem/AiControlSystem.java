@@ -21,30 +21,7 @@ import java.util.*;
 
 public class AiControlSystem implements IEntityProcessingService {
 
-    @Override
-//    public void process(GameData gameData, World world) {
-//        for (Entity xMap : world.getEntities(Map.class)) {
-//            Map map = (Map) xMap;
-////            System.out.println(map.getMap());
-//            CommonMapObject[][] mapArray = map.getMap();
-//
-//            for (int i = 0; i < mapArray.length; i++) {
-//                for (int j = 0; j < mapArray[i].length; j++) {
-//                    if(mapArray[i][j] instanceof MapPlayer){
-//                        System.out.println("x is: "+mapArray[i][j].getX());
-//                        System.out.println("y is: "+mapArray[i][j].getY());
-//                    }
-//                }
-//            }
-//
-//        }
-//
-//    }
     public void process(GameData gameData, World world) {
-//        // Check if it has run
-//        if (hasRun) {
-//            return;
-//        }
         // Create a new 20x20 2D array to represent the game world
         CommonMapObject[][] mapArray = new CommonMapObject[20][20];
 
@@ -97,40 +74,23 @@ public class AiControlSystem implements IEntityProcessingService {
             }
 
             if (start != null && end != null) {
-//                System.out.println(+start.i + ", " + start.j);
-//                System.out.println(end.i + ", " + end.j);
-//                System.out.println("Just before AStar");
                 AStar aStar = new AStar();
-//                System.out.printf("Before setNodes");
                 aStar.setNodes(nodes); // Pass the nodes array to the AStar instance
-//                System.out.println("Just after AStar");
                 Node[] path = aStar.aStar(mapArray, start, end);
                 // Do something with the path
-//                System.out.println("First path is: " + path[0].i + ", " + path[0].j);
 
                 if (path != null) {
                     int[][] pathArray = new int[path.length][2];
                     for (int i = 0; i < path.length; i++) {
                         pathArray[i][0] = path[i].i;
                         pathArray[i][1] = path[i].j;
-//                        System.out.println();
-//                        System.out.println("i is: " + path[i].i + " j is: " + path[i].j);
-//                        System.out.println("new");
                     }
-//                    System.out.println("Path is: " + pathArray);
-//                    System.out.println();
-//                    for (int i = 0; i < pathArray.length; i++) {
-//                        System.out.print("[" + pathArray[i][0] + ", " + pathArray[i][1] + "],");
-//                    }
                     enemy.setPath(new CommonPath(pathArray));
 
                 }
 
-//                System.out.println("Last path is: " + path[path.length - 1].i + ", " + path[path.length - 1].j);
-//                System.out.println("Path is: " + path);
             }
 
-//        hasRun = true;
         }
     }
 }
@@ -182,8 +142,6 @@ class AStar {
 
 
     public Node[] aStar(CommonMapObject[][] map, Node start, Node end) {
-//        System.out.println("Start Node: " + start.i + ", " + start.j);
-//        System.out.println("End Node: " + end.i + ", " + end.j);
         open = new PriorityQueue<>((Node n1, Node n2) -> n1.f - n2.f);
         closed = new boolean[map.length][map[0].length];
 
@@ -195,7 +153,6 @@ class AStar {
 
         while (!open.isEmpty()) {
             Node current = open.poll();
-//            System.out.println("Current Node: " + current.i + ", " + current.j);
 
             closed[current.i][current.j] = true;
 
@@ -203,7 +160,6 @@ class AStar {
                 return constructPath(current, start);
             } else {
                 for (Node neighbor : getNeighbors(current)) {
-//                    System.out.println("Neighbor: " + neighbor.i + ", " + neighbor.j);
 
                     if (!closed[neighbor.i][neighbor.j] && !neighbor.isObstacle) {
                         boolean isInOpen = false;
@@ -214,8 +170,6 @@ class AStar {
                             }
                         }
                         if (!isInOpen) {
-//                            System.out.println("Adding node to open list: " + neighbor.i + ", " + neighbor.j);
-
                             neighbor.parent = current; // Update the parent pointer when the node is first added to the open list
                             neighbor.g = current.g + 1;
                             neighbor.h = heuristic(neighbor, end);
@@ -223,8 +177,6 @@ class AStar {
                             open.add(neighbor);
                         } else {
                             if (neighbor.g > current.g + 1) {
-//                                System.out.println("Updating node: " + neighbor.i + ", " + neighbor.j);
-
                                 neighbor.g = current.g + 1;
                                 neighbor.f = neighbor.g + neighbor.h;
                             }
@@ -269,11 +221,9 @@ class AStar {
     }
 
     private Node[] constructPath(Node node, Node start) {
-//        System.out.println("Constructing path");
         LinkedList<Node> path = new LinkedList<>();
         while (node.parent != null) {
             path.addFirst(node);
-//            System.out.println("Added node to path: " + node.i + ", " + node.j);
             node = node.parent;
             if (node.equals(start)) {
                 break;
