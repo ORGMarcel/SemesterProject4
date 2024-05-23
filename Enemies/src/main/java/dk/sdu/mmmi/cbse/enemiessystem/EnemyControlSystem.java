@@ -25,11 +25,6 @@ public class EnemyControlSystem implements IEntityProcessingService {
     @Override
     public void process(GameData gameData, World world) {
 
-        Random random = new Random();
-        int randomNumber;
-        int randomNumber2;
-        int randomInt = random.nextInt(500);
-
         if (world.getEntities(Enemy.class).toArray().length == 0) {
             for (int i = 0; i < 3; i++) {
                 world.addEntity(createEnemyShip(gameData));
@@ -39,13 +34,11 @@ public class EnemyControlSystem implements IEntityProcessingService {
         for (Entity enemyEntity : world.getEntities(Enemy.class)) {
             Enemy enemy = (Enemy) enemyEntity;
 
-
             LifePart lifePart = enemyEntity.getPart(LifePart.class);
 
             if (lifePart.getLife() <= 0) {
                 world.removeEntity(enemyEntity);
             }
-
 
             CommonPath commonPath = enemy.getPath();
             if (commonPath == null) {
@@ -56,9 +49,6 @@ public class EnemyControlSystem implements IEntityProcessingService {
             if (path == null || path.length == 0) {
                 continue;
             }
-
-            int tileX = (int) (enemy.getX() / (gameData.getDisplayWidth() / 20));
-            int tileY = (int) (enemy.getY() / (gameData.getDisplayHeight() / 20));
 
             // Get the first tile in the path
             int[] currentDestination = path[0];
