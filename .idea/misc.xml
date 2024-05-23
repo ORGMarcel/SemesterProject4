@@ -12,6 +12,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/CommonAsteroid/pom.xml" />
+        <option value="$PROJECT_DIR$/CommonMap/pom.xml" />
         <option value="$PROJECT_DIR$/CommonWall/pom.xml" />
         <option value="$PROJECT_DIR$/Wall/pom.xml" />
         <option value="$PROJECT_DIR$/Weapon/pom.xml" />

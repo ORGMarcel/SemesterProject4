@@ -1,4 +1,4 @@
-import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
+import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
 import dk.sdu.mmmi.cbse.collisionsystem.CollisionControlSystem;
 
 module CollisionSystem {
@@ -10,5 +10,5 @@ module CollisionSystem {
     requires CommonWeapon;
     requires CommonMapObject;
     requires CommonObstacle;
-    provides IEntityProcessingService with CollisionControlSystem;
+    provides IPostEntityProcessingService with CollisionControlSystem;
 }

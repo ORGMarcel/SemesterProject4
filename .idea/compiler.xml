@@ -18,7 +18,6 @@
         <module name="Common" />
         <module name="CommonPlayer" />
         <module name="CommonObstacle" />
-        <module name="CommonMap" />
         <module name="CommonMapObject" />
         <module name="CommonMapPlayer" />
         <module name="CommonWeapon" />
@@ -33,6 +32,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="CommonMap" target="21" />
       <module name="Weapon" target="9" />
     </bytecodeTargetLevel>
   </component>

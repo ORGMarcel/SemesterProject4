@@ -18,7 +18,6 @@
         <module>CommonBullet</module>
         <module>Enemies</module>
         <module>CollisionSystem</module>
-        <module>CommonMap</module>
         <module>Map</module>
         <module>CommonEnemy</module>
         <module>CommonPlayer</module>

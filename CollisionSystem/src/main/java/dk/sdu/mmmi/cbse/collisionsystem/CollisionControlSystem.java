@@ -2,6 +2,7 @@ package dk.sdu.mmmi.cbse.collisionsystem;
 
 import dk.sdu.mmmi.cbse.common.data.entityparts.MovingPart;
 
+import dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
 import dk.sdu.mmmi.cbse.commonobstacle.Obstacle;
 import dk.sdu.mmmi.cbse.commonplayer.Player;
 import dk.sdu.mmmi.cbse.common.data.Entity;
@@ -12,7 +13,7 @@ import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import static java.lang.Math.sqrt;
 
 
-public class CollisionControlSystem implements IEntityProcessingService {
+public class CollisionControlSystem implements IPostEntityProcessingService {
     @Override
     public void process(GameData gameData, World world) {
         CollisionHandler collisionHandler = new CollisionHandler();

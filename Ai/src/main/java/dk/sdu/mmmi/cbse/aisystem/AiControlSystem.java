@@ -6,7 +6,6 @@ import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.commonenemy.Enemy;
 import dk.sdu.mmmi.cbse.commoninvisibleobject.InvisibleObject;
-import dk.sdu.mmmi.cbse.commonmap.Map;
 import dk.sdu.mmmi.cbse.commonmapenemy.MapEnemy;
 import dk.sdu.mmmi.cbse.commonmapobject.CommonMapObject;
 import dk.sdu.mmmi.cbse.commonmapplayer.MapPlayer;

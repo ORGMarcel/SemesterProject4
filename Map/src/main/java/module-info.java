@@ -7,7 +7,6 @@ import dk.sdu.mmmi.cbse.mapsystem.MapPlugin;
 module Map {
     exports dk.sdu.mmmi.cbse.mapsystem;
     requires Common;
-    requires CommonMap;
     requires CommonMapObject;
     requires CommonWeaponCoin;
     requires CommonObstacle;

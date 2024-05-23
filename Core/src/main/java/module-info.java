@@ -8,6 +8,7 @@ module Core {
     opens dk.sdu.mmmi.cbse.main to javafx.graphics;
     uses IGamePluginService;
     uses IEntityProcessingService;
+    uses dk.sdu.mmmi.cbse.common.services.IPostEntityProcessingService;
 
 }
 

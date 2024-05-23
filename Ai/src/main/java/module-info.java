@@ -6,7 +6,6 @@ import dk.sdu.mmmi.cbse.aisystem.AiPlugin;
 module Ai {
     exports dk.sdu.mmmi.cbse.aisystem;
     requires Common;
-    requires CommonMap;
     requires CommonMapObject;
     requires CommonObstacle;
     requires CommonMapPlayer;

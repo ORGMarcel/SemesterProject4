@@ -129,32 +129,10 @@ public class Main extends Application {
                 update();
                 draw();
                 gameData.getKeys().update();
-//                // Update the text displaying the number of kills
-//                updateKillsOverallText();
-//                updateKillsText();
-//                updateRoundsText();
             }
 
         }.start();
     }
-
-//    private void updateKillsOverallText() {
-//        Text text = (Text) gameWindow.getChildren().get(0); // Assuming the text is the first child
-//        text.setText("Enemies killed overall: " + world.getKillsOverall());
-////        Text text2 = (Text) gameWindow.getChildren().get(0); // Assuming the text is the first child
-////        text2.setText("Enemies killed this round: " + world.getKills());
-//    }
-//
-//    private void updateKillsText() {
-//        Text text = (Text) gameWindow.getChildren().get(1); // Assuming the text is the first child
-//        text.setText("Enemies killed this round: " + world.getKills());
-//    }
-//
-//
-//    private void updateRoundsText() {
-//        Text text = (Text) gameWindow.getChildren().get(2); // Assuming the text is the first child
-//        text.setText("Round counter: " + world.getRound());
-//    }
 
     private void update() {
 
@@ -172,9 +150,9 @@ public class Main extends Application {
         }
 
 
-//        for (IPostEntityProcessingService postEntityProcessorService : getPostEntityProcessingServices()) {
-//            postEntityProcessorService.process(gameData, world);
-//        }
+        for (IPostEntityProcessingService postEntityProcessorService : getPostEntityProcessingServices()) {
+            postEntityProcessorService.process(gameData, world);
+        }
 
     }
 
@@ -199,18 +177,6 @@ public class Main extends Application {
             polygon.setTranslateX(entity.getX());
             polygon.setTranslateY(entity.getY());
             polygon.setRotate(entity.getRotation());
-
-//            // Check condition to make specific entities invisible
-//            // TODO: Check this
-//            if(entity.getColorInt() == 0){
-//                polygon.setFill(Color.TRANSPARENT);
-//            }else if(entity.getColorInt() == 1){
-//                polygon.setFill(Color.BLACK);
-//            }else if(entity.getColorInt() == 2){
-//                polygon.setFill(Color.RED);
-//            }else {
-//                polygon.setFill(Color.BLACK); // Default visible color
-//            }
 
             // TODO: Check this
             ColorPart colorPart = entity.getPart(ColorPart.class);
