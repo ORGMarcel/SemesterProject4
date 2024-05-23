@@ -73,8 +73,6 @@ public class AiControlSystem implements IEntityProcessingService {
                 // Check the type of each entity and update the gameWorld array accordingly
                 if (entity instanceof Obstacle) {
                     mapArray[x][y] = new Obstacle();
-                } else if (entity instanceof WeaponCoin) {
-                    mapArray[x][y] = new WeaponCoin();
                 } else if (entity instanceof Player) {
                     mapArray[x][y] = new MapPlayer(entity.getX(), entity.getY());
                 } else if (entity instanceof Enemy) {

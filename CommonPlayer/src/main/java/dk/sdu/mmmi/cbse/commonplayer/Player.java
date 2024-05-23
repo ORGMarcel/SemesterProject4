@@ -72,6 +72,5 @@ public class Player extends Entity implements ICollideable {
     public void handleCollide() {
         LifePart playerLife = this.getPart(LifePart.class);
         playerLife.setLife(0);
-//        playerLife.setLife(playerLife.getLife() - 1);
     }
 }

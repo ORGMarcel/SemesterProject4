@@ -77,8 +77,6 @@ public class Enemy extends Entity implements ICollideable {
     public void handleCollide() {
         LifePart lifePart = this.getPart(LifePart.class);
         lifePart.setLife(0);
-//        lifePart.setIsHit(true);
-//        lifePart.setLife(lifePart.getLife() - damage);
     }
 
 

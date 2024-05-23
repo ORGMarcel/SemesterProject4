@@ -9,7 +9,6 @@ public class MapEnemy extends CommonMapObject {
         this.setY(y);
     }
 
-
 }
 
 

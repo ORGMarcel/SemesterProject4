@@ -23,15 +23,8 @@ public class CollisionHandler {
             return false;
         }
 
-//        // Enemy and Enemy
-//        if (e1 instanceof Enemy && e2 instanceof Enemy) {
-//            return enemyAndEnemy(co1, co2, world);
-//        }
-
-
-//         CollideableInterface and CollideableInterface
         if (e1 instanceof ICollideable && e2 instanceof ICollideable) {
-            return CollideableAndCollideable(co1, co2, world);
+            return collideableAndCollideable(co1, co2, world);
         }
 
 
@@ -64,14 +57,12 @@ public class CollisionHandler {
             if(!((Weapon) weapon).isEquipped()){
                 Player player1 = (Player) player;
                 Weapon weapon1 = (Weapon) weapon;
-//            world.removeEntity(player1.getEquippedWeapon());
                 System.out.println("Weapon picked up");
                 world.removeEntity(weapon1);
                 weapon1.setEquipped(false);
                 player1.addWeaponToInventory(weapon1);
             }
             return true;
-
         }
 
 
@@ -90,22 +81,6 @@ public class CollisionHandler {
             // It then removes the bullet
             return obstacleAndBullet(bullet, world);
         }
-
-//        // Player and enemy collides
-//        if (player instanceof Player && enemy instanceof Enemy) {
-////            enemyAndPlayer(enemy, player);
-//            return enemyAndPlayer(enemy, player);
-//        }
-
-
-//        // Enemy and obstacle collides
-//        if (enemy instanceof CommonEnemy && obstacle instanceof CommonObstacle) {
-//            // if the obstacle is a box, it takes damage
-//            if (obstacle instanceof CommonBox) {
-//                enemyAndBox(enemy, obstacle);
-//            }
-//            return enemyAndObstacle(co1, co2, world);
-//        }
 
         // Player and obstacle collides
         if (player instanceof Player && obstacle instanceof Obstacle) {
@@ -145,15 +120,7 @@ public class CollisionHandler {
         return true;
     }
 
-//    private boolean enemyAndPlayer(CollisionObject enemy, CollisionObject player, World world) {
-//        moveEntities(enemy, player, world);
-//        return true;
-//    }
-
-
-    // TODO: New with interface
-
-    private boolean CollideableAndCollideable(Entity e1, Entity e2, World world) {
+    private boolean collideableAndCollideable(Entity e1, Entity e2, World world) {
 
         ICollideable commonCollideable1 = (ICollideable) e1;
         ICollideable commonCollideable2 = (ICollideable) e2;
@@ -164,58 +131,17 @@ public class CollisionHandler {
         return true;
     }
 
-    private boolean enemyAndEnemy(Entity e1, Entity e2, World world) {
-
-        Enemy commonEnemy1 = (Enemy) e1;
-        Enemy commonEnemy2 = (Enemy) e2;
-
-        commonEnemy1.handleCollide();
-        commonEnemy2.handleCollide();
-
-        return true;
-    }
-
-//    private boolean enemyAndObstacle(CollisionObject enemy, CollisionObject obstacle, World world) {
-//        moveEntities(enemy, obstacle, world);
-//        return true;
-//    }
-
-    private boolean enemyAndPlayer(Entity enemy, Entity player){
-        Enemy commonEnemy = (Enemy) enemy;
-        Player commonPlayer = (Player) player;
-//        System.out.println("Enemy and player collided");
-
-        commonEnemy.handleCollide();
-        commonPlayer.handleCollide();
-        return true;
-    }
-
-//    private boolean enemyAndBox(Entity enemy, Entity box) {
-//        CommonBox commonBox = (CommonBox) box;
-//        CommonEnemy commonEnemy = (CommonEnemy) enemy;
-//
-//        commonEnemy.attack(commonBox);
-//        return true;
-//    }
-
     private boolean playerAndObstacle(Player player, Obstacle obstacle, World world) {
 //        moveEntities(player, obstacle, world);
         MovingPart movingPart = player.getPart(MovingPart.class);
 
         if(!movingPart.isAtObstacle() && movingPart.isJumping()){
-//            movingPart.setAcceleration(5F);
-//            movingPart.setAtObstacle(false);
             movingPart.setAcceleration(0.5F);
             player.setY(player.getY()+4);
         }else if(!movingPart.isAtObstacle()){
             movingPart.setAcceleration(0);
             player.setY(player.getY()-4);
-//            movingPart.setAtObstacle(true);
         }
-
-
-
-
         return true;
     }
 
@@ -263,19 +189,4 @@ public class CollisionHandler {
         }
         return null;
     }
-
-//    private Entity findWeaponCoin(Entity e, Entity r) {
-//        if (e instanceof WeaponCoin) {
-//            return e;
-//        } else if (r instanceof WeaponCoin) {
-//            return r;
-//        }
-//        return null;
-//    }
-
-
-
-
-
-
 }
