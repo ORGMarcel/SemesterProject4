@@ -7,7 +7,6 @@ import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.commonenemy.Enemy;
 import dk.sdu.mmmi.cbse.commoninvisibleobject.InvisibleObject;
 import dk.sdu.mmmi.cbse.commonmapenemy.MapEnemy;
-import dk.sdu.mmmi.cbse.commonmapobject.CommonMapObject;
 import dk.sdu.mmmi.cbse.commonmapplayer.MapPlayer;
 import dk.sdu.mmmi.cbse.commonobstacle.Obstacle;
 import dk.sdu.mmmi.cbse.commonpath.CommonPath;
@@ -22,7 +21,8 @@ public class AiControlSystem implements IEntityProcessingService {
 
     public void process(GameData gameData, World world) {
         // Create a new 20x20 2D array to represent the game world
-        CommonMapObject[][] mapArray = new CommonMapObject[20][20];
+//        CommonMapObject[][] mapArray = new CommonMapObject[20][20];
+        Entity[][] mapArray = new Entity[20][20];
 
 
         Node[][] nodes = new Node[mapArray.length][mapArray[0].length];
@@ -50,9 +50,14 @@ public class AiControlSystem implements IEntityProcessingService {
                 if (entity instanceof Obstacle) {
                     mapArray[x][y] = new Obstacle();
                 } else if (entity instanceof Player) {
-                    mapArray[x][y] = new MapPlayer(entity.getX(), entity.getY());
+                    Player player = (Player) entity;
+//                    mapArray[x][y] = new MapPlayer(entity.getX(), entity.getY());
+                    mapArray[x][y] = player;
                 } else if (entity instanceof Enemy) {
-                    mapArray[x][y] = new MapEnemy(entity.getX(), entity.getY());
+                    Enemy enemy2 = (Enemy) entity;
+//                    mapArray[x][y] = new MapPlayer(entity.getX(), entity.getY());
+                    mapArray[x][y] = enemy2;
+//                    mapArray[x][y] = new MapEnemy(entity.getX(), entity.getY());
                 }
             }
 
@@ -60,13 +65,13 @@ public class AiControlSystem implements IEntityProcessingService {
             for (int i = 0; i < mapArray.length; i++) {
                 for (int j = 0; j < mapArray[i].length; j++) {
                     nodes[i][j] = new Node(i, j, mapArray[i][j] instanceof Obstacle);
-                    if (mapArray[i][j] instanceof MapEnemy) {
-                        MapEnemy mapEnemy = (MapEnemy) mapArray[i][j];
+                    if (mapArray[i][j] instanceof Enemy) {
+                        Enemy mapEnemy = (Enemy) mapArray[i][j];
                         double threshold = 10.0;
                         if (Math.abs(mapEnemy.getX() - enemy.getX()) <= threshold && Math.abs(mapEnemy.getY() - enemy.getY()) <= threshold) {
                             start = nodes[i][j];
                         }
-                    } else if (mapArray[i][j] instanceof MapPlayer) {
+                    } else if (mapArray[i][j] instanceof Player) {
                         end = nodes[i][j];
                     }
                 }
@@ -140,7 +145,7 @@ class AStar {
     }
 
 
-    public Node[] aStar(CommonMapObject[][] map, Node start, Node end) {
+    public Node[] aStar(Entity[][] map, Node start, Node end) {
         open = new PriorityQueue<>((Node n1, Node n2) -> n1.f - n2.f);
         closed = new boolean[map.length][map[0].length];
 
