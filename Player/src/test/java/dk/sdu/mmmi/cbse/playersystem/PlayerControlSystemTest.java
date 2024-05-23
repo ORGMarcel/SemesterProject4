@@ -55,7 +55,6 @@ class PlayerControlSystemTest {
 
     @Test
     public void testProcessWhenJumping() {
-<<<<<<< Updated upstream
         gameData.getKeys().setKey(GameKeys.UP, true);
         double initialY = player.getY();
         player.setPolygonCoordinates(3,3);
@@ -65,7 +64,6 @@ class PlayerControlSystemTest {
         playerControlSystem.process(gameData, world);
         assertTrue(player.getY() > initialY);
         //player.getY() should be less than initialY because the player is jumping, though it returns false
-=======
 //        gameData.getKeys().setKey(GameKeys.UP, true);
 //        gameData.getKeys().update();
 //        double initialY = player.getY();
@@ -73,7 +71,6 @@ class PlayerControlSystemTest {
 //        playerControlSystem.process(gameData, world);
 //        assertTrue(player.getY() < initialY);
 //        //player.getY() should be less than initialY because the player is jumping, though it returns false
->>>>>>> Stashed changes
 
     }
 }
