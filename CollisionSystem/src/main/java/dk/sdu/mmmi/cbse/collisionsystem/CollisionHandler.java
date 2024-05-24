@@ -33,10 +33,6 @@ public class CollisionHandler {
             return true; // Nothing should happen
         }
 
-        // Player and Weapon
-        if (e1 instanceof Player && e2 instanceof Weapon) {
-            return true; // Nothing should happen
-        }
 
         // Map object and map object
         if (e1 instanceof CommonMapObject && e2 instanceof CommonMapObject) {

@@ -6,7 +6,6 @@ import dk.sdu.mmmi.cbse.enemiessystem.EnemyControlSystem;
 import dk.sdu.mmmi.cbse.enemiessystem.EnemyPlugin;
 
 module Enemies {
-    exports dk.sdu.mmmi.cbse.enemiessystem;
     requires Common;
     requires CommonBullet;
     requires CommonEnemy;
