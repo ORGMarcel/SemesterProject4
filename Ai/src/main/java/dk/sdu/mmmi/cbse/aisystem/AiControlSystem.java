@@ -9,7 +9,6 @@ import dk.sdu.mmmi.cbse.commoninvisibleobject.InvisibleObject;
 import dk.sdu.mmmi.cbse.commonmapenemy.MapEnemy;
 import dk.sdu.mmmi.cbse.commonmapplayer.MapPlayer;
 import dk.sdu.mmmi.cbse.commonobstacle.Obstacle;
-import dk.sdu.mmmi.cbse.commonpath.CommonPath;
 import dk.sdu.mmmi.cbse.commonplayer.Player;
 import dk.sdu.mmmi.cbse.commonweaponcoin.WeaponCoin;
 
@@ -89,7 +88,7 @@ public class AiControlSystem implements IEntityProcessingService {
                         pathArray[i][0] = path[i].i;
                         pathArray[i][1] = path[i].j;
                     }
-                    enemy.setPath(new CommonPath(pathArray));
+                    enemy.setPathArray(pathArray);
 
                 }
 

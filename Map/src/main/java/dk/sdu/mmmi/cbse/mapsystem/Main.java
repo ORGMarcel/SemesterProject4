@@ -1,4 +1,4 @@
-package dk.sdu.mmmi.cbse.commonpath;
+package dk.sdu.mmmi.cbse.mapsystem;
 
 public class Main {
     public static void main(String[] args) {

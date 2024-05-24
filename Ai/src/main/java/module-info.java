@@ -11,7 +11,6 @@ module Ai {
     requires CommonMapPlayer;
     requires CommonMapEnemy;
     requires CommonEnemy;
-    requires CommonPath;
     requires CommonWeaponCoin;
     requires CommonPlayer;
     requires CommonInvisibleObject;

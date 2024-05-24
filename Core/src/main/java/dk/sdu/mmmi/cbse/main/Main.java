@@ -135,7 +135,6 @@ public class Main extends Application {
 
     private void update() {
 
-        // Update
         for (IEntityProcessingService entityProcessorService : getEntityProcessingServices()) {
             entityProcessorService.process(gameData, world);
         }
@@ -147,7 +146,6 @@ public class Main extends Application {
                 gameWindow.getChildren().add(polygon);
             }
         }
-
 
         for (IPostEntityProcessingService postEntityProcessorService : getPostEntityProcessingServices()) {
             postEntityProcessorService.process(gameData, world);
@@ -198,9 +196,7 @@ public class Main extends Application {
             }else {
                 polygon.setFill(Color.BLACK); // Default visible color
             }
-
         }
-
     }
 
     private Collection<? extends IGamePluginService> getPluginServices() {

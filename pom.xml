@@ -29,7 +29,6 @@
         <module>CommonMapPlayer</module>
         <module>CommonMapEnemy</module>
         <module>Ai</module>
-        <module>CommonPath</module>
         <module>Shuriken</module>
         <module>WeaponShotgun</module>
         <module>WeaponUzi</module>

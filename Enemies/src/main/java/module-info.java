@@ -10,7 +10,6 @@ module Enemies {
     requires Common;
     requires CommonBullet;
     requires CommonEnemy;
-    requires CommonPath;
     uses BulletSPI;
     provides IGamePluginService with EnemyPlugin;
     provides IEntityProcessingService with EnemyControlSystem;

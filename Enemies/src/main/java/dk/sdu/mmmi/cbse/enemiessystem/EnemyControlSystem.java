@@ -9,7 +9,6 @@ import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.GameData;
 import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
-import dk.sdu.mmmi.cbse.commonpath.CommonPath;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -43,12 +42,12 @@ public class EnemyControlSystem implements IEntityProcessingService {
                 break;
             }
 
-            CommonPath commonPath = enemy.getPath();
-            if (commonPath == null) {
-                continue;
-            }
+//            CommonPath commonPath = enemy.getPath();
+//            if (commonPath == null) {
+//                continue;
+//            }
 
-            int[][] path = commonPath.getPath();
+            int[][] path = enemy.getPathArray();
             if (path == null || path.length == 0) {
                 continue;
             }
@@ -95,7 +94,7 @@ public class EnemyControlSystem implements IEntityProcessingService {
 
 
 
-            if (enemy.getPath().getPath().length < 8 && !enemy.isShooting()) {
+            if (enemy.getPathArray().length < 8 && !enemy.isShooting()) {
 
                 Thread thread1 = new Thread(() -> {
                     enemy.setShooting(true);

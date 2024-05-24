@@ -24,7 +24,6 @@
         <module name="CommonWeaponCoin" />
         <module name="Shuriken" />
         <module name="CommonInvisibleObject" />
-        <module name="CommonPath" />
         <module name="weaponUzi" />
         <module name="CollisionSystem" />
         <module name="Map" />
@@ -33,6 +32,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="CommonMap" target="21" />
+      <module name="CommonPath" target="21" />
       <module name="Weapon" target="9" />
     </bytecodeTargetLevel>
   </component>

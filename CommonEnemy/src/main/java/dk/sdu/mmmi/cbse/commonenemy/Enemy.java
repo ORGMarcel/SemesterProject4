@@ -4,12 +4,12 @@ import dk.sdu.mmmi.cbse.common.data.ICollideable;
 import dk.sdu.mmmi.cbse.common.data.Entity;
 import dk.sdu.mmmi.cbse.common.data.entityparts.ColorPart;
 import dk.sdu.mmmi.cbse.common.data.entityparts.LifePart;
-import dk.sdu.mmmi.cbse.commonpath.CommonPath;
 
 public class Enemy extends Entity implements ICollideable {
 
 
-    CommonPath path;
+    int[][] pathArray;
+//    CommonPath path;
     int currentPathIndex = 0;
     private double speed = 1;
     boolean isShooting = false;
@@ -42,12 +42,21 @@ public class Enemy extends Entity implements ICollideable {
 
 
 
-    public CommonPath getPath() {
-        return path;
+//    public CommonPath getPath() {
+//        return path;
+//    }
+//
+//    public void setPath(CommonPath path) {
+//        this.path = path;
+//        setCurrentPathIndex(0);
+//    }
+
+    public int[][] getPathArray() {
+        return pathArray;
     }
 
-    public void setPath(CommonPath path) {
-        this.path = path;
+    public void setPathArray(int[][] pathArray) {
+        this.pathArray = pathArray;
         setCurrentPathIndex(0);
     }
 

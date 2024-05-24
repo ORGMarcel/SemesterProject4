@@ -22,6 +22,7 @@ public class CollisionControlSystem implements IPostEntityProcessingService {
             for (Entity entity2 : world.getEntities()) {
                 if (isCollided(entity1, entity2) && entity1.getClass() != entity2.getClass()) {
                     collisionHandler.handleCollision(world, entity1, entity2);
+
                 }
                 else if (entity1 instanceof Player && entity2 instanceof Obstacle){
                     // If player and obstacle not collides, it has to change atObstacle to false

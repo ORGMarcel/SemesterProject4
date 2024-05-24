@@ -3,5 +3,4 @@ module CommonPlayer {
     requires CommonWeapon;
     exports dk.sdu.mmmi.cbse.commonplayer;
 
-    
 }
