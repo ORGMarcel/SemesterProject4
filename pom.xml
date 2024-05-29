@@ -23,11 +23,8 @@
         <module>CommonPlayer</module>
         <module>CommonObstacle</module>
         <module>CommonWeapon</module>
-        <module>CommonWeaponCoin</module>
         <module>CommonMapObject</module>
         <module>CommonInvisibleObject</module>
-        <module>CommonMapPlayer</module>
-        <module>CommonMapEnemy</module>
         <module>Ai</module>
         <module>Shuriken</module>
         <module>WeaponShotgun</module>

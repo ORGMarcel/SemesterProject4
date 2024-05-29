@@ -4,14 +4,10 @@ import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.aisystem.AiPlugin;
 
 module Ai {
-    exports dk.sdu.mmmi.cbse.aisystem;
     requires Common;
     requires CommonMapObject;
     requires CommonObstacle;
-    requires CommonMapPlayer;
-    requires CommonMapEnemy;
     requires CommonEnemy;
-    requires CommonWeaponCoin;
     requires CommonPlayer;
     requires CommonInvisibleObject;
 //    requires CommonBullet;

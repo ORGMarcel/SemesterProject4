@@ -6,7 +6,6 @@ import dk.sdu.mmmi.cbse.common.services.IGamePluginService;
 import dk.sdu.mmmi.cbse.commoninvisibleobject.InvisibleObject;
 import dk.sdu.mmmi.cbse.commonmapobject.CommonMapObject;
 import dk.sdu.mmmi.cbse.commonobstacle.Obstacle;
-import dk.sdu.mmmi.cbse.commonweaponcoin.WeaponCoin;
 
 import java.util.Random;
 

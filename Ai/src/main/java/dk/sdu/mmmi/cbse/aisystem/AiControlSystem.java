@@ -6,11 +6,8 @@ import dk.sdu.mmmi.cbse.common.data.World;
 import dk.sdu.mmmi.cbse.common.services.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.commonenemy.Enemy;
 import dk.sdu.mmmi.cbse.commoninvisibleobject.InvisibleObject;
-import dk.sdu.mmmi.cbse.commonmapenemy.MapEnemy;
-import dk.sdu.mmmi.cbse.commonmapplayer.MapPlayer;
 import dk.sdu.mmmi.cbse.commonobstacle.Obstacle;
 import dk.sdu.mmmi.cbse.commonplayer.Player;
-import dk.sdu.mmmi.cbse.commonweaponcoin.WeaponCoin;
 
 
 import java.util.*;

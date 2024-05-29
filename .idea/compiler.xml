@@ -10,7 +10,6 @@
         <module name="Player" />
         <module name="CommonEnemy" />
         <module name="Enemies" />
-        <module name="CommonMapEnemy" />
         <module name="Ai" />
         <module name="WeaponShotgun" />
         <module name="WeaponUzi" />
@@ -19,9 +18,7 @@
         <module name="CommonPlayer" />
         <module name="CommonObstacle" />
         <module name="CommonMapObject" />
-        <module name="CommonMapPlayer" />
         <module name="CommonWeapon" />
-        <module name="CommonWeaponCoin" />
         <module name="Shuriken" />
         <module name="CommonInvisibleObject" />
         <module name="weaponUzi" />
@@ -32,7 +29,10 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="CommonMap" target="21" />
+      <module name="CommonMapEnemy" target="21" />
+      <module name="CommonMapPlayer" target="21" />
       <module name="CommonPath" target="21" />
+      <module name="CommonWeaponCoin" target="21" />
       <module name="Weapon" target="9" />
     </bytecodeTargetLevel>
   </component>
